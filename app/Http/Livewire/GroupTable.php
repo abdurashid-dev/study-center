@@ -35,7 +35,6 @@ final class GroupTable extends PowerGridComponent
                 ->striped()
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput(),
-            (new \PowerComponents\LivewirePowerGrid\Header)->showToggleColumns(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -86,7 +85,7 @@ final class GroupTable extends PowerGridComponent
     public $name = null;
 
     protected array $rules = [
-        'name.*' => ['required', 'min:2', 'max:255'],
+        'name' => ['required', 'min:2', 'max:255'],
     ];
 
     /*
@@ -127,6 +126,7 @@ final class GroupTable extends PowerGridComponent
             Column::make('ID', 'id'),
 
             Column::make('NAME', 'name')
+                ->sortable()
                 ->searchable()
                 ->editOnClick()
                 ->makeInputText(),
@@ -160,13 +160,10 @@ final class GroupTable extends PowerGridComponent
     {
        return [
            Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm'),
-//               ->route('groups.edit', ['groups' => 'id']),
+               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm'),
 
            Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 rounded text-sm'),
-//               ->route('groups.destroy', ['groups' => 'id']),
-//               ->method('delete')
+               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm'),
         ];
     }
 
@@ -191,7 +188,7 @@ final class GroupTable extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($groups) => $groups->id === 1)
+                ->when(fn($group) => $group->id === 1)
                 ->hide(),
         ];
     }
