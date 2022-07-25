@@ -155,21 +155,20 @@ final class GroupTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+
     public function actions(): array
     {
        return [
            Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('group.edit', ['group' => 'id']),
+               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm'),
+//               ->route('groups.edit', ['groups' => 'id']),
 
            Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('group.destroy', ['group' => 'id'])
-               ->method('delete')
+               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 rounded text-sm'),
+//               ->route('groups.destroy', ['groups' => 'id']),
+//               ->method('delete')
         ];
     }
-    */
 
     /*
     |--------------------------------------------------------------------------
@@ -192,7 +191,7 @@ final class GroupTable extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($group) => $group->id === 1)
+                ->when(fn($groups) => $groups->id === 1)
                 ->hide(),
         ];
     }
