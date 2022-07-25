@@ -7,7 +7,15 @@ use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
-use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
+use PowerComponents\LivewirePowerGrid\{Button,
+    Column,
+    Exportable,
+    Footer,
+    Header,
+    PowerGrid,
+    PowerGridComponent,
+    PowerGridEloquent
+};
 
 final class GroupTable extends PowerGridComponent
 {
@@ -22,13 +30,12 @@ final class GroupTable extends PowerGridComponent
     */
     public function setUp(): array
     {
-        $this->showCheckBox();
-
         return [
             Exportable::make('export')
                 ->striped()
                 ->type(Exportable::TYPE_XLS, Exportable::TYPE_CSV),
             Header::make()->showSearchInput(),
+            (new \PowerComponents\LivewirePowerGrid\Header)->showToggleColumns(),
             Footer::make()
                 ->showPerPage()
                 ->showRecordCount(),
@@ -44,10 +51,10 @@ final class GroupTable extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\Group>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\Group>
+     */
     public function datasource(): Builder
     {
         return Group::query();
@@ -71,6 +78,17 @@ final class GroupTable extends PowerGridComponent
         return [];
     }
 
+
+    /*
+     * |--------------------------------------------------------------------------
+     */
+    public bool $showErrorBag = true;
+    public $name = null;
+
+    protected array $rules = [
+        'name.*' => ['required', 'min:2', 'max:255'],
+    ];
+
     /*
     |--------------------------------------------------------------------------
     |  Add Column
@@ -84,11 +102,9 @@ final class GroupTable extends PowerGridComponent
         return PowerGrid::eloquent()
             ->addColumn('id')
             ->addColumn('name')
-            ->addColumn('slug')
-            ->addColumn('description')
             ->addColumn('status')
-            ->addColumn('created_at_formatted', fn (Group $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Group $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn(Group $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('updated_at_formatted', fn(Group $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -100,7 +116,7 @@ final class GroupTable extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -108,22 +124,11 @@ final class GroupTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
-                ->makeInputRange(),
+            Column::make('ID', 'id'),
 
             Column::make('NAME', 'name')
-                ->sortable()
                 ->searchable()
-                ->makeInputText(),
-
-            Column::make('SLUG', 'slug')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('DESCRIPTION', 'description')
-                ->sortable()
-                ->searchable()
+                ->editOnClick()
                 ->makeInputText(),
 
             Column::make('STATUS', 'status')
@@ -133,14 +138,7 @@ final class GroupTable extends PowerGridComponent
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
-
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
-        ]
-;
+        ];
     }
 
     /*
@@ -151,7 +149,7 @@ final class GroupTable extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Group Action Buttons.
      *
      * @return array<int, Button>
@@ -181,7 +179,7 @@ final class GroupTable extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Group Action Rules.
      *
      * @return array<int, RuleActions>
@@ -199,4 +197,12 @@ final class GroupTable extends PowerGridComponent
         ];
     }
     */
+
+    public function onUpdatedEditable($id, $field, $value): void
+    {
+        $this->validate();
+        Group::query()->find($id)->update([
+            $field => $value,
+        ]);
+    }
 }
