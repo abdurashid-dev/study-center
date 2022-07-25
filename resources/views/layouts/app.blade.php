@@ -12,6 +12,7 @@
 
         <!-- Styles -->
         @livewireStyles
+        @powerGridStyles
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -40,5 +41,6 @@
         @stack('modals')
 
         @livewireScripts
+        @powerGridScripts
     </body>
 </html>
