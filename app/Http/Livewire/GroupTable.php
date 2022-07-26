@@ -117,7 +117,8 @@ final class GroupTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id'),
+            Column::make('ID', 'id')
+                ->sortable(),
 
             Column::make('NAME', 'name')
                 ->sortable()
