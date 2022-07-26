@@ -81,11 +81,6 @@ final class GroupTable extends PowerGridComponent
     /*
      * |--------------------------------------------------------------------------
      */
-    public bool $showErrorBag = true;
-
-    protected array $rules = [
-        'name' => ['required', 'min:2', 'max:255'],
-    ];
 
     /*
     |--------------------------------------------------------------------------
@@ -203,6 +198,13 @@ final class GroupTable extends PowerGridComponent
     }
     /*-------------------------------------------*/
     /*|onUpdate|*/
+    public bool $showErrorBag = true;
+    public $name = null;
+
+    protected array $rules = [
+        'name.*' => ['required', 'min:2', 'max:255'],
+    ];
+
     public function onUpdatedEditable($id, $field, $value): void
     {
         $this->validate();
