@@ -1,4 +1,4 @@
-<div>
+<div wire:ignore.self>
     @isset($jsPath)
         <script>{!! file_get_contents($jsPath) !!}</script>
     @endisset
