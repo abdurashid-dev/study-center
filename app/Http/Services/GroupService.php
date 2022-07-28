@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Services;
 
 use App\Models\Group;
@@ -10,7 +11,7 @@ class GroupService
     {
         $group = new Group;
         $group->name = $data['name'];
-        $group->slug = Str::slug($data['name']);
+        $group->slug = Str::slug($data['name']) . '-' . Str::random(5);
         $group->description = $data['description'];
         $group->save();
     }
