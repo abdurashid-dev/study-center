@@ -15,7 +15,7 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
-                    <x-jet-nav-link href="{{ route('groups.index') }}" :active="request()->routeIs('groups.index')">
+                    <x-jet-nav-link href="{{ route('groups.index') }}" :active="request()->routeIs('groups*')">
                         {{ __('Guruhlar') }}
                     </x-jet-nav-link>
                 </div>
@@ -158,7 +158,7 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
-            <x-jet-responsive-nav-link href="{{ route('groups.index') }}" :active="request()->routeIs('groups.index')">
+            <x-jet-responsive-nav-link href="{{ route('groups.index') }}" :active="request()->routeIs('groups*')">
                 Guruhlar
             </x-jet-responsive-nav-link>
         </div>

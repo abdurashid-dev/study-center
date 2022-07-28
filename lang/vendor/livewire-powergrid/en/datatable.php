@@ -6,7 +6,7 @@ return [
         'clear_all_filters' => 'Clear all',
     ],
     'labels' => [
-        'action'           => 'Actions',
+        'action'           => 'Harakatlar',
         'results_per_page' => 'Records per page',
         'clear_filter'     => 'Clear filter',
         'no_data'          => 'No records found',
@@ -14,7 +14,7 @@ return [
         'selected'         => 'Selected',
     ],
     'placeholders' => [
-        'search' => 'Search...',
+        'search' => 'Qidiruv...',
         'select' => 'Select a period',
     ],
     'pagination' => [

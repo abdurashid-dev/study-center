@@ -119,7 +119,7 @@ final class GroupTable extends PowerGridComponent
             Column::make('ID', 'id')
                 ->sortable(),
 
-            Column::make('NAME', 'name')
+            Column::make('Guruh nomi', 'name')
                 ->sortable()
                 ->searchable()
                 ->editOnClick()
@@ -128,7 +128,7 @@ final class GroupTable extends PowerGridComponent
             Column::make('STATUS', 'status')
                 ->toggleable(),
 
-            Column::make('CREATED AT', 'created_at_formatted', 'created_at')
+            Column::make('Qo`shilgan vaqti', 'created_at_formatted', 'created_at')
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
