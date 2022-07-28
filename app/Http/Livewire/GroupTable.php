@@ -20,7 +20,6 @@ use PowerComponents\LivewirePowerGrid\{Button,
 final class GroupTable extends PowerGridComponent
 {
     use ActionButton;
-
     /*
     |--------------------------------------------------------------------------
     |  Features Setup
@@ -56,7 +55,7 @@ final class GroupTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Group::query();
+        return Group::query()->orderByRaw('created_at DESC');
     }
 
     /*

@@ -15,7 +15,7 @@
                 </div>
                 <div>
                     <x-jet-label for="description" value="Tavsif" />
-                    <x-textarea id="description" name="description" :value="old('description')" required autofocus/>
+                    <x-textarea id="description" name="description" :value="old('description')" autofocus/>
                     <x-jet-input-error for="description" class="mt-2" />
                 </div>
                 <div class="flex justify-end">
