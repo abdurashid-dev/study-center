@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Group\GroupStoreRequest;
+use App\Http\Services\GroupService;
 use App\Models\Group;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
+    protected string $service = GroupService::class;
     /**
      * Display a listing of the resource.
      *
@@ -22,7 +25,7 @@ class GroupController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function create()
     {
         return view('admin.groups.create');
     }
@@ -31,11 +34,13 @@ class GroupController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(GroupStoreRequest $request)
     {
-        dd($request->all());
+        $service = new $this->service;
+        $service->store($request->all(), $request);
+        return redirect()->route('groups.index');
     }
 
     /**
