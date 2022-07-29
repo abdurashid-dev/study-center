@@ -154,11 +154,13 @@ final class GroupTable extends PowerGridComponent
     public function actions(): array
     {
         return [
-            Button::make('edit', 'Edit')
-                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm'),
+            Button::make('show', "Ko'rish")
+                ->class('bg-blue-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm'),
+            Button::make('edit', 'Tahrirlash')
+                ->class('bg-green-600 cursor-pointer text-white px-3 py-2.5 rounded text-sm'),
 
-            Button::make('destroy', 'Delete')
-                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm delete-btn')
+            Button::make('destroy', "O'chirish")
+                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 rounded text-sm delete-btn')
                 ->target(false)
                 //delete route
                 ->route('groups.destroy', ['group' => 'id'])
