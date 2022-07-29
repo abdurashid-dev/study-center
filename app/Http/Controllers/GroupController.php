@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class GroupController extends Controller
 {
     protected GroupService $service;
+
     public function __construct()
     {
         $this->service = new GroupService();
@@ -32,13 +33,14 @@ class GroupController extends Controller
      */
     public function create()
     {
-        return view('admin.groups.create');
+        $group = new Group();
+        return view('admin.groups.create', compact('group'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(GroupStoreRequest $request)
@@ -50,30 +52,31 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Group  $group
+     * @param \App\Models\Group $group
      * @return \Illuminate\Http\Response
      */
     public function show(Group $group)
     {
-        //
+        return 'show';
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Group  $group
-     * @return \Illuminate\Http\Response
+     * @param \App\Models\Group $group
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit(Group $group)
+    public function edit($group)
     {
-        //
+        $group = Group::where('slug', $group)->first();
+        return view('admin.groups.edit', compact('group'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Group  $group
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Group $group
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Group $group)
@@ -84,7 +87,7 @@ class GroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Group  $group
+     * @param \App\Models\Group $group
      * @return \Illuminate\Http\RedirectResponse
      */
     public function destroy(Group $group): \Illuminate\Http\RedirectResponse
