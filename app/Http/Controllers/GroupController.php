@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Group\GroupStoreRequest;
+use App\Http\Requests\Group\GroupUpdateRequest;
 use App\Http\Services\GroupService;
 use App\Models\Group;
 use Illuminate\Http\Request;
@@ -77,11 +78,12 @@ class GroupController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param \App\Models\Group $group
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Group $group)
+    public function update(GroupUpdateRequest $request, Group $group): \Illuminate\Http\RedirectResponse
     {
-        //
+        $this->service->update($request->all(), $group);
+        return redirect()->route('groups.index')->with('success', 'Group updated successfully');
     }
 
     /**

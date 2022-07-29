@@ -26,4 +26,11 @@ class GroupService
         $group->deleted = true;
         $group->save();
     }
+
+    public function update(array $data, Group $group): void
+    {
+        $group->name = $data['name'];
+        $group->description = $data['description'];
+        $group->save();
+    }
 }
