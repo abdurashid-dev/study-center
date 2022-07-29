@@ -15,4 +15,10 @@ class GroupService
         $group->description = $data['description'];
         $group->save();
     }
+
+    public function destroy(Group $group): void
+    {
+        $group->deleted = true;
+        $group->save();
+    }
 }

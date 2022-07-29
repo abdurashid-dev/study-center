@@ -9,7 +9,12 @@ use Illuminate\Http\Request;
 
 class GroupController extends Controller
 {
-    protected string $service = GroupService::class;
+    protected GroupService $service;
+    public function __construct()
+    {
+        $this->service = new GroupService();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -38,8 +43,7 @@ class GroupController extends Controller
      */
     public function store(GroupStoreRequest $request)
     {
-        $service = new $this->service;
-        $service->store($request->all(), $request);
+        $this->service->store($request->all(), $request);
         return redirect()->route('groups.index')->with('success', 'Group created successfully');
     }
 
@@ -81,10 +85,11 @@ class GroupController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\Group  $group
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Group $group)
+    public function destroy(Group $group): \Illuminate\Http\RedirectResponse
     {
-        //
+        $this->service->destroy($group);
+        return redirect()->route('groups.index')->with('success', 'Group deleted successfully');
     }
 }
