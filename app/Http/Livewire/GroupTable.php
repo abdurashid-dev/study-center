@@ -156,7 +156,7 @@ final class GroupTable extends PowerGridComponent
         return [
             Button::make('show', "Ko'rish")
                 ->class('bg-blue-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
-                ->target(false)
+                ->target(false) // false to open in new tab
                 ->route('groups.destroy', ['group' => 'id']),
 
             Button::make('edit', 'Tahrirlash')
