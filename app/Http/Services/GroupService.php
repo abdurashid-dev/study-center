@@ -14,6 +14,11 @@ class GroupService
         $group->slug = Str::slug($data['name']) . '-' . Str::random(5);
         $group->description = $data['description'];
         $group->save();
+        //slug in database is unique, so we need to check if it already exists
+        if (Group::where('slug', $group->slug)->exists()) {
+            $group->slug = Str::slug($data['name']) . '-' . Str::random(5);
+            $group->save();
+        }
     }
 
     public function destroy(Group $group): void
