@@ -40,7 +40,7 @@ class GroupController extends Controller
     {
         $service = new $this->service;
         $service->store($request->all(), $request);
-        return redirect()->route('groups.index');
+        return redirect()->route('groups.index')->with('success', 'Group created successfully');
     }
 
     /**
