@@ -1,4 +1,7 @@
 <x-app-layout xmlns:livewire="http://www.w3.org/1999/html">
+    @section('styles')
+        @include('links.toastr-css')
+    @endsection
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Guruhlar
@@ -20,4 +23,7 @@
             </div>
         </div>
     </div>
+    @section('scripts')
+        @include('links.toastr-js')
+    @endsection
 </x-app-layout>
