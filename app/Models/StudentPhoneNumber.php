@@ -11,7 +11,7 @@ class StudentPhoneNumber extends Model
 
     protected $fillable = ['student_id', 'phone_number'];
 
-    public function belongsTo()
+    public function student(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Student::class);
     }

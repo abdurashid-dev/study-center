@@ -10,4 +10,9 @@ class Group extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'price', 'slug', 'description', 'status'];
+
+    public function students()
+    {
+
+    }
 }
