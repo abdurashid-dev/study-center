@@ -11,8 +11,8 @@ class Group extends Model
 
     protected $fillable = ['name', 'price', 'slug', 'description', 'status'];
 
-    public function students()
+    public function students(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-
+        return $this->hasMany(Student::class, 'group_id');
     }
 }

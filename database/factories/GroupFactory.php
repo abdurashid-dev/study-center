@@ -19,6 +19,7 @@ class GroupFactory extends Factory
         return [
             'name' => $this->faker->name,
             'slug' => $this->faker->slug,
+            'price' => $this->faker->numberBetween(100, 1000),
             'description' => $this->faker->sentence,
             'status' => $this->faker->boolean,
         ];

@@ -112,7 +112,7 @@ final class StudentTable extends PowerGridComponent
         return [
             Column::make('ID', 'id')
                 ->sortable(),
-            Column::make('Name', 'name')
+            Column::make('Name', 'full_name')
                 ->sortable(),
         ];
     }
