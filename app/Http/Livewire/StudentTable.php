@@ -7,7 +7,14 @@ use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
-use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
+use PowerComponents\LivewirePowerGrid\{Button,
+    Column,
+    Exportable,
+    Footer,
+    Header,
+    PowerGrid,
+    PowerGridComponent,
+    PowerGridEloquent};
 
 final class StudentTable extends PowerGridComponent
 {
@@ -44,10 +51,10 @@ final class StudentTable extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\Student>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\Student>
+     */
     public function datasource(): Builder
     {
         return Student::query();
@@ -81,7 +88,9 @@ final class StudentTable extends PowerGridComponent
     */
     public function addColumns(): PowerGridEloquent
     {
-        return PowerGrid::eloquent();
+        return PowerGrid::eloquent()
+            ->addColumn('id')
+            ->addColumn('name');
     }
 
     /*
@@ -93,7 +102,7 @@ final class StudentTable extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -101,8 +110,11 @@ final class StudentTable extends PowerGridComponent
     public function columns(): array
     {
         return [
-        ]
-;
+            Column::make('ID', 'id')
+                ->sortable(),
+            Column::make('Name', 'name')
+                ->sortable(),
+        ];
     }
 
     /*
@@ -113,7 +125,7 @@ final class StudentTable extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Student Action Buttons.
      *
      * @return array<int, Button>
@@ -143,7 +155,7 @@ final class StudentTable extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Student Action Rules.
      *
      * @return array<int, RuleActions>
