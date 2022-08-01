@@ -4,6 +4,11 @@
     <x-jet-input-error for="name" class="mt-2"/>
 </div>
 <div>
+    <x-jet-label for="price" value="To'lov summasi"/>
+    <x-jet-input id="name" type="number" name="price" :value="old('price') ?? $group->price" required autofocus/>
+    <x-jet-input-error for="price" class="mt-2"/>
+</div>
+<div>
     <x-jet-label for="description" value="Tavsif"/>
     <x-textarea id="description" name="description">{!!old('description') ?? $group->description !!}</x-textarea>
     <x-jet-input-error for="description" class="mt-2"/>

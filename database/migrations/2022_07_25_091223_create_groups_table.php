@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
+            $table->integer('price');
             $table->text('description')->nullable();
             $table->boolean('status')->default(true);
             $table->boolean('deleted')->default(false);
