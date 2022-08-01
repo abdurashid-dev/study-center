@@ -5,7 +5,7 @@
 </div>
 <div>
     <x-jet-label for="price" value="To'lov summasi"/>
-    <x-jet-input id="name" type="number" name="price" :value="old('price') ?? $group->price" required autofocus/>
+    <x-jet-input id="price" type="number" name="price" :value="old('price') ?? $group->price" required autofocus/>
     <x-jet-input-error for="price" class="mt-2"/>
 </div>
 <div>

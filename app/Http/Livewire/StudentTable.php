@@ -124,7 +124,9 @@ final class StudentTable extends PowerGridComponent
                 ->sortable(),
             Column::make('F.I.O', 'full_name')
                 ->sortable(),
-            Column::make('Guruhi', 'group_name')
+            Column::make('Manzil', 'address')
+                ->sortable(),
+            Column::make('Guruh', 'group_name')
                 ->sortable(),
         ];
     }
@@ -143,21 +145,23 @@ final class StudentTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
     public function actions(): array
     {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('student.edit', ['student' => 'id']),
+        return [
+            Button::make('Show', "Ko'rish")
+                ->class('bg-blue-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
+                ->route('students.show', ['student' => 'id']),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('student.destroy', ['student' => 'id'])
-               ->method('delete')
+            Button::make('edit', 'Tahrirlash')
+                ->class('bg-green-600 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
+                ->route('students.edit', ['student' => 'id']),
+
+            Button::make('destroy', "O'chirish")
+                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 rounded text-sm delete-btn')
+                ->route('students.destroy', ['student' => 'id'])
+                ->method('delete')
         ];
     }
-    */
 
     /*
     |--------------------------------------------------------------------------
