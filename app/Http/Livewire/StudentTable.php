@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Group;
 use App\Models\Student;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -30,8 +31,6 @@ final class StudentTable extends PowerGridComponent
     */
     public function setUp(): array
     {
-        $this->showCheckBox();
-
         return [
             Exportable::make('export')
                 ->striped()
@@ -60,7 +59,8 @@ final class StudentTable extends PowerGridComponent
     {
         return Student::query()
             ->join('groups', 'students.group_id', '=', 'groups.id')
-            ->select('students.*', 'groups.name as group_name');
+            ->select('students.*', 'groups.name as group_name')
+            ->orderBy('students.id', 'desc');
     }
 
     /*
@@ -78,7 +78,14 @@ final class StudentTable extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'groups' => [
+                'column' => 'group_id',
+                'label' => 'Group',
+                'type' => 'select',
+                'options' => Group::all()->pluck('name', 'id'),
+            ],
+        ];
     }
 
     /*
