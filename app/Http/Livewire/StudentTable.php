@@ -14,7 +14,8 @@ use PowerComponents\LivewirePowerGrid\{Button,
     Header,
     PowerGrid,
     PowerGridComponent,
-    PowerGridEloquent};
+    PowerGridEloquent
+};
 
 final class StudentTable extends PowerGridComponent
 {
@@ -57,7 +58,9 @@ final class StudentTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Student::query();
+        return Student::query()
+            ->join('groups', 'students.group_id', '=', 'groups.id')
+            ->select('students.*', 'groups.name as group_name');
     }
 
     /*
@@ -112,7 +115,9 @@ final class StudentTable extends PowerGridComponent
         return [
             Column::make('ID', 'id')
                 ->sortable(),
-            Column::make('Name', 'full_name')
+            Column::make('F.I.O', 'full_name')
+                ->sortable(),
+            Column::make('Guruhi', 'group_name')
                 ->sortable(),
         ];
     }
