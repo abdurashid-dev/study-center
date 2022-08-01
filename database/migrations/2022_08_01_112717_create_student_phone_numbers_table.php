@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('student_phone_numbers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }
