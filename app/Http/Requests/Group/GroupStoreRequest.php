@@ -25,7 +25,8 @@ class GroupStoreRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'description' => '',
+            'price' => 'required|numeric',
+            'description' => 'nullable',
         ];
     }
 }

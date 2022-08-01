@@ -96,8 +96,7 @@ final class GroupTable extends PowerGridComponent
             ->addColumn('id')
             ->addColumn('name')
             ->addColumn('status')
-            ->addColumn('created_at_formatted', fn(Group $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn(Group $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('price');
     }
 
     /*
@@ -128,14 +127,14 @@ final class GroupTable extends PowerGridComponent
 
             Column::make('STATUS', 'status')
                 ->toggleable(),
-
-            Column::make('Qo`shilgan vaqti', 'created_at_formatted', 'created_at')
-                ->searchable()
+            //add number format function to column
+            Column::make("To'lov summasi", 'price')
                 ->sortable()
-                ->makeInputDatePicker(),
+                ->searchable()
+                ->editOnClick()
+                ->makeInputText(),
         ];
     }
-
     /*
     |--------------------------------------------------------------------------
     | Actions Method
@@ -212,9 +211,11 @@ final class GroupTable extends PowerGridComponent
     /*|onUpdate|*/
     public bool $showErrorBag = true;
     public $name = null;
+    public $price = null;
 
     protected array $rules = [
         'name.*' => ['required', 'min:2', 'max:255'],
+        'price.*' => ['required', 'numeric', 'min:1000'],
     ];
 
     public function onUpdatedEditable($id, $field, $value): void

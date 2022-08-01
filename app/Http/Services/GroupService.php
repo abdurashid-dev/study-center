@@ -11,6 +11,7 @@ class GroupService
     {
         $group = new Group;
         $group->name = $data['name'];
+        $group->price = $data['price'];
         $group->slug = Str::slug($data['name']) . '-' . Str::random(5);
         $group->description = $data['description'];
         $group->save();
@@ -31,6 +32,7 @@ class GroupService
     {
         $group->name = $data['name'];
         $group->description = $data['description'];
+        $group->price = $data['price'];
         $group->save();
     }
 }
