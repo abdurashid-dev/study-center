@@ -15,4 +15,9 @@ class Student extends Model
     {
         return $this->hasMany(StudentPhoneNumber::class, 'student_id');
     }
+
+    public function groups(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(StudentGroup::class);
+    }
 }

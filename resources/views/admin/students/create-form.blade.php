@@ -1,6 +1,6 @@
 <div>
     <x-jet-label for="full_name" value="F.I.O"/>
-    <x-jet-input id="full_name" type="text" name="full_name" :value="old('full_name') ?? $student->full_name" required
+    <x-jet-input id="full_name" type="text" name="full_name" :value="old('full_name')" required
                  autofocus/>
     <x-jet-input-error for="full_name" class="mt-2"/>
 </div>
@@ -9,10 +9,10 @@
         <div>
             <x-jet-label for="phone" value="Telefon raqam"/>
             <x-jet-input class="phone w-100" id="phone" type="phone" name="phones[]"
-                         :value="old('phone') ?? $student->phone"
+                         :value="old('phones[]')"
                          required
                          autofocus/>
-            <x-jet-input-error for="phone" class="mt-2"/>
+            <x-jet-input-error for="phones" class="mt-2"/>
         </div>
     </div>
     <div>
@@ -36,13 +36,12 @@
 </div>
 <div>
     <x-jet-label for="address" value="Manzil"/>
-    <x-jet-input id="address" type="text" name="address" :value="old('address') ?? $student->address" required
-                 autofocus/>
+    <x-jet-input id="address" type="text" name="address" :value="old('address')" autofocus/>
     <x-jet-input-error for="address" class="mt-2"/>
 </div>
 <div>
     <x-jet-label for="description" value="Tavsif"/>
-    <x-textarea id="description" name="description">{!!old('description') ?? $student->description !!}</x-textarea>
+    <x-textarea id="description" name="description">{!!old('description')!!}</x-textarea>
     <x-jet-input-error for="description" class="mt-2"/>
 </div>
 <div class="flex justify-end">

@@ -13,7 +13,7 @@ class StudentStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class StudentStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'full_name' => 'required|string|max:255',
+            //validation each phone number
+            'phones' => 'required',
+            'groups' => 'required',
+            'address' => 'nullable',
+            'description' => 'nullable',
         ];
     }
 }

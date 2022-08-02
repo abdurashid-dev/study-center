@@ -2,12 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Student\StudentStoreRequest;
+use App\Http\Services\StudentService;
 use App\Models\Group;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    protected $service;
+
+    public function __construct()
+    {
+        $this->service = new StudentService();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +24,11 @@ class StudentController extends Controller
      */
     public function index()
     {
+        $students = Student::query()
+            ->join('student_groups', 'students.id', '=', 'student_groups.student_id')
+            ->join('groups', 'student_groups.group_id', '=', 'groups.id')
+            ->select('students.*', 'groups.name as group_name')
+            ->get();
         return view('admin.students.index');
     }
 
@@ -26,19 +40,19 @@ class StudentController extends Controller
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
         $groups = Group::where('status', 1)->where('deleted', 0)->get();
-        $student = new Student();
-        return view('admin.students.create', compact('student', 'groups'));
+        return view('admin.students.create', compact('groups'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function store(Request $request)
+    public function store(StudentStoreRequest $request): \Illuminate\Http\RedirectResponse
     {
-        dd($request->all());
+        $this->service->store($request->validated());
+        return redirect()->route('students.index')->with('success', 'Student created successfully');
     }
 
     /**

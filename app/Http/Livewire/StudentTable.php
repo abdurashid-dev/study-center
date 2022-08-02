@@ -6,6 +6,7 @@ use App\Models\Group;
 use App\Models\Student;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button,
@@ -58,9 +59,14 @@ final class StudentTable extends PowerGridComponent
     public function datasource(): Builder
     {
         return Student::query()
-            ->join('groups', 'students.group_id', '=', 'groups.id')
-            ->select('students.*', 'groups.name as group_name')
-            ->orderBy('students.id', 'desc');
+            ->join('student_groups', 'students.id', '=', 'student_groups.student_id')
+            ->join('groups', 'student_groups.group_id', '=', 'groups.id')
+            ->leftJoin('student_phone_numbers', function ($join) {
+                $join->on('student_phone_numbers.student_id', '=', DB::raw('(Select student_id from student_phone_numbers where student_id = students.id limit 1)'));
+            })
+            ->select('students.*', 'groups.name as group_name', 'student_phone_numbers.phone_number as phone_number')
+            ->where('groups.deleted', false)
+            ->orderByRaw('created_at DESC');
     }
 
     /*
@@ -78,14 +84,7 @@ final class StudentTable extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [
-            'groups' => [
-                'column' => 'group_id',
-                'label' => 'Group',
-                'type' => 'select',
-                'options' => Group::all()->pluck('name', 'id'),
-            ],
-        ];
+        return [];
     }
 
     /*
@@ -100,7 +99,10 @@ final class StudentTable extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('name');
+            ->addColumn('full_name')
+            ->addColumn('address')
+            ->addColumn('group_name')
+            ->addColumn('phone_number');
     }
 
     /*
@@ -111,7 +113,6 @@ final class StudentTable extends PowerGridComponent
     | Each column can be configured with properties, filters, actions...
     |
     */
-
     /**
      * PowerGrid Columns.
      *
@@ -123,8 +124,17 @@ final class StudentTable extends PowerGridComponent
             Column::make('ID', 'id')
                 ->sortable(),
             Column::make('F.I.O', 'full_name')
+                ->searchable()
+                ->makeInputText()
                 ->sortable(),
             Column::make('Manzil', 'address')
+                ->searchable()
+                ->makeInputText()
+                ->sortable(),
+            Column::make('Telefon', 'phone_number')
+                ->clickToCopy(true, 'Copy name to clipboard')
+                ->searchable()
+                ->makeInputText()
                 ->sortable(),
             Column::make('Guruh', 'group_name')
                 ->sortable(),

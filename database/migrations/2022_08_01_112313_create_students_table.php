@@ -15,7 +15,6 @@ return new class extends Migration {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->string('full_name');
-            $table->unsignedBigInteger('group_id');
             $table->string('address')->nullable();
             $table->text('description')->nullable();
             $table->boolean('deleted')->default(false);

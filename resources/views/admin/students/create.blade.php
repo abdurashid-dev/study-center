@@ -24,7 +24,7 @@
                     let phone = $('.phone').val();
                     let phone_number = `<div>
                         <x-jet-label for="phone" value="Telefon raqam"/>
-                        <x-jet-input class="phone" id="phone" type="phone" name="phones[]" :value="old('phone') ?? $student->phone"
+                        <x-jet-input class="phone" id="phone" type="phone" name="phones[]" :value="old('phone')"
                         autofocus/>
                         <x-jet-input-error for="phone" class="mt-2"/>
                         </div>`;
