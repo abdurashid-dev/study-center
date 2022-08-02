@@ -4,18 +4,22 @@
                  autofocus/>
     <x-jet-input-error for="full_name" class="mt-2"/>
 </div>
-<div class="phone_numbers">
-    <div>
-        <x-jet-label for="phone" value="Telefon raqam"/>
-        <x-jet-input class="phone" id="phone" type="phone" name="phone" :value="old('phone') ?? $student->phone"
-                     required
-                     autofocus/>
-        <x-jet-input-error for="phone" class="mt-2"/>
+<div class="flex items-end mb-3">
+    <div class="phone_numbers relative w-full mr-3 revue-form-group">
+        <div>
+            <x-jet-label for="phone" value="Telefon raqam"/>
+            <x-jet-input class="phone w-100" id="phone" type="phone" name="phones[]"
+                         :value="old('phone') ?? $student->phone"
+                         required
+                         autofocus/>
+            <x-jet-input-error for="phone" class="mt-2"/>
+        </div>
     </div>
-</div>
-<div class="flex justify-end">
-    <input type="button"
-           class="phone_btn text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:focus:bg-blue-700 mt-2" value="Qo'shish">
+    <div>
+        <input type="button"
+               class="phone_btn py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-black-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+               value="Qo'shish">
+    </div>
 </div>
 <div>
     <x-jet-label for="address" value="Manzil"/>

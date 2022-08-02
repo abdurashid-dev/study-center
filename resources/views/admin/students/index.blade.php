@@ -26,21 +26,5 @@
     @section('scripts')
         @include('links.toastr-js')
         @include('links.sweetalert')
-        <script>
-            $(document).ready(function () {
-                $('.phone_btn').click(function (e) {
-                    alert('Hello');
-                    e.preventDefault();
-                    let phone = $('.phone').val();
-                    let phone_number = `<div>
-                            <x-jet-label for="phone" value="Telefon raqam"/>
-                            <x-jet-input class="phone" id="phone" type="phone" name="phone" :value="old('phone') ?? $student->phone" required
-                            autofocus/>
-                            <x-jet-input-error for="phone" class="mt-2"/>
-                            </div>`;
-                    $('.phone_numbers').append(phone_number);
-                });
-            });
-        </script>
     @endsection
 </x-app-layout>
