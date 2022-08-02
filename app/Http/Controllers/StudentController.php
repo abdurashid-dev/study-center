@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,9 @@ class StudentController extends Controller
      */
     public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
+        $groups = Group::where('status', 1)->where('deleted', 0)->get();
         $student = new Student();
-        return view('admin.students.create', compact('student'));
+        return view('admin.students.create', compact('student', 'groups'));
     }
 
     /**
