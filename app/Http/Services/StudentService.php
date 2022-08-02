@@ -70,4 +70,12 @@ class StudentService
             $groups->save();
         }
     }
+
+    public function destroy($id): void
+    {
+        $student = Student::findOrFail($id);
+        $student->deleted_at = now();
+        $student->deleted = true;
+        $student->save();
+    }
 }

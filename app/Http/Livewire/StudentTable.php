@@ -68,7 +68,7 @@ final class StudentTable extends PowerGridComponent
                 $join->on('groups.id', '=', DB::raw('student_groups.group_id AND student_groups.id = (SELECT MAX(id) FROM student_groups WHERE student_id = students.id)'));
             })
             ->select('students.*', 'student_phone_numbers.phone_number', 'groups.name as group_name')
-            ->where('groups.deleted', false)
+            ->where('students.deleted', false)
             ->orderByRaw('created_at DESC');
     }
 

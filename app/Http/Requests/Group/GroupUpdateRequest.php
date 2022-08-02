@@ -25,6 +25,7 @@ class GroupUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
+            'price' => 'required|numeric|min:1000',
             'description' => 'nullable',
         ];
     }

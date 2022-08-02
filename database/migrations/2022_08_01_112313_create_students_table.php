@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('address')->nullable();
             $table->text('description')->nullable();
             $table->boolean('deleted')->default(false);
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }
