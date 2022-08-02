@@ -11,7 +11,7 @@ class Student extends Model
 
     protected $fillable = ['full_name', 'address', 'description'];
 
-    public function phoneNumbers(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function phones(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(StudentPhoneNumber::class, 'student_id');
     }

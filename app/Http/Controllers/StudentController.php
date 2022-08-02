@@ -54,22 +54,26 @@ class StudentController extends Controller
      * Display the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $student = Student::where('slug', $slug)->first();
+        return view('admin.students.show', compact('student'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        //student with phones and groups
+        $student = Student::where('slug', $slug)->with('phones', 'groups')->first();
+        $groups = Group::where('status', 1)->where('deleted', 0)->get();
+        return view('admin.students.edit', compact('student', 'groups'));
     }
 
     /**

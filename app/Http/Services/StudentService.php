@@ -6,12 +6,14 @@ use App\Models\Group;
 use App\Models\Student;
 use App\Models\StudentGroup;
 use App\Models\StudentPhoneNumber;
+use Illuminate\Support\Str;
 
 class StudentService
 {
     public function store(array $data)
     {
         $student = new Student();
+        $student->slug = Str::random(10);
         $student->full_name = $data['full_name'];
         $student->address = $data['address'];
         $student->description = $data['description'];
