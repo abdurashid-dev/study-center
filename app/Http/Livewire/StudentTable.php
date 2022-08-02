@@ -60,12 +60,14 @@ final class StudentTable extends PowerGridComponent
     {
         return Student::query()
             ->join('student_groups', 'students.id', '=', 'student_groups.student_id')
-            ->join('groups', 'student_groups.group_id', '=', 'groups.id')
             ->leftJoin('student_phone_numbers', function ($join) {
-                //one phone number per student
                 $join->on('students.id', '=', DB::raw('student_phone_numbers.student_id AND student_phone_numbers.id = (SELECT MAX(id) FROM student_phone_numbers WHERE student_id = students.id)'));
             })
-            ->select('students.*', 'groups.name as group_name', 'student_phone_numbers.phone_number as phone_number')
+            ->leftJoin('groups', function ($join) {
+                //the last group of the student
+                $join->on('groups.id', '=', DB::raw('student_groups.group_id AND student_groups.id = (SELECT MAX(id) FROM student_groups WHERE student_id = students.id)'));
+            })
+            ->select('students.*', 'student_phone_numbers.phone_number', 'groups.name as group_name')
             ->where('groups.deleted', false)
             ->orderByRaw('created_at DESC');
     }

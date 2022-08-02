@@ -22,13 +22,8 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function index()
+    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $students = Student::query()
-            ->join('student_groups', 'students.id', '=', 'student_groups.student_id')
-            ->join('groups', 'student_groups.group_id', '=', 'groups.id')
-            ->select('students.*', 'groups.name as group_name')
-            ->get();
         return view('admin.students.index');
     }
 

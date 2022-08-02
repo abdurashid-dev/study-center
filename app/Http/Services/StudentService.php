@@ -27,8 +27,8 @@ class StudentService
             }
         }
 
-        $groups = new StudentGroup();
         foreach ($data['groups'] as $group) {
+            $groups = new StudentGroup();
             $groups->student_id = $student->id;
             $groups->group_id = $group;
             $groups->save();
