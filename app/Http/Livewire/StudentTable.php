@@ -163,15 +163,18 @@ final class StudentTable extends PowerGridComponent
         return [
             Button::make('Show', "Ko'rish")
                 ->class('bg-blue-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
+                ->target(false)
                 ->route('students.show', ['student' => 'id']),
 
             Button::make('edit', 'Tahrirlash')
                 ->class('bg-green-600 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
+                ->target(false)
                 ->route('students.edit', ['student' => 'id']),
 
             Button::make('destroy', "O'chirish")
                 ->class('bg-red-500 cursor-pointer text-white px-3 py-2 rounded text-sm delete-btn')
                 ->route('students.destroy', ['student' => 'id'])
+                ->target(false)
                 ->method('delete')
         ];
     }
