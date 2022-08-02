@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Student\StudentStoreRequest;
+use App\Http\Requests\Student\StudentUpdateRequest;
 use App\Http\Services\StudentService;
 use App\Models\Group;
 use App\Models\Student;
@@ -81,11 +82,12 @@ class StudentController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      * @param int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(StudentUpdateRequest $request, $id): \Illuminate\Http\RedirectResponse
     {
-        //
+        $this->service->update($request->validated(), $id);
+        return redirect()->route('students.index')->with('success', 'Student updated successfully');
     }
 
     /**

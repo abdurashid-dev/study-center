@@ -10,9 +10,7 @@
             <div>
                 <x-jet-label for="phone" value="Telefon raqam"/>
                 <x-jet-input class="phone w-100" id="phone" type="phone" name="phones[]"
-                             :value="$phone->phone_number"
-                             required
-                             autofocus/>
+                             :value="$phone->phone_number" autofocus/>
                 <x-jet-input-error for="phones[]" class="mt-2"/>
             </div>
         @endforeach

@@ -25,7 +25,6 @@ class StudentStoreRequest extends FormRequest
     {
         return [
             'full_name' => 'required|string|max:255',
-            //validation each phone number
             'phones' => 'required',
             'groups' => 'required',
             'address' => 'nullable',
