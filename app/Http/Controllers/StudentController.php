@@ -33,9 +33,12 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function create()
     {
         $groups = Group::where('status', 1)->where('deleted', 0)->get();
+        if ($groups->count() == 0) {
+            return redirect()->route('students.index')->with('error', 'Guruhlar mavjud emas! Avval guruh qo\'shishingiz kerak!');
+        }
         return view('admin.students.create', compact('groups'));
     }
 
