@@ -13,6 +13,6 @@ class Group extends Model
 
     public function students(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(Student::class, 'group_id');
+        return $this->hasMany(StudentGroup::class);
     }
 }

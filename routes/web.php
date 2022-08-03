@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,6 @@ Route::middleware([
         'groups' => GroupController::class,
         'students' => StudentController::class,
     ]);
+    Route::get('attendance/{group}', [AttendanceController::class, 'create'])->name('attendance.create');
+    Route::post('attendance/{group}', [AttendanceController::class, 'store'])->name('attendance.store');
 });
