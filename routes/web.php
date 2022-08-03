@@ -37,5 +37,6 @@ Route::middleware([
         Route::get('/show/{group}', [AttendanceController::class, 'show'])->name('show');
         Route::get('/{group}', [AttendanceController::class, 'create'])->name('create');
         Route::post('/{group}', [AttendanceController::class, 'store'])->name('store');
+        Route::get('/edit/{group}', [AttendanceController::class, 'edit'])->name('edit');
     });
 });

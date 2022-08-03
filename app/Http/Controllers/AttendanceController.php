@@ -7,6 +7,7 @@ use App\Http\Services\AttendanceService;
 use App\Models\Attendance;
 use App\Models\Group;
 use App\Models\Student;
+use App\Models\StudentGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -39,5 +40,10 @@ class AttendanceController extends Controller
     {
         $group = Group::with('students.student')->where('slug', $slug)->first();
         return view('admin.attendances.show', compact('group'));
+    }
+
+    public function edit($group)
+    {
+//        return view('admin.attendances.create', compact('students', 'group'));
     }
 }
