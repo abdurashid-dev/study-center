@@ -34,7 +34,8 @@
                         @foreach($group->students as $student)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td class="py-4 px-6">{{$student->student->full_name}}</td>
-                                <td class="py-4 px-6 flex justify-start items-center gap-4 text-white">
+                                <td class="py-4 px-6 flex gap-4 text-white"
+                                    style="flex-direction: row-reverse; justify-content: start">
                                     @foreach($group->getAttendanceStatusAttribute($group->id, $student->student->id) as $status)
                                         {!! $group->getAttendanceDivAttribute($status->status, \Illuminate\Support\Carbon::parse($status->date)->format('d-F-Y')) !!}
                                     @endforeach
