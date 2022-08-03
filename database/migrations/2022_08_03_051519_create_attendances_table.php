@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('group_id');
-            $table->boolean('status');
+            $table->integer('status');
             $table->text('comment')->nullable();
             $table->timestamp('date');
             $table->timestamps();
