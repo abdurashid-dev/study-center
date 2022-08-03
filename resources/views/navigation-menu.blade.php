@@ -21,6 +21,9 @@
                     <x-jet-nav-link href="{{ route('students.index') }}" :active="request()->routeIs('students*')">
                         O'quvchilar
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('attendance.index') }}" :active="request()->routeIs('attendance*')">
+                        Davomat
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -166,6 +169,10 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('students.index') }}" :active="request()->routeIs('students*')">
                 O'quvchilar
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('attendance.index') }}"
+                                       :active="request()->routeIs('attendance*')">
+                Davomat
             </x-jet-responsive-nav-link>
         </div>
 

@@ -32,6 +32,10 @@ Route::middleware([
         'groups' => GroupController::class,
         'students' => StudentController::class,
     ]);
-    Route::get('attendance/{group}', [AttendanceController::class, 'create'])->name('attendance.create');
-    Route::post('attendance/{group}', [AttendanceController::class, 'store'])->name('attendance.store');
+    Route::prefix('attendance')->name('attendance.')->group(function () {
+        Route::get('/', [AttendanceController::class, 'index'])->name('index');
+        Route::get('/show/{group}', [AttendanceController::class, 'show'])->name('show');
+        Route::get('/{group}', [AttendanceController::class, 'create'])->name('create');
+        Route::post('/{group}', [AttendanceController::class, 'store'])->name('store');
+    });
 });
