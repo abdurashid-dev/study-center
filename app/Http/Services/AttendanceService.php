@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use App\Models\Attendance;
 use App\Models\Group;
 use App\Models\Student;
+use App\Models\StudentGroup;
 use Illuminate\Support\Carbon;
 
 class AttendanceService
@@ -17,17 +18,20 @@ class AttendanceService
             if (Carbon::parse($attendance->date)->format('Y-m-d') === Carbon::now()->format('Y-m-d')) {
                 return redirect()->route('groups.index')->with('error', 'Bugun uchun davomat qilingan!');
             } else {
-                $students = Student::query()
-                    ->join('student_groups', 'student_groups.student_id', '=', 'students.id')
+                $students = StudentGroup::query()
+                    ->join('students', 'students.id', '=', 'student_groups.student_id')
+                    ->where('student_groups.group_id', $group->id)
                     ->where('students.deleted', false)
                     ->get();
                 return view('admin.attendances.create', compact('students', 'group'));
             }
         } else {
-            $students = Student::query()
-                ->join('student_groups', 'student_groups.student_id', '=', 'students.id')
+            $students = StudentGroup::query()
+                ->join('students', 'students.id', '=', 'student_groups.student_id')
+                ->where('student_groups.group_id', $group->id)
                 ->where('students.deleted', false)
                 ->get();
+//            dd($students);
             return view('admin.attendances.create', compact('students', 'group'));
         }
     }

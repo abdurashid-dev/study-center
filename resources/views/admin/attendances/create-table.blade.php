@@ -2,19 +2,19 @@
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-            <th scope="col" class="py-3 px-6">
+            <th scope="col" class="py-3 px-6 text-center">
                 F.I.O
             </th>
-            <th scope="col" class="py-3 px-6">
+            <th scope="col" class="py-3 px-6 text-center">
                 Status
             </th>
-            <th scope="col" class="py-3 px-6">
+            <th scope="col" class="py-3 px-6 text-center">
                 Izoh (majburiy emas)
             </th>
         </tr>
         </thead>
         <tbody>
-        @foreach($students as $student)
+        @forelse($students as $student)
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td class="py-4 px-6">{{$student->full_name}}</td>
                 <td class="py-4 px-6">
@@ -30,13 +30,15 @@
                             <input checked="checked" id="{{$student->id}}2" type="radio" value="1"
                                    name="status[{{$student->id}}]"
                                    class="w-4 h-4 text-green-600 bg-gray-100 border-gray-300 focus:ring-green-500 dark:focus:ring-green-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="{{$student->id}}2" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Keldi</label>
+                            <label for="{{$student->id}}2"
+                                   class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Keldi</label>
                         </div>
                         <div class="flex items-center mr-4">
                             <input type="radio" value="2" id="{{$student->id}}3"
                                    name="status[{{$student->id}}]"
                                    class="w-4 h-4 text-purple-600 bg-gray-100 border-gray-300 focus:ring-purple-500 dark:focus:ring-purple-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                            <label for="{{$student->id}}3" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sababli
+                            <label for="{{$student->id}}3"
+                                   class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sababli
                                 kelmadi</label>
                         </div>
                     </div>
@@ -47,7 +49,11 @@
                                  placeholder="Izoh"></x-jet-input>
                 </td>
             </tr>
-        @endforeach
+        @empty
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td colspan="3" class="py-4 px-6 text-center">O'quvchilar topilmadi :(</td>
+            </tr>
+        @endforelse
         </tbody>
     </table>
 </div>
