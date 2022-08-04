@@ -37,7 +37,8 @@
                                             <th>Telefon raqam</th>
                                             <td>
                                                 @foreach($student->phones as $phone)
-                                                    {{$phone->phone_number}}<br>
+                                                    <a href="tel:{{$phone->phone_number}}">{{$phone->phone_number}}</a>
+                                                    <br>
                                                 @endforeach
                                             </td>
                                         </tr>
