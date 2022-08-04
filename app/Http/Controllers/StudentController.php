@@ -62,7 +62,7 @@ class StudentController extends Controller
      */
     public function show($slug)
     {
-        $student = Student::where('slug', $slug)->first();
+        $student = Student::with('phones', 'groups.group')->where('slug', $slug)->first();
         return view('admin.students.show', compact('student'));
     }
 

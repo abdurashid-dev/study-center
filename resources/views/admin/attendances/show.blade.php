@@ -34,7 +34,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($group->students as $student)
+                        @forelse($group->students as $student)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td class="py-4 px-6">{{$student->student->full_name}}</td>
                                 <td class="py-4 px-6 flex gap-4 text-white"
@@ -45,7 +45,25 @@
                                 </td>
                                 <td class="py-4 px-6">Ko'rish</td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td class="py-4 px-6" colspan="3">
+                                    <div class="flex items-center justify-center">
+                                        <div class="flex-shrink-0">
+                                            <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24"
+                                                 stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        </div>
+                                        <div class="ml-3">
+                                            <p class="text-sm leading-5 text-gray-500">
+                                                O'quvchilar mavjud emas.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforelse
                         </tbody>
                     </table>
                 </div>

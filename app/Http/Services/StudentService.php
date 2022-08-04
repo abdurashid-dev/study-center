@@ -45,9 +45,9 @@ class StudentService
         $student->description = $data['description'];
         $student->save();
 
-        foreach ($data['phones'] as $phone) {
-            $phones = StudentPhoneNumber::where('student_id', $id)->first();
-            $phones->delete();
+        $phones = StudentPhoneNumber::where('student_id', $id)->get();
+        foreach ($phones as $phone) {
+            $phone->delete();
         }
         foreach ($data['phones'] as $phone) {
             $phones = new StudentPhoneNumber();
@@ -59,9 +59,9 @@ class StudentService
             }
         }
 
-        foreach ($data['groups'] as $group) {
-            $groups = StudentGroup::where('student_id', $id)->first();
-            $groups->delete();
+        $groups = StudentGroup::where('student_id', $id)->get();
+        foreach ($groups as $group) {
+            $group->delete();
         }
         foreach ($data['groups'] as $group) {
             $groups = new StudentGroup();
