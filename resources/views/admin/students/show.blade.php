@@ -49,7 +49,7 @@
                                             <th>Guruh</th>
                                             <td>
                                                 @foreach($student->groups as $group)
-                                                    {{$group->group->name}}
+                                                    {{$group->group->name}}<br>
                                                 @endforeach
                                             </td>
                                         </tr>
