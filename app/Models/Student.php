@@ -20,4 +20,10 @@ class Student extends Model
     {
         return $this->hasMany(StudentGroup::class);
     }
+
+
+    public function attendances(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Attendance::class);
+    }
 }

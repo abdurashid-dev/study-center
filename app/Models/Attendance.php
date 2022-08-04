@@ -10,6 +10,7 @@ class Attendance extends Model
     use HasFactory;
 
     protected $fillable = ['student_id', 'group_id', 'status', 'comment', 'date'];
+
 //
 //    public function student(): \Illuminate\Database\Eloquent\Relations\BelongsTo
 //    {
@@ -20,5 +21,4 @@ class Attendance extends Model
     {
         return $this->belongsTo(Group::class);
     }
-
 }
