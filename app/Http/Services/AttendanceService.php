@@ -17,7 +17,7 @@ class AttendanceService
         $attendance = Attendance::where('group_id', $group->id)->latest()->first();
         if ($attendance) {
             if (Carbon::parse($attendance->date)->format('Y-m-d') === Carbon::now()->format('Y-m-d')) {
-                return redirect()->route('groups.index')->with('error', 'Bugun uchun davomat qilingan!');
+                return redirect()->route('attendance.index')->with('error', 'Bugun uchun davomat qilingan!');
             } else {
                 $students = StudentGroup::query()
                     ->join('students', 'students.id', '=', 'student_groups.student_id')

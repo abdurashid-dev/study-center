@@ -156,7 +156,7 @@ final class GroupTable extends PowerGridComponent
             Button::make('attendance', "Davomat")
                 ->class('bg-yellow-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
                 ->target(false) // false to open in new tab
-                ->route('attendance.create', ['group' => 'slug']),
+                ->route('attendance.show', ['group' => 'slug']),
 
             Button::make('show', "Ko'rish")
                 ->class('bg-blue-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
