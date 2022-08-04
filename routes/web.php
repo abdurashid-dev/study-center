@@ -38,5 +38,6 @@ Route::middleware([
         Route::get('/{group}', [AttendanceController::class, 'create'])->name('create');
         Route::post('/{group}', [AttendanceController::class, 'store'])->name('store');
         Route::get('/edit/{group}', [AttendanceController::class, 'edit'])->name('edit');
+        Route::put('/{group}', [AttendanceController::class, 'update'])->name('update');
     });
 });

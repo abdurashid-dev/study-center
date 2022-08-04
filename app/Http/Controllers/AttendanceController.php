@@ -44,6 +44,15 @@ class AttendanceController extends Controller
 
     public function edit($group)
     {
-//        return view('admin.attendances.create', compact('students', 'group'));
+        $service = new $this->service();
+        return $service->edit($group);
+    }
+
+    public function update($group, Request $request)
+    {
+        dd($request->all());
+        $service = new $this->service();
+        $service->update($group, $request);
+//        return redirect()->route('groups.index')->with('success', 'Davomat qilindi!');
     }
 }

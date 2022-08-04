@@ -7,6 +7,7 @@ use App\Models\Group;
 use App\Models\Student;
 use App\Models\StudentGroup;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class AttendanceService
 {
@@ -48,5 +49,26 @@ class AttendanceService
             $attendance->date = now();
             $attendance->save();
         }
+    }
+
+    public function edit($group)
+    {
+        $students = StudentGroup::query()
+            ->join('students', 'students.id', '=', 'student_groups.student_id')
+            ->join('attendances', function ($join) use ($group) {
+                $join->on('attendances.student_id', '=', 'student_groups.student_id')
+                    ->where('attendances.group_id', '=', $group)
+                    ->where('attendances.date', '=', DB::raw('(SELECT MAX(date) FROM attendances WHERE group_id = ' . $group . ')'));
+            })
+            ->where('students.deleted', false)
+            ->select('students.full_name as full_name', 'students.id as id', 'attendances.status as attendance_status', 'attendances.comment as attendance_comment', 'attendances.date as attendance_date')
+            ->get();
+        $group = Group::findOrFail($group);
+        return view('admin.attendances.edit', compact('students', 'group'));
+    }
+
+    public function update($id, array $data)
+    {
+        dd($id, $data);
     }
 }
