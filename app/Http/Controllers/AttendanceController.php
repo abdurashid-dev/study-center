@@ -50,9 +50,9 @@ class AttendanceController extends Controller
 
     public function update($group, Request $request)
     {
-        dd($request->all());
+//        dd($group, $request->all());
         $service = new $this->service();
-        $service->update($group, $request);
-//        return redirect()->route('groups.index')->with('success', 'Davomat qilindi!');
+        $service->update($group, $request->all());
+        return redirect()->route('groups.index')->with('success', 'Davomat tahrirlandi!');
     }
 }

@@ -39,16 +39,7 @@ class AttendanceService
 
     public function store(array $data, $id)
     {
-        $student_ids = array_keys($data['status']);
-        foreach ($student_ids as $student_id) {
-            $attendance = new \App\Models\Attendance();
-            $attendance->student_id = $student_id;
-            $attendance->group_id = $id;
-            $attendance->status = $data['status'][$student_id];
-            $attendance->comment = $data['comment'][$student_id];
-            $attendance->date = now();
-            $attendance->save();
-        }
+        $this->attendance_store($data, $id);
     }
 
     public function edit($group)
@@ -61,7 +52,7 @@ class AttendanceService
                     ->where('attendances.date', '=', DB::raw('(SELECT MAX(date) FROM attendances WHERE group_id = ' . $group . ')'));
             })
             ->where('students.deleted', false)
-            ->select('students.full_name as full_name', 'students.id as id', 'attendances.status as attendance_status', 'attendances.comment as attendance_comment', 'attendances.date as attendance_date')
+            ->select('students.full_name as full_name', 'students.id as id', 'attendances.id as attendance_id', 'attendances.status as attendance_status', 'attendances.comment as attendance_comment', 'attendances.date as attendance_date')
             ->get();
         $group = Group::findOrFail($group);
         return view('admin.attendances.edit', compact('students', 'group'));
@@ -69,6 +60,29 @@ class AttendanceService
 
     public function update($id, array $data)
     {
-        dd($id, $data);
+        foreach ($data['attendance_id'] as $attendance) {
+            $attendance = Attendance::findOrFail($attendance);
+            $attendance->delete();
+        }
+        $this->attendance_store($data, $id);
+    }
+
+    /**
+     * @param array $data
+     * @param $id
+     * @return void
+     */
+    public function attendance_store(array $data, $id): void
+    {
+        $student_ids = array_keys($data['status']);
+        foreach ($student_ids as $student_id) {
+            $attendance = new \App\Models\Attendance();
+            $attendance->student_id = $student_id;
+            $attendance->group_id = $id;
+            $attendance->status = $data['status'][$student_id];
+            $attendance->comment = $data['comment'][$student_id];
+            $attendance->date = now();
+            $attendance->save();
+        }
     }
 }
