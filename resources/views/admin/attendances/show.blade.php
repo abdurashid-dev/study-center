@@ -2,15 +2,22 @@
     <x-slot name="header">
         <div class="flex justify-between align-middle">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{$group->name}} o'quvchilarining davomatlari
+                {{$group->name}}
             </h2>
-            @if($group->students->count() > 0)
-                <a href="{{route('attendance.edit', $group->id)}}"
+            <div class="flex gap-1">
+                <a href="{{route('attendance.index')}}"
                    class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:focus:bg-blue-700"
                    title="Oxirgi davomatni tahrirlash">
-                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-arrow-left"></i>
                 </a>
-            @endif
+                @if($group->students->count() > 0)
+                    <a href="{{route('attendance.edit', $group->id)}}"
+                       class="block text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 dark:focus:bg-green-700"
+                       title="Oxirgi davomatni tahrirlash">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                @endif
+            </div>
         </div>
     </x-slot>
 
@@ -44,7 +51,8 @@
                                     @endforeach
                                 </td>
                                 <td class="py-4 px-6">
-                                    <a href="{{route('students.show', $student->student->slug)}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Ko'rish</a>
+                                    <a href="{{route('students.show', $student->student->slug)}}"
+                                       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Ko'rish</a>
                                 </td>
                             </tr>
                         @empty
