@@ -15,7 +15,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4 flex justify-evenly flex-wrap p-5">
                 @forelse($groups as $group)
                     <div
-                        class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 p-6">
+                        class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 p-6 my-2">
                         <div class="flex flex-col items-center pb-10">
                             <h5 class="mb-1 mt-2 text-xl font-medium text-gray-900 dark:text-white">{{$group->name}}</h5>
                             <div class="flex mt-4 space-x-3 md:mt-6">
