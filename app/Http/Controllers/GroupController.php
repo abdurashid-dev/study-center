@@ -56,9 +56,9 @@ class GroupController extends Controller
      * @param \App\Models\Group $group
      * @return \Illuminate\Http\Response
      */
-    public function show(Group $group)
+    public function show($slug)
     {
-        return 'show';
+        dd($slug);
     }
 
     /**
