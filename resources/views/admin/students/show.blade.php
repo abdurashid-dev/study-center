@@ -5,10 +5,15 @@
               crossorigin="anonymous">
     @endsection
     <x-slot name="header">
-        <div class="flex justify-between align-middle">
+        <div class="d-flex justify-between">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{$student->full_name}}
             </h2>
+            <a
+                class="btn btn-primary"
+                href="{{route('students.index')}}">
+                <i class="fas fa-arrow-left"></i> Orqaga
+            </a>
         </div>
     </x-slot>
     <section class="my-6">
