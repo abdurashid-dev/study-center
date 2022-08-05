@@ -43,7 +43,9 @@
                                         {!! $group->getAttendanceDivAttribute($status->status, \Illuminate\Support\Carbon::parse($status->date)->format('d-F-Y')) !!}
                                     @endforeach
                                 </td>
-                                <td class="py-4 px-6">Ko'rish</td>
+                                <td class="py-4 px-6">
+                                    <a href="{{route('students.show', $student->student->slug)}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Ko'rish</a>
+                                </td>
                             </tr>
                         @empty
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
