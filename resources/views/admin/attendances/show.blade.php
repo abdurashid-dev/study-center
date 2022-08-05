@@ -42,19 +42,29 @@
                         </thead>
                         <tbody>
                         @forelse($group->students as $student)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                                <td class="py-4 px-6">{{$student->student->full_name}}</td>
-                                <td class="py-4 px-6 flex gap-4 text-white"
-                                    style="flex-direction: row-reverse; justify-content: start">
-                                    @foreach($group->getAttendanceStatusAttribute($group->id, $student->student->id) as $status)
-                                        {!! $group->getAttendanceDivAttribute($status->status, \Illuminate\Support\Carbon::parse($status->date)->format('d-F-Y')) !!}
-                                    @endforeach
-                                </td>
-                                <td class="py-4 px-6">
-                                    <a href="{{route('students.show', $student->student->slug)}}"
-                                       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Ko'rish</a>
-                                </td>
-                            </tr>
+                            @if(!is_null($student->student))
+                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="py-4 px-6">{{$student->student->full_name}}</td>
+                                    <td class="py-4 px-6 flex gap-4 text-white"
+                                        style="flex-direction: row-reverse; justify-content: start">
+                                        @foreach($group->getAttendanceStatusAttribute($group->id, $student->student->id) as $status)
+                                            {!! $group->getAttendanceDivAttribute($status->status, \Illuminate\Support\Carbon::parse($status->date)->format('d-F-Y')) !!}
+                                        @endforeach
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <a href="{{route('students.show', $student->student->slug)}}"
+                                           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Ko'rish</a>
+                                    </td>
+                                </tr>
+                            @else
+                                <tr>
+                                    <td class="text-center py-4 px-6" colspan="3">
+                                        <h1 class="text-lg">
+                                            O'quvchilar mavjud emas.
+                                        </h1>
+                                    </td>
+                                </tr>
+                            @endif
                         @empty
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td class="py-4 px-6" colspan="3">
@@ -62,7 +72,8 @@
                                         <div class="flex-shrink-0">
                                             <svg class="h-6 w-6 text-gray-400" fill="none" viewBox="0 0 24 24"
                                                  stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      stroke-width="2"
                                                       d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                             </svg>
                                         </div>

@@ -38,7 +38,10 @@ class AttendanceController extends Controller
 
     public function show($slug)
     {
-        $group = Group::with('students.student')->where('slug', $slug)->first();
+        $group = Group::with(array('students.student' => function ($query) {
+            $query->where('deleted', false);
+        }))->where('slug', $slug)->first();
+//        dd($group);
         return view('admin.attendances.show', compact('group'));
     }
 
