@@ -62,7 +62,9 @@
                                         <tr>
                                             <th>Qarzdorligi</th>
                                             <td>
-                                                {!! $student->balance->getBalance() !!}
+                                                <a href="{{route('payment.create.single', $student->slug)}}">
+                                                    {!! $student->balance->getBalance() !!}
+                                                </a>
                                             </td>
                                         </tr>
                                         <tr>

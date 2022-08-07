@@ -21,6 +21,12 @@ class StudentPaymentController extends Controller
         return view('admin.payments.create', compact('students'));
     }
 
+    public function createSingle($slug)
+    {
+        $student = Student::where('slug', $slug)->first();
+        return view('admin.payments.create-single', compact('student'));
+    }
+
     public function store(StudentPaymentRequest $request)
     {
         $service = new $this->service;

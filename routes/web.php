@@ -45,6 +45,7 @@ Route::middleware([
     Route::controller(StudentPaymentController::class)->prefix('payment')->name('payment.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
+        Route::get('/create/{slug}', 'createSingle')->name('create.single');
         Route::post('/', 'store')->name('store');
     });
 });
