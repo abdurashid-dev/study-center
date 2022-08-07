@@ -30,4 +30,9 @@ class Student extends Model
     {
         return $this->hasOne(StudentBalance::class);
     }
+
+    public function payments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(StudentPayment::class);
+    }
 }

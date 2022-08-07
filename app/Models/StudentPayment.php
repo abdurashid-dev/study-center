@@ -10,4 +10,9 @@ class StudentPayment extends Model
     use HasFactory;
 
     protected $fillable = ['student_id', 'payment', 'comment'];
+
+    public function student(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

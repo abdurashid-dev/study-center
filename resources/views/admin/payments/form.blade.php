@@ -1,8 +1,8 @@
 <div class="mb-3">
-    <x-jet-label for="student" value="O'quvchilar"/>
+    <x-jet-label for="student_id" value="O'quvchilar"/>
     <select
         class="student-select block py-3 px-4 w-full text-base text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        name="student" id="student">
+        name="student_id" id="student_id">
         <option value="" selected disabled>O'quvchini tanlang</option>
         @foreach($students as $student)
             <option value="{{ $student->id }}">
@@ -10,7 +10,7 @@
             </option>
         @endforeach
     </select>
-    <x-jet-input-error for="student" class="mt-2"/>
+    <x-jet-input-error for="student_id" class="mt-2"/>
 </div>
 <div>
     <x-jet-label for="payment" value="To'lov summasi"/>
