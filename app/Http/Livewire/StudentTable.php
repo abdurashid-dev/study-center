@@ -2,13 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Group;
 use App\Models\Student;
-use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
-use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
-use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button,
     Column,
     Exportable,
@@ -18,6 +14,8 @@ use PowerComponents\LivewirePowerGrid\{Button,
     PowerGridComponent,
     PowerGridEloquent
 };
+use PowerComponents\LivewirePowerGrid\Rules\{RuleActions};
+use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 
 final class StudentTable extends PowerGridComponent
 {
@@ -158,8 +156,14 @@ final class StudentTable extends PowerGridComponent
     public function actions(): array
     {
         return [
-            Button::make('Show', "Ko'rish")
+            Button::make('payment', "To'lov qilish")
                 ->class('bg-blue-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
+                ->target(false)
+                ->route('payment.create.single', ['student' => 'slug']),
+
+
+            Button::make('show', "Ko'rish")
+                ->class('bg-yellow-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
                 ->target(false)
                 ->route('students.show', ['student' => 'slug']),
 
