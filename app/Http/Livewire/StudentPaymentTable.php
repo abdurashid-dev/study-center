@@ -96,7 +96,7 @@ final class StudentPaymentTable extends PowerGridComponent
                 return $studentPayment->student->full_name;
             })
             ->addColumn('payment', fn($studentPayment) => number_format($studentPayment->payment, 0, '', ' '),)
-            ->addColumn('comment')
+            ->addColumn('comment', fn($studentPayment) => $studentPayment->comment ?? 'Izoh mavjud emas')
             ->addColumn('created_at_formatted', fn(StudentPayment $model) => Carbon::parse($model->created_at)->format('d-F-Y'));
     }
 

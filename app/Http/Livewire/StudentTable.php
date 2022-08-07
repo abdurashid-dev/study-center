@@ -98,7 +98,7 @@ final class StudentTable extends PowerGridComponent
         return PowerGrid::eloquent()
             ->addColumn('id')
             ->addColumn('full_name')
-            ->addColumn('address')
+            ->addColumn('address', fn($student) => $student->address ?? '-')
             ->addColumn('group_name')
             ->addColumn('phone_number');
     }
