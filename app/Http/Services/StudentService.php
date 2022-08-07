@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\Group;
 use App\Models\Student;
+use App\Models\StudentBalance;
 use App\Models\StudentGroup;
 use App\Models\StudentPhoneNumber;
 use Illuminate\Support\Str;
@@ -18,6 +19,11 @@ class StudentService
         $student->address = $data['address'];
         $student->description = $data['description'];
         $student->save();
+
+        $student_balance = new StudentBalance();
+        $student_balance->student_id = $student->id;
+        $student_balance->balance = 0;
+        $student_balance->save();
 
         foreach ($data['phones'] as $phone) {
             $phones = new StudentPhoneNumber();
