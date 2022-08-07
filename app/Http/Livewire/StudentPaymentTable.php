@@ -58,7 +58,8 @@ final class StudentPaymentTable extends PowerGridComponent
     public function datasource(): Builder
     {
         return StudentPayment::query()
-            ->with('student');
+            ->with('student')
+            ->orderByDesc('created_at');
     }
 
     /*
@@ -96,7 +97,7 @@ final class StudentPaymentTable extends PowerGridComponent
             })
             ->addColumn('payment', fn($studentPayment) => number_format($studentPayment->payment, 0, '', ' '),)
             ->addColumn('comment')
-            ->addColumn('created_at_formatted', fn(StudentPayment $model) => Carbon::parse($model->created_at)->format('d/F/Y'));
+            ->addColumn('created_at_formatted', fn(StudentPayment $model) => Carbon::parse($model->created_at)->format('d-F-Y'));
     }
 
     /*
