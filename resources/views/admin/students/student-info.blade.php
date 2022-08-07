@@ -1,8 +1,8 @@
 <div class="card shadow-sm">
     <div class="card-header">
-        <h3 class="card-title">
-            O'quvchi haqida ma'lumot
-        </h3>
+        <h1 class="text-lg">
+            O'quvchi haqida ma'lumot <i class="far fa-id-card"></i>
+        </h1>
     </div>
     <div class="card-body">
         <table class="table table-bordered">

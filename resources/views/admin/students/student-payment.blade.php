@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card shadow">
     <div class="card-header">
-        <h3 class="card-title">
-            O'quvchi to'lov tarixi
+        <h3 class="card-title text-lg">
+            O'quvchi to'lov tarixi <i class="fas fa-history"></i>
         </h3>
     </div>
     <div class="card-body overflow-y-auto table-responsive" style="max-height: 400px">
