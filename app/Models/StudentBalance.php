@@ -8,10 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class StudentBalance extends Model
 {
     use HasFactory;
+
     protected $fillable = ['student_id', 'balance'];
 
     public function student(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Student::class);
+    }
+
+    public function getBalance(): string
+    {
+        if ($this->balance == 0) {
+            return '<div class="btn btn-success">Qarzdor emas</div>';
+        } elseif ($this->balance < 0) {
+            return '<div class="btn btn-danger">' . number_format($this->balance, 0, '', ' ') . ' uzs</div>';
+        } else {
+            return '<div class="btn btn-warning"><i class="fas fa-exclamation-triangle"></i> Xatolik</div>';
+        }
     }
 }

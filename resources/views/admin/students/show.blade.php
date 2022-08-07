@@ -32,7 +32,7 @@
                                     <table class="table table-bordered">
                                         <tr>
                                             <th>ID</th>
-                                            <td>1</td>
+                                            <td>{{$student->id}}</td>
                                         </tr>
                                         <tr>
                                             <th>F.I.O</th>
@@ -57,6 +57,12 @@
                                                 @foreach($student->groups as $group)
                                                     {{$group->group->name}}<br>
                                                 @endforeach
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Qarzdorligi</th>
+                                            <td>
+                                                {!! $student->balance->getBalance() !!}
                                             </td>
                                         </tr>
                                         <tr>
