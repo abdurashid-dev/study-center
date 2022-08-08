@@ -18,14 +18,20 @@
                     <td>{{\Illuminate\Support\Carbon::parse($attendance->date)->format('d-F-Y')}}</td>
                     <td>
                         @if($attendance->status == 1)
-                            Kelgan
+                            <div class="btn btn-sm btn-success">
+                                <i class="fas fa-check-circle"></i> Kelgan
+                            </div>
                         @elseif($attendance->status == 2)
-                            Sababli kelmagan
+                            <div class="btn btn-sm btn-warning">
+                                <i class="fas fa-question-circle"></i> Sababli kelmagan
+                            </div>
                         @else
-                            Kelmagan
+                            <div class="btn btn-sm btn-danger">
+                                <i class="fas fa-times-circle"></i> Kelmagan
+                            </div>
                         @endif
                     </td>
-                    <td>{{$attendance->comment}}</td>
+                    <td>{{$attendance->comment ?? 'Izoh mavjud emas'}}</td>
                 </tr>
             @empty
                 <tr>
