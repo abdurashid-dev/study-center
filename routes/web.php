@@ -33,6 +33,7 @@ Route::middleware([
         'groups' => GroupController::class,
         'students' => StudentController::class,
     ]);
+
     Route::prefix('attendance')->name('attendance.')->group(function () {
         Route::get('/', [AttendanceController::class, 'index'])->name('index');
         Route::get('/show/{group}', [AttendanceController::class, 'show'])->name('show');

@@ -35,4 +35,10 @@ class GroupService
         $group->price = $data['price'];
         $group->save();
     }
+
+    public function show($slug)
+    {
+        dd($slug);
+        return Group::where('slug', $slug)->first();
+    }
 }

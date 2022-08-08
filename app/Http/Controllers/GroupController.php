@@ -6,7 +6,7 @@ use App\Http\Requests\Group\GroupStoreRequest;
 use App\Http\Requests\Group\GroupUpdateRequest;
 use App\Http\Services\GroupService;
 use App\Models\Group;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GroupController extends Controller
 {
@@ -53,12 +53,13 @@ class GroupController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Group $group
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function show($slug)
     {
-        dd($slug);
+        $group = Group::with('students.student.phones')->where('slug', $slug)->first();
+//        dd($group);
+        return view('admin.groups.show', compact('group'));
     }
 
     /**

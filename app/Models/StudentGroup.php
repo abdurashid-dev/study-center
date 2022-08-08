@@ -11,10 +11,6 @@ class StudentGroup extends Model
 
     protected $fillable = ['student_id', 'group_id'];
 
-    public function studentWithDeleteFalse(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Student::class)->where('deleted', false);
-    }
     public function student(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Student::class);
