@@ -59,8 +59,13 @@ class GroupController extends Controller
         $group = Group::with('students.student.phones')->with(array('students.student.payments' => function ($query) {
             $query->whereMonth('created_at', date('m'));
         }))->where('slug', $slug)->first();
-//        dd($group);
-        return view('admin.groups.show', compact('group'));
+        $paymentOfThisMonth = 0;
+        foreach ($group->students as $student) {
+            foreach ($student->student->payments as $payment) {
+                $paymentOfThisMonth += $payment->payment;
+            }
+        }
+        return view('admin.groups.show', compact('group', 'paymentOfThisMonth'));
     }
 
     /**

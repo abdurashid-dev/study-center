@@ -29,6 +29,11 @@
                 <th>Guruh ochilgan sana</th>
                 <td>{{\Carbon\Carbon::parse($group->created_at)->format('d-F-Y')}}</td>
             </tr>
+            <tr>
+                <th><i class="fas fa-coins"></i></th>
+                <th>Ushbu oydagi to'lov ({{date('F')}})</th>
+                <td>{{number_format($paymentOfThisMonth, 0, '', ' ')}} uzs</td>
+            </tr>
         </table>
     </div>
 </div>
