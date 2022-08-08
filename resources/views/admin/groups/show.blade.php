@@ -5,6 +5,7 @@
               crossorigin="anonymous">
         @include('links.datatablecss')
     @endsection
+
     <x-slot name="header">
         <div class="flex justify-between align-middle">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -19,13 +20,14 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
+    <div class="container p-6">
+        <div class="card">
+            <div class="card-body">
                 @include('admin.groups.show-student-table')
             </div>
         </div>
     </div>
+
     @section('scripts')
         @include('links.datatablejs')
         <script>
