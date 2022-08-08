@@ -58,7 +58,8 @@ final class StudentPaymentTable extends PowerGridComponent
     public function datasource(): Builder
     {
         return StudentPayment::query()
-            ->with('student')
+            ->join('students', 'student_payments.student_id', '=', 'students.id')
+            ->select('student_payments.*', 'students.full_name as full_name', 'students.id as student_id', 'students.slug as slug')
             ->orderByDesc('created_at');
     }
 
@@ -152,21 +153,15 @@ final class StudentPaymentTable extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
     public function actions(): array
     {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('student-payment.edit', ['student-payment' => 'id']),
-
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('student-payment.destroy', ['student-payment' => 'id'])
-               ->method('delete')
+        return [
+            Button::make('show', 'Ko`rish')
+                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+                ->target(false)
+                ->route('students.show', ['student' => 'slug']),
         ];
     }
-    */
 
     /*
     |--------------------------------------------------------------------------
