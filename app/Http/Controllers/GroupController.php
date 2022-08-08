@@ -6,7 +6,6 @@ use App\Http\Requests\Group\GroupStoreRequest;
 use App\Http\Requests\Group\GroupUpdateRequest;
 use App\Http\Services\GroupService;
 use App\Models\Group;
-use Illuminate\Support\Facades\DB;
 
 class GroupController extends Controller
 {
@@ -57,7 +56,9 @@ class GroupController extends Controller
      */
     public function show($slug)
     {
-        $group = Group::with('students.student.phones')->where('slug', $slug)->first();
+        $group = Group::with('students.student.phones')->with(array('students.student.payments' => function ($query) {
+            $query->whereMonth('created_at', date('m'));
+        }))->where('slug', $slug)->first();
 //        dd($group);
         return view('admin.groups.show', compact('group'));
     }

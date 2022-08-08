@@ -23,6 +23,14 @@
     <div class="container p-6">
         <div class="card">
             <div class="card-body">
+                <div class="row">
+                    <div class="col-md-5 col-sm-12">
+                        @include('admin.groups.group-info')
+                    </div>
+                    <div class="col-md-7 col-sm-12">
+                        @include('admin.groups.student-payments')
+                    </div>
+                </div>
                 @include('admin.groups.show-student-table')
             </div>
         </div>
