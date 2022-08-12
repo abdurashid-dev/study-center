@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 
 use App\Models\Group;
+use App\Models\StudentGroup;
 use Illuminate\Support\Str;
 
 class GroupService
@@ -25,6 +26,10 @@ class GroupService
     public function destroy(Group $group): void
     {
         $group->deleted = true;
+        $students = StudentGroup::where('group_id', $group->id)->get();
+        foreach ($students as $student) {
+            $student->delete();
+        }
         $group->save();
     }
 
