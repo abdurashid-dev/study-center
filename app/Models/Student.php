@@ -35,4 +35,11 @@ class Student extends Model
     {
         return $this->hasMany(StudentPayment::class);
     }
+
+    public static function search($search)
+    {
+        return empty($search)
+            ? static::query()
+            : static::query()->where('deleted', 0)->where('full_name', 'like', '%' . $search . '%');
+    }
 }
