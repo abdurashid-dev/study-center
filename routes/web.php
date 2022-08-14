@@ -4,6 +4,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentPaymentController;
+use App\Http\Livewire\Student\StudentComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,8 +32,17 @@ Route::middleware([
     })->name('dashboard');
     Route::resources([
         'groups' => GroupController::class,
-        'students' => StudentController::class,
     ]);
+
+    Route::prefix('students')->name('students.')->group(function () {
+        Route::get('/', StudentComponent::class)->name('index');
+        Route::get('/{student}', [StudentController::class, 'show'])->name('show');
+        Route::get('/create', [StudentController::class, 'create'])->name('create');
+        Route::post('/', [StudentController::class, 'store'])->name('store');
+        Route::get('/{student}/edit', [StudentController::class, 'edit'])->name('edit');
+        Route::put('/{student}', [StudentController::class, 'update'])->name('update');
+        Route::delete('/{student}', [StudentController::class, 'destroy'])->name('destroy');
+    });
 
     Route::prefix('attendance')->name('attendance.')->group(function () {
         Route::get('/', [AttendanceController::class, 'index'])->name('index');
