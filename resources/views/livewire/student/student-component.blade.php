@@ -20,7 +20,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
                 <x-search/>
-                {{$search}}
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-3">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -86,7 +85,7 @@
                                 <td class="py-3 px-6">
                                     <div class="inline-flex rounded-md shadow-sm">
                                         <a href="#" aria-current="page"
-                                           class="py-2 px-4 text-sm font-medium text-grey-700 bg-white rounded-l-lg border border-gray-200 hover:bg-gray-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                                           class="py-2 px-4 text-sm font-medium text-grey-700 bg-wblue rounded-l-lg border border-gray-200 hover:bg-blue-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-blue-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-500 dark:focus:text-white">
                                             <i class="fas fa-eye"></i>
                                             Ko'rish
                                         </a>
