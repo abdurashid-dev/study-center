@@ -4,7 +4,6 @@ namespace App\Http\Services;
 
 use App\Models\Attendance;
 use App\Models\Group;
-use App\Models\Student;
 use App\Models\StudentGroup;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -44,18 +43,24 @@ class AttendanceService
 
     public function edit($group)
     {
-        $students = StudentGroup::query()
-            ->join('students', 'students.id', '=', 'student_groups.student_id')
-            ->join('attendances', function ($join) use ($group) {
-                $join->on('attendances.student_id', '=', 'student_groups.student_id')
-                    ->where('attendances.group_id', '=', $group)
-                    ->where('attendances.date', '=', DB::raw('(SELECT MAX(date) FROM attendances WHERE group_id = ' . $group . ')'));
-            })
-            ->where('students.deleted', false)
-            ->select('students.full_name as full_name', 'students.id as id', 'attendances.id as attendance_id', 'attendances.status as attendance_status', 'attendances.comment as attendance_comment', 'attendances.date as attendance_date')
-            ->get();
-        $group = Group::findOrFail($group);
-        return view('admin.attendances.edit', compact('students', 'group'));
+        //check if attendance exists
+        $attendance = Attendance::where('group_id', $group)->latest()->first();
+        if ($attendance) {
+            $students = StudentGroup::query()
+                ->join('students', 'students.id', '=', 'student_groups.student_id')
+                ->join('attendances', function ($join) use ($group) {
+                    $join->on('attendances.student_id', '=', 'student_groups.student_id')
+                        ->where('attendances.group_id', '=', $group)
+                        ->where('attendances.date', '=', DB::raw('(SELECT MAX(date) FROM attendances WHERE group_id = ' . $group . ')'));
+                })
+                ->where('students.deleted', false)
+                ->select('students.full_name as full_name', 'students.id as id', 'attendances.id as attendance_id', 'attendances.status as attendance_status', 'attendances.comment as attendance_comment', 'attendances.date as attendance_date')
+                ->get();
+            $group = Group::findOrFail($group);
+            return view('admin.attendances.edit', compact('students', 'group'));
+        } else {
+            return redirect()->route('attendance.index')->with('error', 'Davomat topilmadi!');
+        }
     }
 
     public function update($id, array $data)

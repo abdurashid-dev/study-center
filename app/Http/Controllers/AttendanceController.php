@@ -51,6 +51,7 @@ class AttendanceController extends Controller
 //        dd($group, $request->all());
         $service = new $this->service();
         $service->update($group, $request->all());
-        return redirect()->route('groups.index')->with('success', 'Davomat tahrirlandi!');
+        $group = Group::findOrFail($group);
+        return redirect()->route('attendance.show', $group->slug)->with('success', 'Davomat tahrirlandi!');
     }
 }
