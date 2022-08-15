@@ -3,7 +3,7 @@
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     @endsection
     <x-slot name="header">
-        <div class="flex justify-between align-middle">
+        <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 O'quvchi qo'shish
             </h2>

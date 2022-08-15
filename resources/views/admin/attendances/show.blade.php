@@ -3,7 +3,7 @@
         @include('links.toastr-css')
     @endsection
     <x-slot name="header">
-        <div class="flex justify-between align-middle">
+        <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{$group->name}}
             </h2>
@@ -33,9 +33,12 @@
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="py-3 px-6">
-                                F.I.O
+                                #
                             </th>
                             <th scope="col" class="py-3 px-6">
+                                F.I.O
+                            </th>
+                            <th scope="col" class="py-3 px-6 whitespace-nowrap">
                                 Oxirgi 5 kunlik davomati
                             </th>
                             <th scope="col" class="py-3 px-6">
@@ -47,20 +50,24 @@
                         @forelse($group->students as $student)
                             @if(!is_null($student->student))
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        {{$loop->iteration}}
+                                    </td>
                                     <td class="py-4 px-6">{{$student->student->full_name}}</td>
-                                    <td class="py-4 px-6 flex gap-4 text-white"
+                                    <td class="py-4 px-6 flex gap-4 text-white whitespace-nowrap"
                                         style="flex-direction: row-reverse; justify-content: start">
                                         @forelse($group->getAttendanceStatusAttribute($group->id, $student->student->id) as $status)
                                             {!! $group->getAttendanceDivAttribute($status->status, \Illuminate\Support\Carbon::parse($status->date)->format('d-F-Y')) !!}
                                         @empty
-                                            <div class="bg-red-200 text-gray-600 p-2 rounded-lg">
+                                            <div class="bg-red-200 text-gray-600 p-2 rounded-lg whitespace-nowrap">
                                                 Davomat topilmadi :(
                                             </div>
                                         @endforelse
                                     </td>
                                     <td class="py-4 px-6">
                                         <a href="{{route('students.show', $student->student->slug)}}"
-                                           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Ko'rish</a>
+                                           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 whitespace-nowrap"><i
+                                                class="fas fa-eye"></i> Ko'rish</a>
                                     </td>
                                 </tr>
                             @else

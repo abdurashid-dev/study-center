@@ -1,6 +1,6 @@
 <x-app-layout xmlns:livewire="http://www.w3.org/1999/html">
     <x-slot name="header">
-        <div class="flex justify-between align-middle">
+        <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 Guruhni tahrirlash
             </h2>

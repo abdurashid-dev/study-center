@@ -14,9 +14,9 @@
             </tr>
             @forelse($attendances as $attendance)
                 <tr>
-                    <td>{{ (($attendances->currentpage()-1)*$attendances->perpage()+($loop->index+1)) }}</td>
-                    <td>{{\Illuminate\Support\Carbon::parse($attendance->date)->format('d-F-Y')}}</td>
-                    <td>
+                    <td class="whitespace-nowrap">{{ (($attendances->currentpage()-1)*$attendances->perpage()+($loop->index+1)) }}</td>
+                    <td class="whitespace-nowrap">{{\Illuminate\Support\Carbon::parse($attendance->date)->format('d-F-Y')}}</td>
+                    <td class="whitespace-nowrap">
                         @if($attendance->status == 1)
                             <div class="btn btn-sm btn-success">
                                 <i class="fas fa-check-circle"></i> Kelgan
@@ -31,17 +31,17 @@
                             </div>
                         @endif
                     </td>
-                    <td>{{$attendance->comment ?? 'Izoh mavjud emas'}}</td>
+                    <td style="min-width: 150px !important;">{{$attendance->comment ?? 'Izoh mavjud emas'}}</td>
                 </tr>
             @empty
                 <tr>
                     <td colspan="4">
-                        <div class="alert alert-info">
+                        <div class="alert alert-warning">
                             <h5 class="alert-heading">
                                 <i class="fas fa-info-circle"></i>
                                 <span>
-                                                                O'quvchi yangi yoki umuman darslarda qatnashmagan
-                                                            </span>
+                                    O'quvchi yangi yoki umuman darslarda qatnashmagan
+                                </span>
                             </h5>
                         </div>
                     </td>

@@ -17,11 +17,11 @@
                     <td>
                         {{ $loop->index + 1 }}
                     </td>
-                    <td>{{\Illuminate\Support\Carbon::parse($payment->created_at)->format('d-F-Y')}}</td>
-                    <td>
+                    <td class="whitespace-nowrap">{{\Illuminate\Support\Carbon::parse($payment->created_at)->format('d-F-Y')}}</td>
+                    <td class="whitespace-nowrap">
                         {{number_format($payment->payment, 0, '', ' ')}} uzs
                     </td>
-                    <td>{{($payment->comment) ?? 'Izoh mavjud emas'}}</td>
+                    <td style="min-width: 150px !important;">{{($payment->comment) ?? 'Izoh mavjud emas'}}</td>
                 </tr>
             @empty
                 <tr>
