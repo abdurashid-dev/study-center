@@ -16,9 +16,9 @@
                 @foreach($student->student->payments as $payment)
                     <tr>
                         <td>{{$student->student->full_name}}</td>
-                        <td>{{\Illuminate\Support\Carbon::parse($payment->date)->format('d-F-Y')}}</td>
-                        <td>{{number_format($payment->payment, 0, '', ' ')}} uzs</td>
-                        <td>{{$payment->comment ?? 'Izoh mavjud emas :('}}</td>
+                        <td class="whitespace-nowrap">{{\Illuminate\Support\Carbon::parse($payment->date)->format('d-F-Y')}}</td>
+                        <td class="whitespace-nowrap">{{number_format($payment->payment, 0, '', ' ')}} uzs</td>
+                        <td style="min-width: 150px !important;">{{$payment->comment ?? 'Izoh mavjud emas :('}}</td>
                     </tr>
                 @endforeach
             @endforeach
