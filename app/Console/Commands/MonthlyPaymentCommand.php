@@ -29,12 +29,18 @@ class MonthlyPaymentCommand extends Command
     public function handle()
     {
         $students = Student::with('groups.group', 'balance')->where('deleted', false)->get();
-        foreach ($students as $student) {
-            foreach ($student->groups as $group) {
-                $student->balance->balance = $student->balance->balance - $group->group->price;
-                $student->balance->save();
+
+        if ($students->isEmpty()) {
+            $this->info('No students found');
+            return 0;
+        } else {
+            foreach ($students as $student) {
+                foreach ($student->groups as $group) {
+                    $student->balance->balance = $student->balance->balance - $group->group->price;
+                    $student->balance->save();
+                }
             }
+            $this->info('Monthly payment done');
         }
-        echo 'Monthly payment command ';
     }
 }
