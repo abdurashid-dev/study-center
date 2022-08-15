@@ -31,7 +31,8 @@
                         @include('admin.groups.student-payments')
                     </div>
                 </div>
-                @include('admin.groups.show-student-table')
+{{--                @include('admin.groups.show-student-table')--}}
+                <livewire:group.group-students :group="$group"/>
             </div>
         </div>
     </div>
