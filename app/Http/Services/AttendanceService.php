@@ -59,7 +59,7 @@ class AttendanceService
             $group = Group::findOrFail($group);
             return view('admin.attendances.edit', compact('students', 'group'));
         } else {
-            return redirect()->route('attendance.index')->with('error', 'Davomat topilmadi!');
+            return back()->with('error', 'Davomat topilmadi!');
         }
     }
 

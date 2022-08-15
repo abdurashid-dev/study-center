@@ -1,4 +1,7 @@
-<x-app-layout xmlns:livewire="http://www.w3.org/1999/html">
+<x-app-layout>
+    @section('styles')
+        @include('links.toastr-css')
+    @endsection
     <x-slot name="header">
         <div class="flex justify-between align-middle">
             <h4 class="font-semibold text-gray-800 leading-tight">
@@ -24,4 +27,7 @@
             </form>
         </div>
     </div>
+    @section('scripts')
+        @include('links.toastr-js')
+    @endsection
 </x-app-layout>
