@@ -17,7 +17,7 @@
             <tr>
                 <th><i class="far fa-newspaper"></i></th>
                 <th>Guruh haqida</th>
-                <td>{{$group->description ?? 'Izoh mavjud emas :('}}</td>
+                <td>{{$group->description ?? 'Izoh mavjud emas'}}</td>
             </tr>
             <tr>
                 <th><i class="fas fa-users"></i></th>
