@@ -51,13 +51,13 @@
                                     {{(($students->currentpage()-1)*$students->perpage()+($loop->index+1)) }}
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student)}}"
+                                    <a href="{{route('students.show', $student->slug)}}"
                                        class="text-gray-900 dark:text-white">
                                         {{$student->full_name}}
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student)}}"
+                                    <a href="{{route('students.show', $student->slug)}}"
                                        class="text-gray-900 dark:text-white">
                                         {{$student->address}}
                                     </a>
@@ -70,8 +70,8 @@
                                     @endforeach
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student)}}"
-                                       class="text-gray-900 dark:text-white">
+                                    <a href="{{route('students.show', $student->slug)}}"
+                                       class="text-gray-900 dark:text-white whitespace-nowrap">
                                         @forelse($student->groups as $group)
                                             {{$group->group->name}}<br>
                                         @empty
@@ -84,21 +84,23 @@
                                 </td>
                                 <td class="py-3 px-6">
                                     <div class="inline-flex rounded-md shadow-sm">
-                                        <a href="#" aria-current="page"
-                                           class="py-2 px-4 text-sm font-medium text-grey-700 bg-wblue rounded-l-lg border border-gray-200 hover:bg-blue-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-blue-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                                        <a href="{{route('students.show', $student->slug)}}" aria-current="page"
+                                           class="py-2 px-4 text-sm font-medium text-grey-700 bg-wblue rounded-l-lg border border-gray-200 hover:bg-blue-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-blue-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-500 dark:focus:text-white whitespace-nowrap">
                                             <i class="fas fa-eye"></i>
                                             Ko'rish
                                         </a>
-                                        <a href="#"
-                                           class="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
+                                        <a href="{{route('students.edit', $student->slug)}}"
+                                           class="py-2 px-4 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white whitespace-nowrap">
                                             <i class="fas fa-edit"></i>
                                             Tahrirlash
                                         </a>
-                                        <a href="#"
-                                           class="py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">
-                                            <i class="fas fa-trash-alt"></i>
-                                            O'chirish
-                                        </a>
+                                        <form action="{{route('students.destroy', $student)}}">
+                                            <button type="submit"
+                                                    class="delete-btn py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white whitespace-nowrap">
+                                                <i class="fas fa-trash-alt"></i>
+                                                O'chirish
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>

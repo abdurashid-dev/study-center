@@ -34,14 +34,10 @@ Route::middleware([
         'groups' => GroupController::class,
     ]);
 
+    Route::resource('students', StudentController::class)->except('index');
+
     Route::prefix('students')->name('students.')->group(function () {
         Route::get('/', StudentComponent::class)->name('index');
-        Route::get('/{student}', [StudentController::class, 'show'])->name('show');
-        Route::get('/create', [StudentController::class, 'create'])->name('create');
-        Route::post('/', [StudentController::class, 'store'])->name('store');
-        Route::get('/{student}/edit', [StudentController::class, 'edit'])->name('edit');
-        Route::put('/{student}', [StudentController::class, 'update'])->name('update');
-        Route::delete('/{student}', [StudentController::class, 'destroy'])->name('destroy');
     });
 
     Route::prefix('attendance')->name('attendance.')->group(function () {

@@ -8,7 +8,6 @@ use App\Http\Services\StudentService;
 use App\Models\Attendance;
 use App\Models\Group;
 use App\Models\Student;
-use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -36,11 +35,12 @@ class StudentController extends Controller
      */
     public function create()
     {
+        $student = new Student();
         $groups = Group::where('status', 1)->where('deleted', 0)->get();
         if ($groups->count() == 0) {
             return redirect()->route('students.index')->with('error', 'Guruhlar mavjud emas! Avval guruh qo\'shishingiz kerak!');
         }
-        return view('admin.students.create', compact('groups'));
+        return view('admin.students.create', compact('groups', 'student'));
     }
 
     /**
@@ -66,7 +66,7 @@ class StudentController extends Controller
         $student = Student::with('phones', 'groups.group', 'balance')->where('slug', $slug)->first();
         $student_payments = $student->payments()->orderByDesc('created_at')->get();
         $attendances = Attendance::where('student_id', $student->id)->orderByDesc('created_at')->paginate(10);
-        return view('admin.students.show', compact('student', 'attendances', 'student_payments'));
+        return view('admin.students.show', compact('student', 'student_payments', 'attendances'));
     }
 
     /**
