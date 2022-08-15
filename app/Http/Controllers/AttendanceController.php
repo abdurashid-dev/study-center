@@ -28,7 +28,7 @@ class AttendanceController extends Controller
     {
         $service = new $this->service;
         $service->store($request->validated(), $id);
-        return redirect()->route('groups.index')->with('success', 'Davomat qilindi!');
+        return redirect()->route('attendance.index')->with('success', 'Davomat qilindi!');
     }
 
     public function show($slug)

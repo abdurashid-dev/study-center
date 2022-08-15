@@ -13,27 +13,14 @@
                 <th>Izoh</th>
             </tr>
             @foreach($group->students as $student)
-                @forelse($student->student->payments as $payment)
+                @foreach($student->student->payments as $payment)
                     <tr>
                         <td>{{$student->student->full_name}}</td>
                         <td>{{\Illuminate\Support\Carbon::parse($payment->date)->format('d-F-Y')}}</td>
                         <td>{{number_format($payment->payment, 0, '', ' ')}} uzs</td>
                         <td>{{$payment->comment ?? 'Izoh mavjud emas :('}}</td>
                     </tr>
-                @empty
-                    <tr>
-                        <td colspan="4" class="text-center">
-                            <div class="alert alert-warning">
-                                <h5 class="alert-heading">
-                                    <i class="fas fa-info-circle"></i>
-                                    <span>
-                                        To'lovlar mavjud emas :(
-                                    </span>
-                                </h5>
-                            </div>
-                        </td>
-                    </tr>
-                @endforelse
+                @endforeach
             @endforeach
         </table>
     </div>

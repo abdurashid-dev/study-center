@@ -50,9 +50,13 @@
                                     <td class="py-4 px-6">{{$student->student->full_name}}</td>
                                     <td class="py-4 px-6 flex gap-4 text-white"
                                         style="flex-direction: row-reverse; justify-content: start">
-                                        @foreach($group->getAttendanceStatusAttribute($group->id, $student->student->id) as $status)
+                                        @forelse($group->getAttendanceStatusAttribute($group->id, $student->student->id) as $status)
                                             {!! $group->getAttendanceDivAttribute($status->status, \Illuminate\Support\Carbon::parse($status->date)->format('d-F-Y')) !!}
-                                        @endforeach
+                                        @empty
+                                            <div class="bg-red-200 text-gray-600 p-2 rounded-lg">
+                                                Davomat topilmadi :(
+                                            </div>
+                                        @endforelse
                                     </td>
                                     <td class="py-4 px-6">
                                         <a href="{{route('students.show', $student->student->slug)}}"
