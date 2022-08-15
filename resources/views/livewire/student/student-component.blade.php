@@ -105,8 +105,8 @@
                                 </td>
                             </tr>
                         @empty
-                            <td colspan="5" class="text-center py-3 px-6">
-                                O'quvchilar mavjud emas :(
+                            <td colspan="6" class="text-center py-3 px-6">
+                                O'quvchilar topilmadi :(
                             </td>
                         @endforelse
                         </tbody>
