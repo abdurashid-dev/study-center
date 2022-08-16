@@ -22,7 +22,6 @@ class GroupStudents extends Component
             ->join('students', 'students.id', '=', 'student_groups.student_id')
             ->where('students.deleted', false)
             ->join('student_balances', 'students.id', '=', 'student_balances.student_id')
-            //order by balance
             ->orderBy('student_balances.balance')
             ->select('students.*', 'student_balances.balance as balance')
             ->when($this->search, function ($query) {
