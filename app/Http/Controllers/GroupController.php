@@ -57,7 +57,8 @@ class GroupController extends Controller
     public function show($slug)
     {
         $group = Group::with('students.student.phones')->with(array('students.student.payments' => function ($query) {
-            $query->whereMonth('created_at', date('m'));
+            //get this month payments and order by date
+            $query->whereMonth('created_at', date('m'))->orderBy('created_at', 'desc');
         }))->where('slug', $slug)->first();
         $paymentOfThisMonth = 0;
         foreach ($group->students as $student) {

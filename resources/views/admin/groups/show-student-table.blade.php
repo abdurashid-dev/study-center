@@ -28,6 +28,11 @@
                             @endforelse
                         </td>
                         <td>
+                            <a href="{{route('payment.create.single', $student->student->slug)}}"
+                               class="btn btn-sm btn-primary">
+                                <i class="fas fa-dollar"></i>
+                                To'lov qilish
+                            </a>
                             <a href="{{route('students.show',$student->student->slug)}}"
                                class="btn btn-primary btn-sm">
                                 <i class="fas fa-eye"></i> Ko'rish

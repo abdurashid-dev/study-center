@@ -29,8 +29,10 @@
                                         <span
                                             class="btn btn-success"><i class="fas fa-check-circle"></i> {{number_format($student->balance, 0, '', ' ')}} uzs</span>
                                     @elseif($student->balance < 0)
-                                        <span
-                                            class="btn btn-danger"><i class="fas fa-times-circle"></i> {{number_format(abs($student->balance), 0, '', ' ')}} uzs</span>
+                                        <a href="{{route('payment.create.single', $student->slug)}}"
+                                           class="btn btn-danger"><i
+                                                class="fas fa-times-circle"></i> {{number_format(abs($student->balance), 0, '', ' ')}}
+                                            uzs</a>
                                     @else
                                         <span
                                             class="btn btn-success"><i
@@ -38,6 +40,11 @@
                                     @endif
                                 </td>
                                 <td>
+                                    <a href="{{route('payment.create.single', $student->slug)}}"
+                                       class="btn btn-success">
+                                        <i class="fas fa-coins"></i>
+                                        To'lov qilish
+                                    </a>
                                     <a href="{{route('students.show', $student->slug)}}" class="btn btn-primary"><i
                                             class="fas fa-eye"></i> Ko'rish</a>
                                 </td>
