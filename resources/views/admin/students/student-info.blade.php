@@ -28,6 +28,10 @@
                 <td>{{$student->address}}</td>
             </tr>
             <tr>
+                <th>Ma'lumot</th>
+                <td>{{$student->description ?? 'Izoh mavjud emas :('}}</td>
+            </tr>
+            <tr>
                 <th>Guruh</th>
                 <td>
                     @forelse($student->groups as $group)

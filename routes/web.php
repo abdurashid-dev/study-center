@@ -31,10 +31,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::resources([
-        'groups' => GroupController::class,
-    ]);
 
+    Route::resource('groups', GroupController::class);
     Route::resource('students', StudentController::class)->except('index');
 
     Route::prefix('students')->name('students.')->group(function () {

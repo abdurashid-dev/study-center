@@ -94,7 +94,9 @@
                                             <i class="fas fa-edit"></i>
                                             Tahrirlash
                                         </a>
-                                        <form action="{{route('students.destroy', $student)}}">
+                                        <form action="{{route('students.destroy', $student->id)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
                                             <button type="submit"
                                                     class="delete-btn py-2 px-4 text-sm font-medium text-gray-900 bg-white rounded-r-md border border-gray-200 hover:bg-gray-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white whitespace-nowrap">
                                                 <i class="fas fa-trash-alt"></i>

@@ -2,7 +2,6 @@
 
 namespace App\Http\Services;
 
-use App\Models\Group;
 use App\Models\Student;
 use App\Models\StudentBalance;
 use App\Models\StudentGroup;
@@ -80,6 +79,10 @@ class StudentService
     public function destroy($id): void
     {
         $student = Student::findOrFail($id);
+        $groups = StudentGroup::where('student_id', $id)->get();
+        foreach ($groups as $group) {
+            $group->delete();
+        }
         $student->deleted_at = now();
         $student->deleted = true;
         $student->save();
