@@ -4,6 +4,7 @@ use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentPaymentController;
+use App\Http\Livewire\Payment\StudentPayment;
 use App\Http\Livewire\Student\StudentComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -50,9 +51,10 @@ Route::middleware([
     });
 
     Route::controller(StudentPaymentController::class)->prefix('payment')->name('payment.')->group(function () {
-        Route::get('/', 'index')->name('index');
+//        Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
         Route::get('/create/{student}', 'createSingle')->name('create.single');
         Route::post('/', 'store')->name('store');
     });
+    Route::get('/payment', StudentPayment::class)->name('payment.index');
 });
