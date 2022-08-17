@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Student\StudentPaymentRequest;
 use App\Http\Services\StudentPaymentService;
 use App\Models\Student;
+use App\Models\StudentPayment;
 
 class StudentPaymentController extends Controller
 {
@@ -19,6 +20,12 @@ class StudentPaymentController extends Controller
     {
         $students = Student::where('deleted', false)->get();
         return view('admin.payments.create', compact('students'));
+    }
+
+    public function show($payment)
+    {
+        $payment = StudentPayment::with('student')->findOrFail($payment);
+        return view('admin.payments.show', compact('payment'));
     }
 
     public function createSingle($slug)

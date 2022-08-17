@@ -51,7 +51,7 @@ Route::middleware([
     });
 
     Route::controller(StudentPaymentController::class)->prefix('payment')->name('payment.')->group(function () {
-//        Route::get('/', 'index')->name('index');
+        Route::get('/{payment}', 'show')->name('show');
         Route::get('/create', 'create')->name('create');
         Route::get('/create/{student}', 'createSingle')->name('create.single');
         Route::post('/', 'store')->name('store');
