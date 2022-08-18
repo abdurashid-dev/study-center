@@ -27,6 +27,9 @@
                     <x-jet-nav-link href="{{ route('payment.index') }}" :active="request()->routeIs('payment*')">
                         To'lovlar
                     </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('archive.index') }}" :active="request()->routeIs('archive*')">
+                        Arxiv
+                    </x-jet-nav-link>
                 </div>
             </div>
 
@@ -179,6 +182,9 @@
             </x-jet-responsive-nav-link>
             <x-jet-responsive-nav-link href="{{ route('payment.index') }}" :active="request()->routeIs('payment*')">
                 To'lovlar
+            </x-jet-responsive-nav-link>
+            <x-jet-responsive-nav-link href="{{ route('archive.index') }}" :active="request()->routeIs('archive*')">
+                Arxiv
             </x-jet-responsive-nav-link>
         </div>
 
