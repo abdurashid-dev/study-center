@@ -18,7 +18,11 @@ class DashboradController extends Controller
             ->where('students.deleted', false)
             ->where('student_balances.balance', '<', 0)
             ->count();
-        $unpaidStudentsPercent = $unpaidStudentsCount / $studentsCount * 100;
+        if ($unpaidStudentsCount > 0) {
+            $unpaidStudentsPercent = $unpaidStudentsCount / $studentsCount * 100;
+        } else {
+            $unpaidStudentsPercent = 0;
+        }
 
         return view('dashboard', compact([
             'paymentForMonth',
