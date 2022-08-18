@@ -22,7 +22,7 @@
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm">Ushbu oydagi
                                             to'lovlar</p>
                                         <h5 class="mb-0 font-bold">
-                                            53,000
+                                            {{number_format($paymentForMonth, 0, ',', ',')}}
                                             <span
                                                 class="leading-normal text-sm font-weight-bolder text-black-500">UZS</span>
                                         </h5>
@@ -50,7 +50,7 @@
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm">O'quvchilar
                                             soni</p>
                                         <h5 class="mb-0 font-bold">
-                                            2,300
+                                            {{$studentsCount}}
                                             <span
                                                 class="leading-normal text-sm font-weight-bolder text-black-500">ta</span>
                                         </h5>
@@ -77,7 +77,7 @@
                                     <div>
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm">Guruhlar soni</p>
                                         <h5 class="mb-0 font-bold">
-                                            3,462
+                                            {{$groupsCount}}
                                             <span
                                                 class="leading-normal text-black-600 text-sm font-weight-bolder">ta</span>
                                         </h5>
@@ -105,11 +105,11 @@
                                         <p class="mb-0 font-sans font-semibold leading-normal text-sm">Qarzdor
                                             o'quvchilar soni</p>
                                         <h5 class="mb-0 font-bold">
-                                            103,430
+                                            {{$unpaidStudentsCount}}
                                             <span
                                                 class="leading-normal text-sm font-weight-bolder text-black-500">ta</span>
                                             <span
-                                                class="leading-normal text-sm font-weight-bolder text-red-500">5%</span>
+                                                class="leading-normal text-sm font-weight-bolder text-red-500">{{$unpaidStudentsPercent}}%</span>
                                         </h5>
                                     </div>
                                 </div>

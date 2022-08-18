@@ -25,12 +25,11 @@ class GroupService
 
     public function destroy(Group $group): void
     {
-        $group->deleted = true;
         $students = StudentGroup::where('group_id', $group->id)->get();
         foreach ($students as $student) {
             $student->delete();
         }
-        $group->save();
+        $group->delete();
     }
 
     public function update(array $data, Group $group): void

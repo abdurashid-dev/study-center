@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\DashboradController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentPaymentController;
@@ -29,9 +30,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboradController::class, 'index'])->name('dashboard');
 
     Route::resource('groups', GroupController::class);
     Route::resource('students', StudentController::class)->except('index');
@@ -58,6 +57,6 @@ Route::middleware([
     });
     Route::get('/payment', StudentPayment::class)->name('payment.index');
 
-    //archive
+//archive
     Route::get('/archive', StudentsArchive::class)->name('archive.index');
 });
