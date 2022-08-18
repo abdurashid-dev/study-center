@@ -6,6 +6,8 @@ use App\Models\Group;
 use App\Models\Student;
 use App\Models\StudentBalance;
 use App\Models\StudentPayment;
+use Asantibanez\LivewireCharts\Models\LineChartModel;
+use Carbon\Carbon;
 
 class DashboradController extends Controller
 {
@@ -25,12 +27,44 @@ class DashboradController extends Controller
             $unpaidStudentsPercent = 0;
         }
 
+
+        $months = [
+            1 => "january",
+            2 => "february",
+            3 => "march",
+            4 => "april",
+            5 => "may",
+            6 => "june",
+            7 => "july",
+            8 => "august",
+            9 => "september",
+            10 => "october",
+            11 => "november",
+            12 => "december",
+        ];
+        $amounts = [];
+        foreach ($months as $key => $month){
+            $amounts[$key] = StudentPayment::whereMonth('created_at', $key)->whereYear('created_at', Carbon::now()->year)->sum('payment');
+            if (Carbon::now()->month == $key) {
+                break;
+            }
+        }
+
+        $line = (new LineChartModel())
+            ->setTitle("To'lovlar")
+            ->singleLine()
+            ->setAnimated(true);
+        foreach ($amounts as $key => $amount) {
+            $line->addPoint($months[$key], $amount);
+        }
+
         return view('dashboard', compact([
             'paymentForMonth',
             'studentsCount',
             'groupsCount',
             'unpaidStudentsCount',
             'unpaidStudentsPercent',
+            'line',
         ]));
     }
 }

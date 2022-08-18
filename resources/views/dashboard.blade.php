@@ -10,7 +10,13 @@
             @include('partials.dashborad-cards')
 
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4 mt-5">
+                <livewire:livewire-line-chart
+                    :line-chart-model="$line"
+                />
             </div>
         </div>
     </div>
+    @section('scripts')
+        <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    @endsection
 </x-app-layout>
