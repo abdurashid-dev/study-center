@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentPaymentController;
 use App\Http\Livewire\Payment\StudentPayment;
 use App\Http\Livewire\Student\StudentComponent;
+use App\Http\Livewire\Student\StudentsArchive;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,4 +56,7 @@ Route::middleware([
         Route::post('/', 'store')->name('store');
     });
     Route::get('/payment', StudentPayment::class)->name('payment.index');
+
+    //archive
+    Route::get('/archive', StudentsArchive::class)->name('archive.index');
 });
