@@ -8,6 +8,12 @@
         <div class="d-flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{$student->full_name}}
+                @if($student->deleted)
+                    <span
+                        class="bg-red-100 text-red-800 font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900 whitespace-nowrap">
+                        O'chirilgan!
+                    </span>
+                @endif
             </h2>
             <a
                 class="btn btn-primary"

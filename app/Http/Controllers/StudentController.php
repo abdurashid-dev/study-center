@@ -107,4 +107,10 @@ class StudentController extends Controller
         $this->service->destroy($id);
         return redirect()->route('students.index')->with('success', 'Student deleted successfully');
     }
+
+    public function restore($student): \Illuminate\Http\RedirectResponse
+    {
+        $this->service->restore($student);
+        return redirect()->route('archive.index')->with('success', "O'quvchi qayta tiklandi");
+    }
 }

@@ -87,4 +87,12 @@ class StudentService
         $student->deleted = true;
         $student->save();
     }
+
+    public function restore($student): void
+    {
+        $student = Student::findOrFail($student);
+        $student->deleted_at = null;
+        $student->deleted = false;
+        $student->save();
+    }
 }
