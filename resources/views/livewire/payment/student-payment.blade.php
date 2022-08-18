@@ -1,6 +1,7 @@
 <div>
     @section('styles')
         @include('links.toastr-css')
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
     @endsection
     <x-slot name="header">
         <div class="flex justify-between align-middle">
@@ -19,6 +20,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
+                <input class="form-control form-control-solid" placeholder="Pick date rage" id="kt_daterangepicker_4"/>
+                <div id="hiddenParent"></div>
+                {{$start}}
                 <x-search/>
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-3">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -88,5 +92,28 @@
     </div>
     @section('scripts')
         @include('links.toastr-js')
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+        <script type="text/javascript"
+                src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+        <script>
+            $(function () {
+                //    change also livewire model value
+                $('#kt_daterangepicker_4').daterangepicker({
+                    startDate: moment().subtract(29, 'days'),
+                    endDate: moment(),
+                    ranges: {
+                        'Today': [moment(), moment()],
+                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+                        'This Month': [moment().startOf('month'), moment().endOf('month')],
+                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                    }
+                }, function (start, end) {
+                    $('#kt_daterangepicker_4').val(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                    Livewire.emit('search', start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD'));
+                })
+            });
+        </script>
     @endsection
 </div>

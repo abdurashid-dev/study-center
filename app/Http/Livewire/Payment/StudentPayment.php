@@ -11,6 +11,9 @@ class StudentPayment extends Component
     use WithPagination;
 
     public $search = '';
+    public $date;
+    public $start;
+    public $end;
 
     public function render()
     {
