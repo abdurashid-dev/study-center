@@ -36,7 +36,7 @@ class StudentController extends Controller
     public function create()
     {
         $student = new Student();
-        $groups = Group::where('status', 1)->where('deleted', 0)->get();
+        $groups = Group::where('status', 1)->get();
         if ($groups->count() == 0) {
             return redirect()->route('students.index')->with('error', 'Guruhlar mavjud emas! Avval guruh qo\'shishingiz kerak!');
         }
@@ -79,7 +79,7 @@ class StudentController extends Controller
     {
         //student with phones and groups
         $student = Student::where('slug', $slug)->with('phones', 'groups')->first();
-        $groups = Group::where('status', 1)->where('deleted', 0)->get();
+        $groups = Group::where('status', 1)->get();
         return view('admin.students.edit', compact('student', 'groups'));
     }
 

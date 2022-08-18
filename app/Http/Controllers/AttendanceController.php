@@ -14,7 +14,7 @@ class AttendanceController extends Controller
 
     public function index(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Contracts\Foundation\Application
     {
-        $groups = DB::table('groups')->where('deleted', false)->select('name', 'slug')->get();
+        $groups = DB::table('groups')->select('name', 'slug')->get();
         return view('admin.attendances.index', compact('groups'));
     }
 
