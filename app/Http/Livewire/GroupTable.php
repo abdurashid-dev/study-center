@@ -56,7 +56,7 @@ final class GroupTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Group::query()->where('deleted', false)->orderByRaw('created_at DESC');
+        return Group::query()->orderByRaw('created_at DESC');
     }
 
     /*
@@ -162,7 +162,7 @@ final class GroupTable extends PowerGridComponent
                 ->class('bg-blue-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
                 ->target(false)
                 ->route('groups.show', ['group' => 'slug']),
-    
+
             Button::make('edit', 'Tahrirlash')
                 ->class('bg-green-600 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
                 ->target(false)
