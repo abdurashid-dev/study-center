@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Student extends Model
 {
@@ -45,7 +46,7 @@ class Student extends Model
 
     public static function globalSearch($search)
     {
-        $q = ucwords($search);
+        $q = Str::title($search);
         return empty($search)
             ? static::query()
             : static::query()->where('full_name', 'like', '%' . $q . '%')

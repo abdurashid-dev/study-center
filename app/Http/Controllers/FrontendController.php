@@ -9,7 +9,12 @@ class FrontendController extends Controller
 {
     public function search(Request $request)
     {
-        $users = Student::globalSearch($request->search)->get();
-        dd($users);
+        if ($request->q) {
+            $q = $request->get('q');
+            $students = Student::globalSearch($request->q)->get();
+            return view('frontend.search', compact('students', 'q'));
+        } else {
+            return redirect()->route('welcome');
+        }
     }
 }

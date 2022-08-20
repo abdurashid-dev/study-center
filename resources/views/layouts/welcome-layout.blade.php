@@ -28,7 +28,8 @@
                         </b>
                     </h3>
                     <nav class="nav nav-masthead justify-content-center">
-                        <a class="nav-link @if(request()->routeIs('welcome')) active @endif" href="/">Izlash</a>
+                        <a class="nav-link @if(request()->routeIs('welcome') || request()->routeIs('search*')) active @endif"
+                           href="/">Izlash</a>
                         <a class="nav-link " href="/stats">Info</a>
                         <a class="nav-link " href="/login">Kirish</a>
                     </nav>
@@ -50,6 +51,15 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
 <!-- Page related js codes -->
+<script>
+    $(document).ready(function () {
+        $(document).on('keypress', function (e) {
+            if (e.which === 47) {
+                $('#search').focus();
+            }
+        });
+    });
+</script>
 </body>
 </html>
 

@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-Route::post('/search', [FrontendController::class, 'search'])->name('search');
+Route::get('/search', [FrontendController::class, 'search'])->name('search');
 
 Route::middleware([
     'auth:sanctum',
