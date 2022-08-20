@@ -42,4 +42,14 @@ class Student extends Model
             ? static::query()
             : static::query()->where('deleted', 0)->where('full_name', 'like', '%' . $search . '%');
     }
+
+    public static function globalSearch($search)
+    {
+        $q = ucwords($search);
+        return empty($search)
+            ? static::query()
+            : static::query()->where('full_name', 'like', '%' . $q . '%')
+                ->orWhere('address', 'like', '%' . $q . '%')
+                ->orWhere('id', 'like', '%' . $search . '%');
+    }
 }

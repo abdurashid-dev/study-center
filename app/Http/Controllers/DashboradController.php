@@ -43,7 +43,7 @@ class DashboradController extends Controller
             12 => "december",
         ];
         $amounts = [];
-        foreach ($months as $key => $month){
+        foreach ($months as $key => $month) {
             $amounts[$key] = StudentPayment::whereMonth('created_at', $key)->whereYear('created_at', Carbon::now()->year)->sum('payment');
             if (Carbon::now()->month == $key) {
                 break;
