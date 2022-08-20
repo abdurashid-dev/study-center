@@ -1,24 +1,21 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>{{config('app.name')}}</title>
-</head>
-<body>
-<div class="container">
-    <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="{{asset('logo.png')}}" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                Bootstrap
-            </a>
+@extends('layouts.welcome-layout')
+@section('content')
+    <div class="row my-auto text-center">
+        <div class="col-lg-8 mx-auto">
+            <main role="main" class="">
+                <h2 class="cover-heading">O'quvchi haqida ma'lumot</h2>
+                <form class="form" action="/search">
+                    <div class="inline-group global-search-div">
+                        <span class="global-search-icon"><i class="fa fa-search"></i></span>
+                        <input class="form-control form-control-lg" name="q" minlength="3" type="search"
+                               placeholder="O'quvchi ismi, familiyasi, otasining ismi, manzili, ID raqami" required>
+                    </div>
+                </form>
+            </main>
         </div>
-    </nav>
-</div>
-</body>
-</html>
+    </div>
+    <footer class="mastfoot mt-auto text-center">
+        <p><small>All rights reserved by <a href="https://t.me/abdurashid_coder">Abdurashid</a></small></p>
+    </footer>
+@endsection
+
