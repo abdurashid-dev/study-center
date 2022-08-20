@@ -14,7 +14,7 @@ class StudentService
     {
         $student = new Student();
         $student->slug = Str::random(10);
-        $student->full_name = $data['full_name'];
+        $student->full_name = ucwords($data['full_name']);
         $student->address = $data['address'];
         $student->description = $data['description'];
         $student->save();
