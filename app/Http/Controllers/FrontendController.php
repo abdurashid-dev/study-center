@@ -22,4 +22,9 @@ class FrontendController extends Controller
     {
         return view('frontend.dtm');
     }
+
+    public function info()
+    {
+        return view('frontend.info');
+    }
 }

@@ -27,6 +27,7 @@ Route::get('/', function () {
 })->name('welcome');
 Route::get('/search', [FrontendController::class, 'search'])->name('search');
 Route::get('/dtm', [FrontendController::class, 'dtm'])->name('dtm');
+Route::get('/info', [FrontendController::class, 'info'])->name('info');
 
 Route::middleware([
     'auth:sanctum',

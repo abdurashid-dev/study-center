@@ -10,7 +10,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{{asset('custom.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.min.css')}}">
+    @yield('styles')
 </head>
 <body>
 <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
@@ -30,7 +31,7 @@
                                aria-current="page" href="{{route('welcome')}}">Izlash</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Info</a>
+                            <a class="nav-link @if(request()->routeIs('info')) active @endif" href="{{route('info')}}">Info</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @if(request()->routeIs('dtm')) active @endif"
