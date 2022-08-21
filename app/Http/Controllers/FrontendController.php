@@ -17,4 +17,9 @@ class FrontendController extends Controller
             return redirect()->route('welcome');
         }
     }
+
+    public function dtm()
+    {
+        return view('frontend.dtm');
+    }
 }

@@ -17,24 +17,27 @@
     <div class="row">
         <div class="col-lg-8 mx-auto">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="#">Study CRM</a>
-                <button class="navbar-toggler" style="outline: none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                <a class="navbar-brand" href="{{route('welcome')}}">Study CRM</a>
+                <button class="navbar-toggler" style="outline: none" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars white" style="color: #cecaca"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Izlash</a>
+                            <a class="nav-link @if(request()->routeIs('search') || request()->routeIs('welcome')) active @endif"
+                               aria-current="page" href="{{route('welcome')}}">Izlash</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Info</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">DTM</a>
+                            <a class="nav-link @if(request()->routeIs('dtm')) active @endif"
+                               href="{{route('dtm')}}">DTM</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Kirish</a>
+                            <a class="nav-link" href="{{route('login')}}">Kirish</a>
                         </li>
                     </ul>
                 </div>
