@@ -40,7 +40,7 @@
                                         {{$student->full_name}}
                                     </h6>
                                     <small class="organization-address"><i class="fa fa-map-marker-alt"></i>
-                                        {{$student->address}}
+                                        {{$student->address ?? "Manzil haqida ma'lumot yo'q"}}
                                     </small>
                                 </div>
                             </a>

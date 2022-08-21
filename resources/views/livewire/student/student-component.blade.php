@@ -59,7 +59,7 @@
                                 <td class="py-3 px-6">
                                     <a href="{{route('students.show', $student->slug)}}"
                                        class="text-gray-900 dark:text-white">
-                                        {{$student->address}}
+                                        {{$student->address ?? 'Manzil yo\'q'}}
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
