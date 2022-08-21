@@ -16,25 +16,29 @@
 <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
     <div class="row">
         <div class="col-lg-8 mx-auto">
-            <header class="masthead text-center mb-2 ">
-                <div class="inner">
-                    <h3 class="masthead-brand">
-                        <b>
-                            <a href="/">
-                            <span class="text-primary">
-{{--                                    <img class="mr-2" height="20px" width="20px" src="{{asset('logo.png')}}" alt="Logo">--}}
-                                    study</span> crm
-                            </a>
-                        </b>
-                    </h3>
-                    <nav class="nav nav-masthead justify-content-center">
-                        <a class="nav-link @if(request()->routeIs('welcome') || request()->routeIs('search*')) active @endif"
-                           href="/">Izlash</a>
-                        <a class="nav-link " href="/stats">Info</a>
-                        <a class="nav-link " href="/login">Kirish</a>
-                    </nav>
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="#">Study CRM</a>
+                <button class="navbar-toggler" style="outline: none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars white" style="color: #cecaca"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Izlash</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Info</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">DTM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Kirish</a>
+                        </li>
+                    </ul>
                 </div>
-            </header>
+            </nav>
         </div>
     </div>
     @yield('content')
