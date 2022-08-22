@@ -30,9 +30,9 @@
                             <a class="nav-link @if(request()->routeIs('search') || request()->routeIs('welcome')) active @endif"
                                aria-current="page" href="{{route('welcome')}}">Izlash</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link @if(request()->routeIs('info')) active @endif" href="{{route('info')}}">Info</a>
-                        </li>
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link @if(request()->routeIs('info')) active @endif" href="{{route('info')}}">Info</a>--}}
+{{--                        </li>--}}
                         <li class="nav-item">
                             <a class="nav-link @if(request()->routeIs('dtm')) active @endif"
                                href="{{route('dtm')}}">DTM</a>
