@@ -97,7 +97,7 @@
                                 <span
                                     class="leading-normal text-sm font-weight-bolder text-black-500">ta</span>
                                 <span
-                                    class="leading-normal text-sm font-weight-bolder text-red-500">{{$unpaidStudentsPercent}}%</span>
+                                    class="leading-normal text-sm font-weight-bolder text-red-500">{{round($unpaidStudentsPercent)}}%</span>
                             </h5>
                         </div>
                     </div>
