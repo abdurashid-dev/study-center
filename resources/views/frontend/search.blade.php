@@ -23,7 +23,7 @@
 
                     <div class="oranization-search-result">
                         @forelse($students as $student)
-                            <a class="organization-page-link" href="/organization/20fdd348a129">
+                            <a class="organization-page-link" href="{{route('search.result', $student->slug)}}">
                                 <div class="result-item card bg-dark my-2 p-2 text-left">
                                     <h6>
                                         <small style="font-weight: 400;" class="badge badge-primary rounded-0 mr-1">

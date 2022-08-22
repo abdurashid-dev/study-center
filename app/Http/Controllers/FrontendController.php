@@ -27,4 +27,19 @@ class FrontendController extends Controller
     {
         return view('frontend.info');
     }
+
+    public function result($student)
+    {
+        $student = Student::with('groups', 'phones', 'balance')
+            //last 7 attendances
+            ->with(['attendances' => function ($query) {
+                $query->orderBy('date', 'desc')->limit(7);
+            }])
+            //last 3 months payments
+            ->with(['payments' => function ($query) {
+                $query->where('created_at', '>=', now()->subMonths(3))->orderBy('created_at', 'desc');
+            }])
+            ->where('slug', $student)->first();
+        return view('frontend.result', compact('student'));
+    }
 }

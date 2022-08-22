@@ -27,7 +27,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link @if(request()->routeIs('search') || request()->routeIs('welcome')) active @endif"
+                            <a class="nav-link @if(request()->routeIs('search*') || request()->routeIs('welcome')) active @endif"
                                aria-current="page" href="{{route('welcome')}}">Izlash</a>
                         </li>
 {{--                        <li class="nav-item">--}}
