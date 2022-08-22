@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Study CRM</title>
+    <title>{{config('app.name')}}</title>
     <!-- Bootstrap core CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-lg-8 mx-auto">
             <nav class="navbar navbar-expand-lg">
-                <a class="navbar-brand" href="{{route('welcome')}}">Study CRM</a>
+                <a class="navbar-brand" href="{{route('welcome')}}">{{config('app.name')}}</a>
                 <button class="navbar-toggler" style="outline: none" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
