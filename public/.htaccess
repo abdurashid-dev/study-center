@@ -1,4 +1,10 @@
-<IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteRule ^(.*)$ public/$1 [L]
-</IfModule>
+
+# if /public/ is part of original URL then remove it
+RewriteCond %{THE_REQUEST} /public/(\S*) [NC]
+RewriteRule ^ /%1 [L,NE,R=301]
+
+# Handle Front Controller...
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
