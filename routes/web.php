@@ -21,7 +21,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware groups. Now create something great!
 |
 */
-
+Route::get('/register', function () {
+    return redirect(404);
+});
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
