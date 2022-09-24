@@ -24,7 +24,7 @@
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars white" style="color: #cecaca"></i>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav" style="position: absolute; right: 10px">
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link @if(request()->routeIs('search*') || request()->routeIs('welcome')) active @endif"
