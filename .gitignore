@@ -14,3 +14,5 @@ yarn-error.log
 /.idea
 /.vscode
 schedule.log
+.DS_Store
+error_log
