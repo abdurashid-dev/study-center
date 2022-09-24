@@ -1,0 +1,10 @@
+#navbarNav {
+    position: absolute;
+    right: 10px
+}
+
+@media (max-width: 992px) {
+    #navbarNav {
+        position: relative
+    }
+}

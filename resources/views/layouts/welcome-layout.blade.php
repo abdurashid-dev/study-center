@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link rel="stylesheet" href="{{asset('css/custom.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
     @yield('styles')
 </head>
 <body>
