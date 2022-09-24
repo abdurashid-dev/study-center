@@ -24,9 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/register', function () {
     return redirect(404);
 });
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [FrontendController::class, 'welcome'])->name('welcome');
 Route::get('/search', [FrontendController::class, 'search'])->name('search');
 Route::get('/dtm', [FrontendController::class, 'dtm'])->name('dtm');
 Route::get('/info', [FrontendController::class, 'info'])->name('info');
