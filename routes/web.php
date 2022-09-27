@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\CommandController;
 use App\Http\Controllers\DashboradController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GroupController;
@@ -64,4 +65,8 @@ Route::middleware([
 
 //archive
     Route::get('/archive', StudentsArchive::class)->name('archive.index');
+
+//artisan commands
+    Route::get('/command', [CommandController::class, 'index']);
+    Route::post('/command', [CommandController::class, 'command'])->name('admin.command');
 });
