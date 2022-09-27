@@ -18,7 +18,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('payment:monthly')
             ->appendOutputTo('schedule.log')
             ->timezone('Asia/Tashkent')
-            ->monthly();
+            ->monthlyOn(1, '05:00');
     }
 
     /**
