@@ -67,6 +67,6 @@ Route::middleware([
     Route::get('/archive', StudentsArchive::class)->name('archive.index');
 
 //artisan commands
-    Route::get('/command', [CommandController::class, 'index']);
-    Route::post('/command', [CommandController::class, 'command'])->name('admin.command');
+//    Route::get('/command', [CommandController::class, 'index']);
+//    Route::post('/command', [CommandController::class, 'command'])->name('admin.command');
 });
