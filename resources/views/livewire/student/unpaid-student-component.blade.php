@@ -62,7 +62,7 @@
                                         @endforelse
                                     </a>
                                 </td>
-                                <td class="py-3 px-6">
+                                <td class="py-3 px-6 whitespace-nowrap">
                                     {{number_format($student->balance, 0, '', ' ')}} UZS
                                 </td>
                                 <td class="py-3 px-6">
