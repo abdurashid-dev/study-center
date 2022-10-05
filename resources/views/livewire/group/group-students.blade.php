@@ -27,25 +27,27 @@
                                 <td>
                                     @if($student->balance > 0)
                                         <span
-                                            class="btn btn-success"><i class="fas fa-check-circle"></i> {{number_format($student->balance, 0, '', ' ')}} uzs</span>
+                                            class="btn btn-success whitespace-nowrap"><i
+                                                class="fas fa-check-circle"></i> {{number_format($student->balance, 0, '', ' ')}} uzs</span>
                                     @elseif($student->balance < 0)
                                         <a href="{{route('payment.create.single', $student->slug)}}"
                                            class="btn btn-danger"><i
-                                                class="fas fa-times-circle"></i> {{number_format(abs($student->balance), 0, '', ' ')}}
+                                                class="fas fa-times-circle whitespace-nowrap"></i> {{number_format(abs($student->balance), 0, '', ' ')}}
                                             uzs</a>
                                     @else
                                         <span
-                                            class="btn btn-success"><i
+                                            class="btn btn-success whitespace-nowrap"><i
                                                 class="fas fa-check-circle"></i> Qarzdor emas</span>
                                     @endif
                                 </td>
-                                <td>
+                                <td class="d-flex">
                                     <a href="{{route('payment.create.single', $student->slug)}}"
-                                       class="btn btn-success">
+                                       class="btn btn-success whitespace-nowrap">
                                         <i class="fas fa-coins"></i>
                                         To'lov qilish
                                     </a>
-                                    <a href="{{route('students.show', $student->slug)}}" class="btn btn-primary"><i
+                                    <a href="{{route('students.show', $student->slug)}}"
+                                       class="btn btn-primary ml-2 whitespace-nowrap"><i
                                             class="fas fa-eye"></i> Ko'rish</a>
                                 </td>
                             </tr>
