@@ -59,8 +59,11 @@
                                 <span class="badge badge-success rounded-0">Qarzdor emas</span>
                             @endif
                         </dd>
-                        <dt class="col-sm-4">Qarz miqdori</dt>
-                        <dd class="col-sm-8">{{number_format(abs($student->balance->balance), 0, '', ' ',)}} uzs</dd>
+                        @if($student->balance->balance < 0)
+                            <dt class="col-sm-4">Qarz miqdori</dt>
+                            <dd class="col-sm-8">{{number_format(abs($student->balance->balance), 0, '', ' ',)}}uzs
+                            </dd>
+                        @endif
                         <dt class="col-sm-12 mt-3">
                             <h5>Oxirgi 1 haftalik davomat ro'yxati
                                 <hr>
