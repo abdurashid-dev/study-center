@@ -20,9 +20,6 @@
                                 Telefon raqam
                             </th>
                             <th scope="col" class="py-3 px-6">
-                                Guruh
-                            </th>
-                            <th scope="col" class="py-3 px-6">
                                 Qarzi
                             </th>
                             <th scope="col" class="py-3 px-6">
@@ -48,19 +45,6 @@
                                             {{$phone->phone_number}}
                                         </a><br>
                                     @endforeach
-                                </td>
-                                <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student->slug)}}"
-                                       class="text-gray-900 dark:text-white whitespace-nowrap">
-                                        @forelse($student->groups as $group)
-                                            {{$group->group->name}}<br>
-                                        @empty
-                                            <span
-                                                class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900 whitespace-nowrap">
-                                                Guruh topilmadi :(
-                                            </span>
-                                        @endforelse
-                                    </a>
                                 </td>
                                 <td class="py-3 px-6 whitespace-nowrap">
                                     {{number_format($student->balance, 0, '', ' ')}} UZS
