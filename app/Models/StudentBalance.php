@@ -19,12 +19,10 @@ class StudentBalance extends Model
 
     public function getBalance(): string
     {
-        if ($this->balance == 0) {
-            return '<div class="btn btn-success"><i class="fas fa-check-circle"></i> Qarzdor emas</div>';
-        } elseif ($this->balance < 0) {
-            return '<div class="btn btn-danger"><i class="fas fa-history"></i> ' . number_format(abs(($this->balance)), 0, '', ' ') . ' uzs</div>';
+        if ($this->balance >= 0) {
+            return '<div class="btn btn-success"><i class="fas fa-check-circle"></i> Qarzdor emas (' . number_format(abs(($this->balance)), 0, '', ' ') . ' uzs)</div>';
         } else {
-            return '<div class="btn btn-warning"><i class="fas fa-exclamation-triangle"></i> Xatolik</div>';
+            return '<div class="btn btn-danger"><i class="fas fa-history"></i> ' . number_format(abs(($this->balance)), 0, '', ' ') . ' uzs</div>';
         }
     }
 }
