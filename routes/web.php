@@ -22,9 +22,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware groups. Now create something great!
 |
 */
-Route::get('/register', function () {
-    return redirect(404);
-});
+//Route::get('/register', function () {
+//    return redirect(404);
+//});
 Route::get('/', [FrontendController::class, 'welcome'])->name('welcome');
 Route::get('/search', [FrontendController::class, 'search'])->name('search');
 Route::get('/dtm', [FrontendController::class, 'dtm'])->name('dtm');
