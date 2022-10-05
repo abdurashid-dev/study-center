@@ -31,6 +31,19 @@ class FrontendController extends Controller
 
     public function search(Request $request)
     {
+        SEOMeta::setTitle('Hurmatulloh group');
+        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        SEOMeta::setCanonical(route('welcome'));
+
+        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        OpenGraph::setTitle('Hurmatulloh group');
+        OpenGraph::setUrl(route('welcome'));
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(asset('logo.png'));
+
+        JsonLd::setTitle('Hurmatulloh group');
+        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        JsonLd::addImage(asset('logo.png'));
         if ($request->q) {
             $q = $request->get('q');
             $students = Student::globalSearch($request->q)->get();
@@ -42,6 +55,19 @@ class FrontendController extends Controller
 
     public function dtm()
     {
+        SEOMeta::setTitle('Hurmatulloh group');
+        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        SEOMeta::setCanonical(route('welcome'));
+
+        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        OpenGraph::setTitle('Hurmatulloh group');
+        OpenGraph::setUrl(route('welcome'));
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(asset('logo.png'));
+
+        JsonLd::setTitle('Hurmatulloh group');
+        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        JsonLd::addImage(asset('logo.png'));
         return view('frontend.dtm');
     }
 
@@ -52,6 +78,19 @@ class FrontendController extends Controller
 
     public function result($student)
     {
+        SEOMeta::setTitle('Hurmatulloh group');
+        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        SEOMeta::setCanonical(route('welcome'));
+
+        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        OpenGraph::setTitle('Hurmatulloh group');
+        OpenGraph::setUrl(route('welcome'));
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(asset('logo.png'));
+
+        JsonLd::setTitle('Hurmatulloh group');
+        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        JsonLd::addImage(asset('logo.png'));
         $student = Student::with('groups', 'phones', 'balance')
             //last 7 attendances
             ->with(['attendances' => function ($query) {
