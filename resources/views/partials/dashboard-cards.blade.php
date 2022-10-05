@@ -90,7 +90,7 @@
     </div>
 
     <div class="w-full max-w-full px-3 sm:w-1/2 sm:flex-none xl:w-1/4">
-        <a href="#">
+        <a href="#unpaidStudents">
             <div
                 class="relative flex flex-col min-w-0 break-words bg-white shadow-soft-xl rounded-2xl bg-clip-border">
                 <div class="flex-auto p-4">
