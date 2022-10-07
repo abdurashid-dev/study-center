@@ -9,7 +9,8 @@
             <tr>
                 <th>#</th>
                 <th>Sana</th>
-                <th>Summa</th>
+                <th>To'lov summasi</th>
+                <th>Chegirma summasi</th>
                 <th>Izoh</th>
             </tr>
             @forelse($student_payments as $payment)
@@ -20,6 +21,9 @@
                     <td class="whitespace-nowrap">{{\Illuminate\Support\Carbon::parse($payment->created_at)->format('d-F-Y')}}</td>
                     <td class="whitespace-nowrap">
                         {{number_format($payment->payment, 0, '', ' ')}} uzs
+                    </td>
+                    <td class="whitespace-nowrap">
+                        {{number_format($payment->discount, 0, '', ' ')}} uzs
                     </td>
                     <td style="min-width: 150px !important;">{{($payment->comment) ?? 'Izoh mavjud emas'}}</td>
                 </tr>
