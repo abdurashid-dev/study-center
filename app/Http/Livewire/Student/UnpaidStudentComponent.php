@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Student;
 
 use App\Models\Student;
-use DB;
 use Livewire\Component;
 
 class UnpaidStudentComponent extends Component

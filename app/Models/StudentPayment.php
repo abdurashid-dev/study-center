@@ -9,7 +9,7 @@ class StudentPayment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['student_id', 'payment', 'comment'];
+    protected $fillable = ['student_id', 'payment', 'discount', 'comment'];
 
     public function student(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {

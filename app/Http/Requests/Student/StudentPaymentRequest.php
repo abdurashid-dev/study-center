@@ -27,6 +27,7 @@ class StudentPaymentRequest extends FormRequest
             'student_id' => 'required',
             'payment' => 'required|min:1',
             'comment' => 'nullable',
+            'discount' => 'nullable'
         ];
     }
 }
