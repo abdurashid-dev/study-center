@@ -101,6 +101,12 @@ class FrontendController extends Controller
                 $query->where('created_at', '>=', now()->subMonths(3))->orderBy('created_at', 'desc');
             }])
             ->where('slug', $student)->first();
-        return view('frontend.result', compact('student'));
+        if ($student->payments->sum('discount') > 0) {
+            $discount_area = true;
+        } else {
+            $discount_area = false;
+        }
+
+        return view('frontend.result', compact('student', 'discount_area'));
     }
 }

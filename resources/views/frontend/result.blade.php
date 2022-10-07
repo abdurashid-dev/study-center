@@ -107,7 +107,10 @@
                             <table class="table table-bordered text-white mt-2">
                                 <tr>
                                     <th>Sana</th>
-                                    <th>Summa</th>
+                                    <th>To'langan summa</th>
+                                    @if($discount_area)
+                                        <th>Chegirma summasi</th>
+                                    @endif
                                     <th>Izoh</th>
                                 </tr>
                                 @forelse($student->payments as $payment)
@@ -116,6 +119,11 @@
                                         <td>
                                             {{number_format($payment->payment, 0, '', ' ',)}} uzs
                                         </td>
+                                        @if($discount_area)
+                                            <td>
+                                                {{number_format($payment->discount, 0, '', ' ',)}} uzs
+                                            </td>
+                                        @endif
                                         <td>{{$payment->comment ?? "Izoh mavjud emas"}}</td>
                                     </tr>
                                 @empty
