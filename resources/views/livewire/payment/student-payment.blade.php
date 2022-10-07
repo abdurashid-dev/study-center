@@ -69,11 +69,7 @@
                                 <td class="py-3 px-6">
                                     <a href="{{route('students.show', $payment->student->slug)}}"
                                        class="text-gray-900 dark:text-white whitespace-nowrap">
-                                        @if(is_null($payment->discount))
-                                            0 uzs
-                                        @else
-                                            {{number_format($payment->discount, 0, ',', ' ')}} uzs
-                                        @endif
+                                        {{number_format($payment->discount, 0, ',', ' ')}} uzs
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
