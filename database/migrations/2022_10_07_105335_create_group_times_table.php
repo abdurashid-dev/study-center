@@ -15,8 +15,8 @@ return new class extends Migration {
         Schema::create('group_times', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('group_id');
-            $table->date('day');
-            $table->time('time');
+            $table->date('day')->nullable();
+            $table->time('time')->nullable();
             $table->timestamps();
         });
     }

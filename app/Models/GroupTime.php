@@ -9,5 +9,5 @@ class GroupTime extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['day', 'time'];
+    protected $fillable = ['group_id', 'day', 'time'];
 }
