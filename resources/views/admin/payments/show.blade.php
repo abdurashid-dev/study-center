@@ -56,6 +56,18 @@
                         </tr>
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th scope="col" class="py-3 px-6">
+                                Chegirma summasi
+                            </th>
+                            <td class="py-3 px-6">
+                                @if(is_null($payment->discount))
+                                    0 uzs
+                                @else
+                                    {{number_format($payment->discount, 0, ',', ' ')}} uzs
+                                @endif
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th scope="col" class="py-3 px-6">
                                 To'lov haqida ma'lumot
                             </th>
                             <td class="py-3 px-6">

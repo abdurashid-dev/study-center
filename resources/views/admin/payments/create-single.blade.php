@@ -27,6 +27,11 @@
                     <x-jet-input-error for="payment" class="mt-2"/>
                 </div>
                 <div>
+                    <x-jet-label for="discount" value="Chegirma summasi"/>
+                    <x-jet-input id="payment" type="number" name="discount" :value="old('discount')"/>
+                    <x-jet-input-error for="discount" class="mt-2"/>
+                </div>
+                <div>
                     <x-jet-label for="comment" value="Tavsif"/>
                     <x-textarea id="comment" name="comment">{!!old('comment')!!}</x-textarea>
                     <x-jet-input-error for="comment" class="mt-2"/>
