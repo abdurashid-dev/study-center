@@ -20,9 +20,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-{{--                <input class="form-control form-control-solid" placeholder="Pick date rage" id="kt_daterangepicker_4"/>--}}
-{{--                <div id="hiddenParent"></div>--}}
-{{--                {{$start}}--}}
+                {{--                <input class="form-control form-control-solid" placeholder="Pick date rage" id="kt_daterangepicker_4"/>--}}
+                {{--                <div id="hiddenParent"></div>--}}
+                {{--                {{$start}}--}}
                 <x-search/>
                 <div class="overflow-x-auto relative shadow-md sm:rounded-lg mt-3">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -36,6 +36,9 @@
                             </th>
                             <th scope="col" class="py-3 px-6">
                                 Summa
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Chegirma
                             </th>
                             <th scope="col" class="py-3 px-6">
                                 Vaqt
@@ -61,6 +64,16 @@
                                     <a href="{{route('students.show', $payment->student->slug)}}"
                                        class="text-gray-900 dark:text-white whitespace-nowrap">
                                         {{number_format($payment->payment, 0, ',', ' ')}} uzs
+                                    </a>
+                                </td>
+                                <td class="py-3 px-6">
+                                    <a href="{{route('students.show', $payment->student->slug)}}"
+                                       class="text-gray-900 dark:text-white whitespace-nowrap">
+                                        @if(is_null($payment->discount))
+                                            0 uzs
+                                        @else
+                                            {{number_format($payment->discount, 0, ',', ' ')}} uzs
+                                        @endif
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
