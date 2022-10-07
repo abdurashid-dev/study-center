@@ -5,6 +5,7 @@ use App\Http\Controllers\CommandController;
 use App\Http\Controllers\DashboradController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\GroupTimeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\StudentPaymentController;
 use App\Http\Livewire\Payment\StudentPayment;
@@ -39,6 +40,7 @@ Route::middleware([
     Route::get('/dashboard', [DashboradController::class, 'index'])->name('dashboard');
 
     Route::resource('groups', GroupController::class);
+    Route::resource('groups-times', GroupTimeController::class);
     Route::resource('students', StudentController::class)->except('index');
 
     Route::prefix('students')->name('students.')->group(function () {
