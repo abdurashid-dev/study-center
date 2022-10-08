@@ -66,8 +66,8 @@
                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none mt-1 mb-2">
                                 <x-jet-input-error for="times.*" class="mt-2"/>
                             </div>
-                            <button type="button" id="remove"
-                                    class="block mt-4 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 dark:focus:bg-red-700">
+                            <button type="button"
+                                    class="removeBtn block mt-4 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-2 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 dark:focus:bg-red-700">
                                 <i class="fas fa-times"></i>
                             </button>
                         </div>
@@ -128,10 +128,12 @@
     </div>
     @section('scripts')
         <script>
+            let removeBtns = document.querySelectorAll('.removeBtn');
             $('#addNew').click(function () {
                 $baseDiv = $('#baseDiv').html();
                 $('#timeParent').append($baseDiv);
             })
+
         </script>
     @endsection
 </x-app-layout>
