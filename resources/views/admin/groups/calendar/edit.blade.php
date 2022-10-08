@@ -1,7 +1,4 @@
 <x-app-layout xmlns:livewire="http://www.w3.org/1999/html">
-    @section('styles')
-        @include('links.toastr-css')
-    @endsection
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -44,30 +41,12 @@
                     </div>
                     <div style="width: 47%">
                         <x-jet-label for="address" value="Vaqt"/>
-                        <div class="flex justify-center">
-                            <div class="timepicker relative form-floating mb-3 xl:w-96">
-                                <input type="text"
-                                       class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                                       placeholder="Select a date"/>
-                                <label for="floatingInput" class="text-gray-700">Select a time</label>
-                                <button tabindex="0" type="button" class="timepicker-toggle-button"
-                                        data-mdb-toggle="timepicker">
-                                    <i class="fas fa-clock timepicker-icon"></i>
-                                </button>
-                            </div>
-                        </div>
+                        <input type="time"
+                               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none mt-1 mb-2">
                         <x-jet-input-error for="address" class="mt-2"/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    @section('scripts')
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
-        <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css"/>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
-    @endsection
 </x-app-layout>
