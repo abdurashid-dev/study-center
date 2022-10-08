@@ -16,29 +16,28 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
-                <form action="{{route('groups-times.update', $group_time->id)}}" method="POST">
+                <form action="{{route('groups-times.update', $group->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    <input type="hidden" value="{{$group->id}}" name="group_id">
                     <div id="timeParent">
                         <div id="baseDiv">
                             <div class="flex justify-between">
                                 <div style="width: 49%">
                                     <x-jet-label for="group" value="Hafta kunlari"/>
                                     <select style="margin: 4px 0 8px; padding: 8px" name="days[]" class="form-select appearance-none
-                      block
-                      w-full
-                      text-base
-                      font-normal
-                      text-gray-700
-                      bg-white bg-clip-padding bg-no-repeat
-                      border border-solid border-gray-300
-                      rounded
-                      transition
-                      ease-in-out
-                      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                      block
+                                      w-full
+                                      text-base
+                                      font-normal
+                                      text-gray-700
+                                      bg-white bg-clip-padding bg-no-repeat
+                                      border border-solid border-gray-300
+                                      rounded
+                                      transition
+                                      ease-in-out
+                                      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                             aria-label="Default select example">
-                                        <option value="" selected disabled>Hafta kunlari</option>
+                                        <option value="" selected>Hafta kunlari</option>
                                         <option value="Dushanba">Dushanba</option>
                                         <option value="Seshanba">Seshanba</option>
                                         <option value="Chorshanba">Chorshanba</option>
@@ -47,13 +46,13 @@
                                         <option value="Shanba">Shanba</option>
                                         <option value="Yakshanba">Yakshanba</option>
                                     </select>
-                                    <x-jet-input-error for="address" class="mt-2"/>
+                                    <x-jet-input-error for="days.*" class="mt-2"/>
                                 </div>
                                 <div style="width: 49%">
                                     <x-jet-label for="address" value="Vaqt"/>
                                     <input name="times[]" type="time"
                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 outline-none mt-1 mb-2">
-                                    <x-jet-input-error for="address" class="mt-2"/>
+                                    <x-jet-input-error for="times.*" class="mt-2"/>
                                 </div>
                             </div>
                         </div>

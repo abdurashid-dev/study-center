@@ -29,8 +29,10 @@ class GroupTimeController extends Controller
         return view('admin.groups.calendar.edit', compact('group', 'group_time'));
     }
 
-    public function update(GroupTimeRequest $request)
+    public function update(GroupTimeRequest $request, $id)
     {
-        dd($request->all());
+//        dd($request->validated());
+        $this->service->update($request->validated(), $id);
+        return redirect()->route('groups-times.index');
     }
 }

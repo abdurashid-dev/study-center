@@ -24,9 +24,8 @@ class GroupTimeRequest extends FormRequest
     public function rules()
     {
         return [
-            'group_id' => 'required',
-            'days' => 'nullable',
-            'times' => 'nullable'
+            'days.*' => 'required',
+            'times.*' => 'required'
         ];
     }
 }
