@@ -21,7 +21,7 @@ class GroupTimeService
                 'group_id' => $group->id
             ]);
         }
-        $group_times = GroupTime::where('group_id', $group->id)->get();
-        return $group_times;
+        $group_time = GroupTime::where('group_id', $group->id)->first();
+        return $group_time;
     }
 }
