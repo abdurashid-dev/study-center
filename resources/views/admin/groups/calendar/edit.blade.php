@@ -19,6 +19,7 @@
                 <form action="{{route('groups-times.update', $group_time->id)}}" method="POST">
                     @csrf
                     @method('PUT')
+                    <input type="hidden" value="{{$group->id}}" name="group_id">
                     <div id="timeParent">
                         <div id="baseDiv">
                             <div class="flex justify-between">

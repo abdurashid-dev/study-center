@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Group\GroupTimeRequest;
 use App\Http\Services\GroupTimeService;
 use App\Models\Group;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class GroupTimeController extends Controller
         return view('admin.groups.calendar.edit', compact('group', 'group_time'));
     }
 
-    public function update(Request $request)
+    public function update(GroupTimeRequest $request)
     {
         dd($request->all());
     }
