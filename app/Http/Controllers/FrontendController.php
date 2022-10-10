@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Group;
 use App\Models\Student;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
@@ -74,6 +75,12 @@ class FrontendController extends Controller
     public function info()
     {
         return view('frontend.info');
+    }
+
+    public function calendarIndex()
+    {
+        $groups = Group::paginate(20);
+        return view('frontend.calendar.index', compact('groups'));
     }
 
     public function result($student)
