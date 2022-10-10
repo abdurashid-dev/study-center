@@ -30,12 +30,16 @@
                     </tr>
                     @forelse($group_times as $time)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="py-3 px-6">
-                                {{$time->day}}
-                            </td>
-                            <td class="py-3 px-6">
-                                {{$time->time}}
-                            </td>
+                            @if(!is_null($time->day))
+                                <td class="py-3 px-6">
+                                    {{$time->day}}
+                                </td>
+                                <td class="py-3 px-6">
+                                    {{$time->time}}
+                                </td>
+                            @else
+                                <td colspan="2" class="text-center">Ma'lumot topilmadi</td>
+                            @endif
                         </tr>
                     @empty
                         no data found

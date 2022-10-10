@@ -14,14 +14,20 @@
                     <th>Dars vaqtlari</th>
                 </tr>
                 @forelse($group_times as $time)
-                    <tr>
-                        <td>
-                            {{$time->day}}
-                        </td>
-                        <td>
-                            {{$time->time}}
-                        </td>
-                    </tr>
+                    @if(!is_null($time->day))
+                        <tr>
+                            <td>
+                                {{$time->day}}
+                            </td>
+                            <td>
+                                {{$time->time}}
+                            </td>
+                        </tr>
+                    @else
+                        <tr>
+                            <td colspan="3" class="text-center">Ma'lumot topilmadi</td>
+                        </tr>
+                    @endif
                 @empty
                     <tr>
                         <td colspan="3" class="text-center">Ma'lumot topilmadi</td>
