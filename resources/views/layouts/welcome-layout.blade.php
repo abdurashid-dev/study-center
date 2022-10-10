@@ -39,7 +39,8 @@
                         {{--                                                    <a class="nav-link @if(request()->routeIs('info')) active @endif" href="{{route('info')}}">Info</a>--}}
                         {{--                                                </li>--}}
                         <li class="nav-item">
-                            <a class="nav-link @if(request()->routeIs('info')) active @endif" href="{{route('info')}}">Taqvim</a>
+                            <a class="nav-link @if(request()->routeIs('calendar.index')) active @endif"
+                               href="{{route('calendar.index')}}">Taqvim</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @if(request()->routeIs('dtm')) active @endif"
