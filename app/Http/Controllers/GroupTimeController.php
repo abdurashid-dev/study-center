@@ -24,9 +24,10 @@ class GroupTimeController extends Controller
 
     public function edit($slug)
     {
-        $group_time = $this->service->edit($slug);
+        $group_times = $this->service->edit($slug);
         $group = Group::where('slug', $slug)->first();
-        return view('admin.groups.calendar.edit', compact('group', 'group_time'));
+//        dd($group_times->day);
+        return view('admin.groups.calendar.edit', compact('group', 'group_times'));
     }
 
     public function update(GroupTimeRequest $request, $id)

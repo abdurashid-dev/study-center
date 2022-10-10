@@ -21,8 +21,7 @@ class GroupTimeService
                 'group_id' => $group->id
             ]);
         }
-        $group_time = GroupTime::where('group_id', $group->id)->first();
-        return $group_time;
+        return GroupTime::where('group_id', $group->id)->get();
     }
 
     public function update(array $data, $id)
