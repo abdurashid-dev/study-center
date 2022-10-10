@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Group;
+use App\Models\GroupTime;
 use App\Models\Student;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
@@ -81,6 +82,13 @@ class FrontendController extends Controller
     {
         $groups = Group::paginate(20);
         return view('frontend.calendar.index', compact('groups'));
+    }
+
+    public function calendarShow($slug)
+    {
+        $group = Group::where('slug', $slug)->first();
+        $group_times = GroupTime::where('group_id', $group->id)->get();
+        return view('frontend.calendar.show', compact('group_times', 'group'));
     }
 
     public function result($student)

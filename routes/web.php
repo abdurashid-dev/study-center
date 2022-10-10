@@ -29,6 +29,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [FrontendController::class, 'welcome'])->name('welcome');
 Route::get('/search', [FrontendController::class, 'search'])->name('search');
 Route::get('/calendar', [FrontendController::class, 'calendarIndex'])->name('calendar.index');
+Route::get('/calendar/{slug}', [FrontendController::class, 'calendarShow'])->name('calendar.show');
 Route::get('/dtm', [FrontendController::class, 'dtm'])->name('dtm');
 Route::get('/info', [FrontendController::class, 'info'])->name('info');
 Route::get('/result/{student}', [FrontendController::class, 'result'])->name('search.result');

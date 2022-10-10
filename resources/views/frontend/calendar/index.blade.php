@@ -17,7 +17,7 @@
                         {{$group->name}}
                     </td>
                     <td>
-                        <a href="" class="btn btn-primary">Ko'rish</a>
+                        <a href="{{route('calendar.show', $group->slug)}}" class="btn btn-primary">Ko'rish</a>
                     </td>
                 </tr>
             @empty

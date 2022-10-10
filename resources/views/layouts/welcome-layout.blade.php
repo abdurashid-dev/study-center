@@ -53,7 +53,9 @@
             </nav>
         </div>
     </div>
+
     @yield('content')
+
     <footer class="mastfoot mt-auto text-center">
         <p><small>All rights reserved by <a href="https://t.me/abdurashid_coder">Abdurashid</a></small></p>
     </footer>
