@@ -80,12 +80,38 @@ class FrontendController extends Controller
 
     public function calendarIndex()
     {
+        SEOMeta::setTitle('Hurmatulloh group');
+        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        SEOMeta::setCanonical(route('welcome'));
+
+        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        OpenGraph::setTitle('Hurmatulloh group');
+        OpenGraph::setUrl(route('welcome'));
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(asset('logo.png'));
+
+        JsonLd::setTitle('Hurmatulloh group');
+        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        JsonLd::addImage(asset('logo.png'));
         $groups = Group::paginate(20);
         return view('frontend.calendar.index', compact('groups'));
     }
 
     public function calendarShow($slug)
     {
+        SEOMeta::setTitle('Hurmatulloh group');
+        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        SEOMeta::setCanonical(route('welcome'));
+
+        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        OpenGraph::setTitle('Hurmatulloh group');
+        OpenGraph::setUrl(route('welcome'));
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(asset('logo.png'));
+
+        JsonLd::setTitle('Hurmatulloh group');
+        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        JsonLd::addImage(asset('logo.png'));
         $group = Group::where('slug', $slug)->first();
         $group_times = GroupTime::where('group_id', $group->id)->get();
         return view('frontend.calendar.show', compact('group_times', 'group'));
