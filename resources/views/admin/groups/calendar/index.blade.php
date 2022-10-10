@@ -44,7 +44,7 @@
                                 <td class="py-3 px-6">
                                     {{(($groups->currentpage()-1)*$groups->perpage()+($loop->index+1)) }}
                                 </td>
-                                <td class="py-3 px-6">
+                                <td class="py-3 px-6 whitespace-nowrap">
                                     {{$group->name}}
                                 </td>
                                 <td class="py-6 px-6">
