@@ -12,6 +12,12 @@ class GroupTimeService
         return Group::paginate(20);
     }
 
+    public function show($slug)
+    {
+        $group = Group::where('slug', $slug)->first();
+        return GroupTime::where('group_id', $group->id)->get();
+    }
+
     public function edit($slug)
     {
         $group = Group::where('slug', $slug)->first();

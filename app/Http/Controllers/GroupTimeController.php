@@ -22,6 +22,13 @@ class GroupTimeController extends Controller
         return view('admin.groups.calendar.index', compact('groups'));
     }
 
+    public function show($slug)
+    {
+        $group_times = $this->service->show($slug);
+        $group = Group::where('slug', $slug)->first();
+        return view('admin.groups.calendar.show', compact('group_times', 'group'));
+    }
+
     public function edit($slug)
     {
         $group_times = $this->service->edit($slug);
