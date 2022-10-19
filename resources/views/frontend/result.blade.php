@@ -96,7 +96,8 @@
                                     </tr>
                                 @endforelse
                             </table>
-                            <button class="btn btn-primary btn-sm float-right mb-1">Ko'proq</button>
+                            <a href="{{route('result.attendance', $student->slug)}}"
+                               class="btn btn-primary btn-sm float-right mb-1">Ko'proq</a>
                         </dt>
 
                         <dt class="col-sm-12 mt-3">

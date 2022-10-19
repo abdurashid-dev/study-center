@@ -33,6 +33,7 @@ Route::get('/calendar/{slug}', [FrontendController::class, 'calendarShow'])->nam
 Route::get('/dtm', [FrontendController::class, 'dtm'])->name('dtm');
 Route::get('/info', [FrontendController::class, 'info'])->name('info');
 Route::get('/result/{student}', [FrontendController::class, 'result'])->name('search.result');
+Route::get('/result/{student}/attendances', [FrontendController::class, 'attendance'])->name('result.attendance');
 
 Route::middleware([
     'auth:sanctum',

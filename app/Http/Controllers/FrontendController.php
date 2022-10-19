@@ -9,6 +9,7 @@ use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class FrontendController extends Controller
 {
@@ -149,5 +150,18 @@ class FrontendController extends Controller
         }
 
         return view('frontend.result', compact('student', 'discount_area'));
+    }
+
+    public function attendance($student)
+    {
+
+        $student = Student::where('slug', $student)
+            ->with(['attendances' => function ($query) {
+                $last_three_month = Carbon::now()->startOfMonth()->subMonth(3);
+                $this_month = Carbon::now()->startOfMonth();
+                $query->whereBetween('created_at', [$last_three_month, $this_month])->get();
+            }])
+            ->first();
+        return view('frontend.attendance', compact('student'));
     }
 }
