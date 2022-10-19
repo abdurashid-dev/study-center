@@ -96,6 +96,7 @@
                                     </tr>
                                 @endforelse
                             </table>
+                            <button class="btn btn-primary btn-sm float-right mb-1">Ko'proq</button>
                         </dt>
 
                         <dt class="col-sm-12 mt-3">
