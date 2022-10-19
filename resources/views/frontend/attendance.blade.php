@@ -28,7 +28,7 @@
                             <hr>
                         </h5>
                     </dt>
-                    <dt class="col-sm-12 table-responsive">
+                    <dt class="col-12 table-responsive">
                         <table class="table table-bordered text-white mt-2">
                             <tr>
                                 <th>Sana</th>
