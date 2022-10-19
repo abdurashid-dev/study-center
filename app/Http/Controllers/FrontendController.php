@@ -136,7 +136,9 @@ class FrontendController extends Controller
         $student = Student::with('groups', 'phones', 'balance')
             //last 7 attendances
             ->with(['attendances' => function ($query) {
-                $query->orderBy('date', 'desc')->limit(7);
+                $start_day = Carbon::now()->subdays(7);
+                $today = Carbon::now();
+                $query->whereBetween('created_at', [$start_day, $today]);
             }])
             //last 3 months payments
             ->with(['payments' => function ($query) {
