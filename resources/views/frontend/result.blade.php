@@ -117,11 +117,11 @@
                                 @forelse($student->payments as $payment)
                                     <tr>
                                         <td>{{$payment->created_at->format('d.m.Y')}}</td>
-                                        <td>
+                                        <td style="white-space: nowrap">
                                             {{number_format($payment->payment, 0, '', ' ',)}} uzs
                                         </td>
                                         @if($discount_area)
-                                            <td>
+                                            <td style="white-space: nowrap">
                                                 {{number_format($payment->discount, 0, '', ' ',)}} uzs
                                             </td>
                                         @endif
