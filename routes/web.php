@@ -1,8 +1,8 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
-use App\Http\Controllers\CommandController;
 use App\Http\Controllers\DashboradController;
+use App\Http\Controllers\DtmController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\GroupTimeController;
@@ -45,6 +45,7 @@ Route::middleware([
     Route::resource('groups', GroupController::class);
     Route::resource('groups-times', GroupTimeController::class);
     Route::resource('students', StudentController::class)->except('index');
+    Route::resource('/dtm', DtmController::class);
 
     Route::prefix('students')->name('students.')->group(function () {
         Route::get('/', StudentComponent::class)->name('index');
