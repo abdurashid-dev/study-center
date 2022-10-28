@@ -33,6 +33,10 @@
                         </dd>
                         <dt class="col-sm-4">Ro'yxatdan o'tgan sana</dt>
                         <dd class="col-sm-8">{{$student->created_at->format('d.m.Y')}}</dd>
+                        @if($student->deleted == 1)
+                            <dt class="col-sm-4">O'chirilgan sana</dt>
+                            <dd class="col-sm-8">{!! \Illuminate\Support\Carbon::make($student->deleted_at)->format('d.m.Y')!!}</dd>
+                        @endif
                         <dt class="col-sm-4">Manzil</dt>
                         <dd class="col-sm-8">{{$student->address ?? "Manzil haqida ma'lumot topilmadi"}}</dd>
                         <dt class="col-sm-4">Guruh</dt>
