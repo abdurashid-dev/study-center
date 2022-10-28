@@ -9,7 +9,7 @@ class Dtm extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'group_id', 'count_tests'];
+    protected $fillable = ['name', 'description', 'group_id', 'slug', 'count_tests'];
 
     public static function search($search)
     {
