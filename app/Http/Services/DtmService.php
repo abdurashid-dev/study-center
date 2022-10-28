@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\Dtm;
 use App\Models\Group;
+use Illuminate\Support\Str;
 
 class DtmService
 {
@@ -26,6 +27,7 @@ class DtmService
 
     public function store(array $data)
     {
-        dd($data);
+        $data['slug'] = Str::slug($data['name']);
+        Dtm::create($data);
     }
 }

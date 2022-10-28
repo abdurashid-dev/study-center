@@ -80,7 +80,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="my-3">˚†
+                <div class="my-3">
                     {{$dtms->links()}}
                 </div>
             </div>

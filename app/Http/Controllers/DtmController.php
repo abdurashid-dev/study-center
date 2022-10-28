@@ -29,5 +29,6 @@ class DtmController extends Controller
     public function store(DtmRequest $request)
     {
         $this->service->store($request->validated());
+        return redirect()->route('dtm.index')->with('success', 'DTM created!');
     }
 }

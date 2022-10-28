@@ -26,7 +26,7 @@ class DtmRequest extends FormRequest
         return [
             'name' => 'required|max:255|min:3',
             'description' => 'sometimes',
-            'group_id' => 'required',
+            'group_id' => 'sometimes',
             'count_tests' => 'required|numeric|max_digits:255'
         ];
     }

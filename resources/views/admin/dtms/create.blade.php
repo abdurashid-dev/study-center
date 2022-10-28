@@ -25,7 +25,6 @@
                     </ul>
                 </div>
             @endif
-
             <form action="{{route('dtm.store')}}" method="POST">
                 @csrf
                 @include('admin.dtms.create-form')
