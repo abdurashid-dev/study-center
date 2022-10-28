@@ -48,25 +48,25 @@
                                     {{(($dtms->currentpage()-1)*$dtms->perpage()+($loop->index+1)) }}
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('dtm.show', $dtm)}}"
+                                    <a href="{{route('dtm.show', $dtm->slug)}}"
                                        class="text-gray-900 dark:text-white">
                                         {{$dtm->name}}
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('dtm.show', $dtm)}}"
+                                    <a href="{{route('dtm.show', $dtm->slug)}}"
                                        class="text-gray-900 dark:text-white whitespace-nowrap">
-                                        {{$dtm->group_id}} uzs
+                                        {{$dtm->getGroupName($dtm->group_id)}}
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('dtm.show', $dtm)}}"
+                                    <a href="{{route('dtm.show', $dtm->slug)}}"
                                        class="text-gray-900 dark:text-white whitespace-nowrap">
                                         {{$dtm->created_at->format('d-F-Y')}}
                                     </a>
                                 </td>
                                 <td class="py-4 px-8">
-                                    <a href="{{route('dtm.show', $dtm)}}"
+                                    <a href="{{route('dtm.show', $dtm->slug)}}"
                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 whitespace-nowrap">
                                         <i class="fas fa-eye"></i> Ko'rish
                                     </a>
