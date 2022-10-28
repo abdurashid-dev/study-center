@@ -28,6 +28,9 @@ class DtmService
     public function store(array $data)
     {
         $data['slug'] = Str::slug($data['name']);
-        Dtm::create($data);
+        $dtm = Dtm::create($data);
+        if (!is_null($data['group_id'])) {
+            $dtm->group()->attach($data['group_id']);
+        }
     }
 }

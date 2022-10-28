@@ -11,6 +11,11 @@ class Group extends Model
 
     protected $fillable = ['name', 'price', 'slug', 'description', 'status'];
 
+    public function dtm()
+    {
+        return $this->belongsTo(Dtm::class);
+    }
+
     public function students(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(StudentGroup::class);

@@ -9,7 +9,12 @@ class Dtm extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'group_id', 'slug', 'count_tests'];
+    protected $fillable = ['name', 'description', 'slug', 'count_tests'];
+
+    public function group()
+    {
+        return $this->belongsTo(Group::class);
+    }
 
     public static function search($search)
     {

@@ -56,6 +56,12 @@
                 <th>Ro'yxatdan o'tkan sana</th>
                 <td>{{$student->created_at->format('d-F-Y')}}</td>
             </tr>
+            @if($student->deleted == 1)
+                <tr>
+                    <th>O'chirilgan sana</th>
+                    <td>{!! \Illuminate\Support\Carbon::make($student->deleted_at)->format('d-F-Y')!!}</td>
+                </tr>
+            @endif
         </table>
     </div>
 </div>
