@@ -9,12 +9,13 @@ class Dtm extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'group_id', 'student_id', 'count_tests', 'correct_answers'];
+    protected $fillable = ['name', 'description', 'group_id', 'count_tests'];
 
     public static function search($search)
     {
         return empty($search)
             ? static::query()
-            : static::query()->where('name', 'like', '%' . $search . '%');
+            : static::query()->where('name', 'like', '%' . $search . '%')
+                ->where('description', 'like', '%' . $search . '%');
     }
 }

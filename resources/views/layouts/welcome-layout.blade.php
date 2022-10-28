@@ -44,7 +44,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link @if(request()->routeIs('dtm')) active @endif"
-                               href="{{route('dtm')}}">DTM</a>
+                               href="#">DTM</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('login')}}">Kirish</a>
