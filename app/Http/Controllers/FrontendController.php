@@ -15,38 +15,14 @@ class FrontendController extends Controller
 {
     public function welcome()
     {
-        SEOMeta::setTitle('Hurmatulloh group');
-        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        SEOMeta::setCanonical(route('welcome'));
-
-        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        OpenGraph::setTitle('Hurmatulloh group');
-        OpenGraph::setUrl(route('welcome'));
-        OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('logo.png'));
-
-        JsonLd::setTitle('Hurmatulloh group');
-        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        JsonLd::addImage(asset('logo.png'));
+        $this->seoExtracted();
 
         return view('welcome');
     }
 
     public function search(Request $request)
     {
-        SEOMeta::setTitle('Hurmatulloh group');
-        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        SEOMeta::setCanonical(route('welcome'));
-
-        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        OpenGraph::setTitle('Hurmatulloh group');
-        OpenGraph::setUrl(route('welcome'));
-        OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('logo.png'));
-
-        JsonLd::setTitle('Hurmatulloh group');
-        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        JsonLd::addImage(asset('logo.png'));
+        $this->seoExtracted();
         if ($request->q) {
             $q = $request->get('q');
             $students = Student::globalSearch($request->q)->get();
@@ -58,19 +34,7 @@ class FrontendController extends Controller
 
     public function dtm()
     {
-        SEOMeta::setTitle('Hurmatulloh group');
-        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        SEOMeta::setCanonical(route('welcome'));
-
-        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        OpenGraph::setTitle('Hurmatulloh group');
-        OpenGraph::setUrl(route('welcome'));
-        OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('logo.png'));
-
-        JsonLd::setTitle('Hurmatulloh group');
-        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        JsonLd::addImage(asset('logo.png'));
+        $this->seoExtracted();
         return view('frontend.dtm');
     }
 
@@ -81,38 +45,14 @@ class FrontendController extends Controller
 
     public function calendarIndex()
     {
-        SEOMeta::setTitle('Hurmatulloh group');
-        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        SEOMeta::setCanonical(route('welcome'));
-
-        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        OpenGraph::setTitle('Hurmatulloh group');
-        OpenGraph::setUrl(route('welcome'));
-        OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('logo.png'));
-
-        JsonLd::setTitle('Hurmatulloh group');
-        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        JsonLd::addImage(asset('logo.png'));
+        $this->seoExtracted();
         $groups = Group::paginate(20);
         return view('frontend.calendar.index', compact('groups'));
     }
 
     public function calendarShow($slug)
     {
-        SEOMeta::setTitle('Hurmatulloh group');
-        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        SEOMeta::setCanonical(route('welcome'));
-
-        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        OpenGraph::setTitle('Hurmatulloh group');
-        OpenGraph::setUrl(route('welcome'));
-        OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('logo.png'));
-
-        JsonLd::setTitle('Hurmatulloh group');
-        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        JsonLd::addImage(asset('logo.png'));
+        $this->seoExtracted();
         $group = Group::where('slug', $slug)->first();
         $group_times = GroupTime::where('group_id', $group->id)->get();
         return view('frontend.calendar.show', compact('group_times', 'group'));
@@ -120,19 +60,7 @@ class FrontendController extends Controller
 
     public function result($student)
     {
-        SEOMeta::setTitle('Hurmatulloh group');
-        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        SEOMeta::setCanonical(route('welcome'));
-
-        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        OpenGraph::setTitle('Hurmatulloh group');
-        OpenGraph::setUrl(route('welcome'));
-        OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('logo.png'));
-
-        JsonLd::setTitle('Hurmatulloh group');
-        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        JsonLd::addImage(asset('logo.png'));
+        $this->seoExtracted();
         $student = Student::with('groups', 'phones', 'balance')
             //last 7 attendances
             ->with(['attendances' => function ($query) {
@@ -177,5 +105,25 @@ class FrontendController extends Controller
             }])
             ->first();
         return view('frontend.attendance', compact('student'));
+    }
+
+    /**
+     * @return void
+     */
+    public function seoExtracted(): void
+    {
+        SEOMeta::setTitle('Hurmatulloh group');
+        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        SEOMeta::setCanonical(route('welcome'));
+
+        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        OpenGraph::setTitle('Hurmatulloh group');
+        OpenGraph::setUrl(route('welcome'));
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addImage(asset('logo.png'));
+
+        JsonLd::setTitle('Hurmatulloh group');
+        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
+        JsonLd::addImage(asset('logo.png'));
     }
 }
