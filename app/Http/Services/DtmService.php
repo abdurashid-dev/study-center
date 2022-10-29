@@ -10,7 +10,7 @@ class DtmService
 {
     public function index()
     {
-        dd(Dtm::with('group')->get());
+//        dd(Dtm::with('group')->get());
 //        return;
     }
 

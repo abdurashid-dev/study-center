@@ -57,7 +57,7 @@ final class DtmTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Dtm::query();
+        return Dtm::query()->with('group');
     }
 
     /*
@@ -91,7 +91,8 @@ final class DtmTable extends PowerGridComponent
         return PowerGrid::eloquent()
             ->addColumn('id')
             ->addColumn('name')
-            ->addColumn('description', fn(Dtm $dtm) => \Str::limit($dtm->description, 20))
+            ->addColumn('group.name')
+//            ->addColumn('description', fn(Dtm $dtm) => \Str::limit($dtm->description, 20))
             ->addColumn('count_tests')
             ->addColumn('created_at_formatted', fn(Dtm $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
@@ -123,9 +124,7 @@ final class DtmTable extends PowerGridComponent
                 ->editOnClick()
                 ->makeInputText(),
 
-            Column::make('IZOH', 'description')
-                ->sortable()
-                ->searchable(),
+            Column::make('GURUH', 'group.name'),
 
             Column::make('TESTLAR SONI', 'count_tests')
                 ->sortable()
@@ -156,7 +155,7 @@ final class DtmTable extends PowerGridComponent
     public function actions(): array
     {
         return [
-            Button::make('show', 'SHOW')
+            Button::make('show', "Ko'rish")
                 ->class('bg-blue-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
                 ->target(false)
                 ->route('dtm.show', ['dtm' => 'id']),
