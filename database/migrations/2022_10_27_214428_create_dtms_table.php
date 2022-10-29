@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->text('description');
             $table->integer('count_tests')->default(0);
             $table->string('slug');
+            $table->unsignedBigInteger('group_id')->nullable();
             $table->timestamps();
         });
     }

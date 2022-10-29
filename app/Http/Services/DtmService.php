@@ -10,7 +10,8 @@ class DtmService
 {
     public function index()
     {
-        return Dtm::paginate(15);
+        dd(Dtm::with('group')->get());
+//        return;
     }
 
     public function show($id)
@@ -28,9 +29,6 @@ class DtmService
     public function store(array $data)
     {
         $data['slug'] = Str::slug($data['name']);
-        $dtm = Dtm::create($data);
-        if (!is_null($data['group_id'])) {
-            $dtm->group()->attach($data['group_id']);
-        }
+        Dtm::create($data);
     }
 }

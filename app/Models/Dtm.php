@@ -9,7 +9,7 @@ class Dtm extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'slug', 'count_tests'];
+    protected $fillable = ['name', 'description', 'slug', 'count_tests', 'group_id'];
 
     public function group()
     {
