@@ -46,8 +46,7 @@ class DtmController extends Controller
 
     public function show($dtm)
     {
-        $dtm = $this->service->show($dtm);
-//        dd($dtm);
-        return view('admin.dtms.show', compact('dtm'));
+        [$dtm, $students] = $this->service->show($dtm);
+        return view('admin.dtms.show', compact('dtm', 'students'));
     }
 }

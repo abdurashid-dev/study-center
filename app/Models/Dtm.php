@@ -16,6 +16,11 @@ class Dtm extends Model
         return $this->belongsTo(Group::class);
     }
 
+    public function students()
+    {
+        return $this->belongsToMany(Student::class);
+    }
+
     public static function search($search)
     {
         return empty($search)

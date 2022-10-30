@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\Dtm;
 use App\Models\Group;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class DtmService
@@ -14,9 +15,11 @@ class DtmService
 //        return;
     }
 
-    public function show($dtm)
+    public function show($slug)
     {
-        return Dtm::with('group')->where('slug', $dtm)->first();
+        $dtm = Dtm::with('group')->where('slug', $slug)->first();
+        $students = DB::table('student_dtms')->where('dtm_id', $dtm->id)->orderByDesc('count_answers')->paginate(15);
+        return [$dtm, $students];
     }
 
     public function getItem($slug)
