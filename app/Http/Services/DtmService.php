@@ -56,7 +56,7 @@ class DtmService
     public function studentDtmCreate($slug)
     {
         $dtm = Dtm::where('slug', $slug)->first();
-        $students = Group::with('students.student')->where('id', $dtm->group_id)->first();
+        $students = StudentDtm::with('students')->where('dtm_id', $dtm->id)->first();
         return [$dtm, $students];
     }
 
