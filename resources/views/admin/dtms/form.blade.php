@@ -1,6 +1,6 @@
 <div>
     <x-jet-label for="name" value="DTM nomi"/>
-    <x-jet-input id="name" type="text" name="name" :value="old('name')" required
+    <x-jet-input id="name" type="text" name="name" :value="old('name') ?? $dtm->name" required
                  autofocus/>
     <x-jet-input-error for="name" class="mt-2"/>
 </div>
@@ -18,7 +18,7 @@
         name="group_id" id="groups">
         <option value="">Umumiy test</option>
         @foreach($groups as $group)
-            <option value="{{ $group->id }}">
+            <option value="{{ $group->id }}" @if($dtm->group_id == $group->id) selected @endif>
                 {{ $group->name }}
             </option>
         @endforeach

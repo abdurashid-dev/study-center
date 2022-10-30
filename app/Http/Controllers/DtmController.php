@@ -31,4 +31,10 @@ class DtmController extends Controller
         $this->service->store($request->validated());
         return redirect()->route('dtm.index')->with('success', 'DTM created!');
     }
+
+    public function edit($dtm)
+    {
+        [$dtm, $groups] = $this->service->edit($dtm);
+        return view('admin.dtms.edit', compact('dtm', 'groups'));
+    }
 }

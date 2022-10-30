@@ -159,7 +159,11 @@ final class DtmTable extends PowerGridComponent
             Button::make('show', "Ko'rish")
                 ->class('bg-blue-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
                 ->target(false)
-                ->route('dtm.show', ['dtm' => 'id']),
+                ->route('dtm.show', ['dtm' => 'slug']),
+            Button::make('edit', "Tahrirlash")
+                ->class('bg-green-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
+                ->target(false)
+                ->route('dtm.edit', ['dtm' => 'slug']),
         ];
     }
 

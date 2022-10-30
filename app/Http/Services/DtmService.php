@@ -22,7 +22,7 @@ class DtmService
     public function create()
     {
         $dtm = new Dtm();
-        $groups = Group::where('status', 1)->get();
+        $groups = Group::all();
         return [$dtm, $groups];
     }
 
@@ -30,5 +30,12 @@ class DtmService
     {
         $data['slug'] = Str::slug($data['name']);
         Dtm::create($data);
+    }
+
+    public function edit($dtm)
+    {
+        $dtm = Dtm::where('slug', $dtm)->first();
+        $groups = Group::all();
+        return [$dtm, $groups];
     }
 }
