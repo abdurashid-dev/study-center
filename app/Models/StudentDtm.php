@@ -10,4 +10,9 @@ class StudentDtm extends Model
     use HasFactory;
 
     protected $fillable = ['dtm_id', 'student_id', 'count_answers'];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class);
+    }
 }

@@ -16,7 +16,17 @@
     </x-slot>
     <div class="py-12">
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg mx-auto">
-            <form action="{{route('dtm.store')}}" method="POST">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{route('dtm.student-dtm-store', [$dtm->slug, $dtm->group_id])}}" method="POST">
                 @csrf
                 <div>
                     <x-jet-label for="student_id" value="O'quvchi ismi"/>
@@ -30,15 +40,15 @@
                             </option>
                         @endforeach
                     </select>
-                    <x-jet-input-error for="name" class="mt-2"/>
+                    <x-jet-input-error for="student_id" class="mt-2"/>
                 </div>
                 <div>
-                    <x-jet-label for="count_tests" value="Testlar soni"/>
-                    <x-jet-input id="count_tests" type="number" name="count_tests"
-                                 :value="old('count_tests')"
+                    <x-jet-label for="count_answers" value="Testlar soni"/>
+                    <x-jet-input id="count_answers" type="number" name="count_answers"
+                                 :value="old('count_answers')"
                                  required
                                  autofocus/>
-                    <x-jet-input-error for="count_tests" class="mt-2"/>
+                    <x-jet-input-error for="count_answers" class="mt-2"/>
                 </div>
                 <div class="mb-3">
                     <x-jet-label for="groups" value="Guruh"/>

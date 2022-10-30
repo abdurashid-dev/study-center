@@ -53,6 +53,9 @@
                             <th scope="col" class="py-3 px-6">
                                 To'gri javoblar soni
                             </th>
+                            <th scope="col" class="py-3 px-6">
+                                Harakatlar
+                            </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -62,35 +65,29 @@
                                     {{(($students->currentpage()-1)*$students->perpage()+($loop->index+1)) }}
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student->slug)}}"
+                                    <a href="{{route('students.show', $student->id)}}"
                                        class="text-gray-900 dark:text-white">
-                                        {{$student->full_name}}
+                                        {{$student->student->full_name}}
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student->slug)}}"
-                                       class="text-gray-900 dark:text-white">
-                                        {{$dtm->getGroupName($dtm->group_id)}}
-                                    </a>
-                                </td>
-                                <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student->slug)}}"
+                                    <a href="{{route('students.show', $student->id)}}"
                                        class="text-gray-900 dark:text-white">
                                         {{$dtm->getGroupName($dtm->group_id)}}
                                     </a>
                                 </td>
-                                <a href="{{route('students.show', $student->slug)}}"
-                                   class="text-gray-900 dark:text-white">
-                                    {{$student->count_answers}}
-                                </a>
                                 <td class="py-3 px-6">
-                                    <div class="inline-flex rounded-md shadow-sm">
-                                        <a href="{{route('students.show', $student->slug)}}" aria-current="page"
-                                           class="py-2 px-4 text-sm font-medium text-grey-700 bg-wblue rounded-l-lg border border-gray-200 hover:bg-blue-100 hover:text-grey-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-grey-700 dark:bg-blue-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-500 dark:focus:text-white whitespace-nowrap">
-                                            <i class="fas fa-eye"></i>
-                                            Ko'rish
-                                        </a>
-                                    </div>
+                                    <a href="{{route('students.show', $student->id)}}"
+                                       class="text-gray-900 dark:text-white">
+                                        {{$student->count_answers}}
+                                    </a>
+                                </td>
+                                <td class="py-3 px-6">
+                                    <a href="{{route('students.show', $student->id)}}" aria-current="page"
+                                       class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:focus:bg-blue-700">
+                                        <i class="fas fa-eye"></i>
+                                        Ko'rish
+                                    </a>
                                 </td>
                             </tr>
                         @empty
@@ -102,7 +99,7 @@
                     </table>
                 </div>
                 <div class="my-3">
-                    {{$students->links()}}
+                    {{--                    {{$students->links()}}--}}
                 </div>
             </div>
         </div>

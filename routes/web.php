@@ -49,6 +49,7 @@ Route::middleware([
 
 // DTM results
     Route::get('/dtm/student/{slug}', [DtmController::class, 'studentDtmCreate'])->name('dtm.student-dtm-create');
+    Route::post('/dtm/student/{dtm}/{group?}', [DtmController::class, 'studentDtmStore'])->name('dtm.student-dtm-store');
 
     Route::prefix('students')->name('students.')->group(function () {
         Route::get('/', StudentComponent::class)->name('index');

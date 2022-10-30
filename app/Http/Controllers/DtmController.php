@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Dtm\DtmRequest;
+use App\Http\Requests\Dtm\StudentDtmRequest;
 use App\Http\Services\DtmService;
 
 class DtmController extends Controller
@@ -54,5 +55,11 @@ class DtmController extends Controller
     {
         [$dtm, $groups] = $this->service->studentDtmCreate($slug);
         return view('admin.dtm.student-dtm-create', compact('dtm', 'groups'));
+    }
+
+    public function studentDtmStore(StudentDtmRequest $request, $dtm, $group = null)
+    {
+        $this->service->studentDtmStore($request->validated(), $dtm, $group);
+        return redirect()->route('dtm.show', $dtm)->with('success', 'Created!');
     }
 }
