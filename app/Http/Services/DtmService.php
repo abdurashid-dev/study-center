@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\Dtm;
 use App\Models\Group;
+use App\Models\StudentGroup;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -51,5 +52,12 @@ class DtmService
     {
         $dtm = $this->getItem($id);
         $dtm->update($data);
+    }
+
+    public function studentDtmCreate($slug)
+    {
+        $dtm = Dtm::where('slug', $slug)->first();
+        $students = StudentGroup::where('group_id', $dtm->group_id)->get();
+//        dd($students);
     }
 }

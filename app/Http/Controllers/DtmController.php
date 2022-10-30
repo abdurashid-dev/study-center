@@ -49,4 +49,11 @@ class DtmController extends Controller
         [$dtm, $students] = $this->service->show($dtm);
         return view('admin.dtms.show', compact('dtm', 'students'));
     }
+
+    public function studentDtmCreate($slug)
+    {
+        $dtm = $this->service->studentDtmCreate($slug);
+//        dd($dtm);
+        return view('admin.dtm.student-dtm-create', compact('dtm'));
+    }
 }

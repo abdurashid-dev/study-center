@@ -47,6 +47,9 @@ Route::middleware([
     Route::resource('students', StudentController::class)->except('index');
     Route::resource('/dtm', DtmController::class);
 
+// DTM results
+    Route::get('/dtm/student/{slug}', [DtmController::class, 'studentDtmCreate'])->name('dtm.student-dtm-create');
+
     Route::prefix('students')->name('students.')->group(function () {
         Route::get('/', StudentComponent::class)->name('index');
         Route::post('/student/{student}/restore', [StudentController::class, 'restore'])->name('restore');
