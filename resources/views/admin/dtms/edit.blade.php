@@ -16,7 +16,7 @@
     </x-slot>
     <div class="py-12">
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg mx-auto">
-            <form action="{{route('dtm.update', $dtm)}}" method="POST">
+            <form action="{{route('dtm.update', $dtm->slug)}}" method="POST">
                 @csrf
                 @method('PUT')
                 @include('admin.dtms.form')

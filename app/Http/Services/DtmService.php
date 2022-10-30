@@ -14,9 +14,14 @@ class DtmService
 //        return;
     }
 
-    public function show($id)
+    public function show($dtm)
     {
-        return Dtm::findOrFail($id);
+        return Dtm::with('group')->where('slug', $dtm)->first();
+    }
+
+    public function getItem($slug)
+    {
+        return Dtm::where('slug', $slug)->first();
     }
 
     public function create()
@@ -32,16 +37,16 @@ class DtmService
         Dtm::create($data);
     }
 
-    public function edit($dtm)
+    public function edit($slug)
     {
-        $dtm = Dtm::where('slug', $dtm)->first();
+        $dtm = $this->getItem($slug);
         $groups = Group::all();
         return [$dtm, $groups];
     }
 
     public function update(array $data, $id)
     {
-        $dtm = $this->show($id);
+        $dtm = $this->getItem($id);
         $dtm->update($data);
     }
 }

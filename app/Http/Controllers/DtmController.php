@@ -43,4 +43,11 @@ class DtmController extends Controller
         $this->service->update($request->validated(), $id);
         return redirect()->route('dtm.index')->with('success', 'DTM tahrirlandi!');
     }
+
+    public function show($dtm)
+    {
+        $dtm = $this->service->show($dtm);
+        dd($dtm);
+        return view('admin.dtms.show', compact('dtm'));
+    }
 }
