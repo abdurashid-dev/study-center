@@ -38,4 +38,10 @@ class DtmService
         $groups = Group::all();
         return [$dtm, $groups];
     }
+
+    public function update(array $data, $id)
+    {
+        $dtm = $this->show($id);
+        $dtm->update($data);
+    }
 }

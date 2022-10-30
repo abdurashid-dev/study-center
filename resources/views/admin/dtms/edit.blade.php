@@ -18,6 +18,7 @@
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg mx-auto">
             <form action="{{route('dtm.update', $dtm)}}" method="POST">
                 @csrf
+                @method('PUT')
                 @include('admin.dtms.form')
             </form>
         </div>
