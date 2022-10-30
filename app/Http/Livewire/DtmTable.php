@@ -57,7 +57,7 @@ final class DtmTable extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return Dtm::query()->with('group');
+        return Dtm::query()->with('group')->orderByDesc('created_at');
     }
 
     /*
@@ -128,6 +128,7 @@ final class DtmTable extends PowerGridComponent
 
             Column::make('TESTLAR SONI', 'count_tests')
                 ->sortable()
+                ->editOnClick()
                 ->makeInputRange(),
 
             Column::make('TEST OLINGAN SANA', 'created_at_formatted', 'created_at')
@@ -201,9 +202,11 @@ final class DtmTable extends PowerGridComponent
     /*|onUpdate|*/
     public bool $showErrorBag = true;
     public $name = null;
+    public $count_tests = null;
 
     protected array $rules = [
         'name.*' => ['required', 'min:2', 'max:255'],
+        'count_tests.*' => ['required', 'min:2', 'max:255'],
     ];
 
     public function onUpdatedEditable($id, $field, $value): void
