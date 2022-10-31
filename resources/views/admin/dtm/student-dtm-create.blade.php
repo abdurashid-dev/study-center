@@ -34,9 +34,9 @@
                         class="group-select block py-3 px-4 w-full"
                         name="student_id" id="student_id">
                         <option value="">O'quvchini tanlang</option>
-                        @foreach($groups->students as $student)
-                            <option value="{{ $student->student->id }}">
-                                {{ $student->student->full_name }}
+                        @foreach($students as $student)
+                            <option value="{{ $student->id }}">
+                                {{ $student->full_name }}
                             </option>
                         @endforeach
                     </select>

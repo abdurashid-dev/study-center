@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Models\Dtm;
 use App\Models\Group;
+use App\Models\Student;
 use App\Models\StudentDtm;
 use Illuminate\Support\Str;
 
@@ -56,7 +57,12 @@ class DtmService
     public function studentDtmCreate($slug)
     {
         $dtm = Dtm::where('slug', $slug)->first();
-        $students = StudentDtm::with('students')->where('dtm_id', $dtm->id)->first();
+        $students = Student::whereHas('groups', function ($q) use ($dtm) {
+            $q->where('group_id', $dtm->group_id);
+        })->where('deleted', 0)->get();
+        if (empty($students[0]->id)) {
+            $students = Student::where('deleted', 0)->get();
+        }
         return [$dtm, $students];
     }
 
