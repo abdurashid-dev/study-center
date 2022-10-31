@@ -15,7 +15,7 @@ return new class extends Migration {
         Schema::create('dtms', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('count_tests')->default(0);
             $table->string('slug');
             $table->unsignedBigInteger('group_id')->nullable();
