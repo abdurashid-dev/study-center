@@ -1,6 +1,7 @@
 <x-app-layout>
     @section('styles')
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+        @include('links.toastr-css')
     @endsection
     <x-slot name="header">
         <div class="flex justify-between items-center">
@@ -68,6 +69,7 @@
         </div>
     </div>
     @section('scripts')
+        @include('links.toastr-js')
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script>
             $(document).ready(function () {

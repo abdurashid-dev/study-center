@@ -24,16 +24,27 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
                 <div class="card">
                     <div class="card-header bg-white">
-                        <button type="button"
-                                class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:focus:bg-blue-700 float-right btn btn-sm"
-                                data-bs-toggle="modal"
-                                data-bs-target="#infoModal">
-                            <i class="fas fa-info-circle"></i> Ma'lumot
-                        </button>
-                        <a href="{{route('dtm.student-dtm-create', $dtm->slug)}}"
-                           class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:focus:bg-blue-700 float-right btn btn-sm mr-3">
-                            <i class="fas fa-plus"></i> Qo'shish
-                        </a>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6"></div>
+                            <div class="col-sm-12 col-md-6">
+                                <div class="row d-flex justify-end">
+                                    <div class="col-sm-12 col-md-6">
+                                        <a href="{{route('dtm.student-dtm-create', $dtm->slug)}}"
+                                           class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:focus:bg-blue-700 btn btn-sm mt-1">
+                                            <i class="fas fa-plus"></i> Qo'shish
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6">
+                                        <a type="button"
+                                           class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:focus:bg-blue-700 btn btn-sm mt-1"
+                                           data-bs-toggle="modal"
+                                           data-bs-target="#infoModal">
+                                            <i class="fas fa-info-circle"></i> Ma'lumot
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 @include('admin.dtms.dtm-info')
