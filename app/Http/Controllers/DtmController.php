@@ -54,7 +54,7 @@ class DtmController extends Controller
     public function studentDtmCreate($slug)
     {
         [$dtm, $students] = $this->service->studentDtmCreate($slug);
-        return view('admin.dtm.student-dtm-create', compact('dtm', 'students'));
+        return view('admin.dtms.student-dtm-create', compact('dtm', 'students'));
     }
 
     public function studentDtmStore(StudentDtmRequest $request, $dtm, $group = null)
