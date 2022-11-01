@@ -88,6 +88,12 @@ class StudentService
         $student->save();
     }
 
+    public function delete($id): void
+    {
+        $student = Student::findOrFail($id);
+        $student->delete();
+    }
+
     public function restore($student): void
     {
         $student = Student::findOrFail($student);

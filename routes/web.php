@@ -54,6 +54,7 @@ Route::middleware([
     Route::prefix('students')->name('students.')->group(function () {
         Route::get('/', StudentComponent::class)->name('index');
         Route::post('/student/{student}/restore', [StudentController::class, 'restore'])->name('restore');
+        Route::delete('/student/{student}', [StudentController::class, 'delete'])->name('delete');
     });
 
     Route::prefix('attendance')->name('attendance.')->group(function () {

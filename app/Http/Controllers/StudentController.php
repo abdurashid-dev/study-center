@@ -108,6 +108,12 @@ class StudentController extends Controller
         return redirect()->route('students.index')->with('success', 'Student deleted successfully');
     }
 
+    public function delete($id)
+    {
+        $this->service->delete($id);
+        return redirect()->route('archive.index')->with('success', 'Student deleted successfully!');
+    }
+
     public function restore($student): \Illuminate\Http\RedirectResponse
     {
         $this->service->restore($student);
