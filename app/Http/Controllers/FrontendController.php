@@ -61,7 +61,9 @@ class FrontendController extends Controller
     public function result($student)
     {
         $this->seoExtracted();
-        $student = Student::with('groups', 'phones', 'balance')
+        $student = Student::with(['groups', 'phones', 'balance', 'studentDtms' => function ($q) {
+            $q->with('dtm')->limit(10)->orderByDesc('created_at')->get();
+        }])
             //last 7 attendances
             ->with(['attendances' => function ($query) {
                 $start_day = Carbon::now()->subdays(7);
@@ -80,6 +82,12 @@ class FrontendController extends Controller
         }
 
         return view('frontend.result', compact('student', 'discount_area'));
+    }
+
+    public function dtmShow($slug)
+    {
+        $student = Student::with(['studentDtms' => fn($q) => $q->with('dtm')->orderByDesc('created_at')])->where('slug', $slug)->first();
+        return view('frontend.dtm.show', compact('student'));
     }
 
     public function attendance($student)

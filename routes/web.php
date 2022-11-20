@@ -34,6 +34,7 @@ Route::get('/dtm', [FrontendController::class, 'dtm'])->name('dtm');
 Route::get('/info', [FrontendController::class, 'info'])->name('info');
 Route::get('/result/{student}', [FrontendController::class, 'result'])->name('search.result');
 Route::get('/result/{student}/attendances', [FrontendController::class, 'attendance'])->name('result.attendance');
+Route::get('/result/{student}/dtm', [FrontendController::class, 'dtmShow'])->name('result.dtm');
 
 Route::middleware([
     'auth:sanctum',

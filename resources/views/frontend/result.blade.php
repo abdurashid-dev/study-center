@@ -68,6 +68,7 @@
                             <dd class="col-sm-8">{{number_format(abs($student->balance->balance), 0, '', ' ',)}}uzs
                             </dd>
                         @endif
+
                         <dt class="col-sm-12 mt-3">
                             <h5>Oxirgi 1 haftalik davomat ro'yxati
                                 <hr>
@@ -101,6 +102,37 @@
                                 @endforelse
                             </table>
                             <a href="{{route('result.attendance', $student->slug)}}"
+                               class="btn btn-primary btn-sm float-right mb-1">Ko'proq</a>
+                        </dt>
+                        <dt class="col-sm-12 mt-3">
+                            <h5>Oxirgi 10 ta imtihon natijalari
+                                <hr>
+                            </h5>
+                        </dt>
+                        <dt class="col-sm-12 table-responsive">
+                            <table class="table table-bordered text-white mt-2">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Imtihon nomi</th>
+                                    <th>Testlar soni</th>
+                                    <th>To'g'ri javoblar soni</th>
+                                    <th>Sana</th>
+                                </tr>
+                                @forelse($student->studentDtms as $dtm)
+                                    <tr>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td> {{ $dtm->dtm->name }}</td>
+                                        <td> {{ $dtm->dtm->count_tests }}</td>
+                                        <td> {{ $dtm->count_answers }}</td>
+                                        <td>{{ $dtm->dtm->created_at->format('d.m.Y')}}</td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="3" class="text-center">Imtihon natijalari topilmadi</td>
+                                    </tr>
+                                @endforelse
+                            </table>
+                            <a href="{{route('result.dtm', $student->slug)}}"
                                class="btn btn-primary btn-sm float-right mb-1">Ko'proq</a>
                         </dt>
 
@@ -139,6 +171,7 @@
                                 @endforelse
                             </table>
                         </dt>
+
                     </dl>
 
 
