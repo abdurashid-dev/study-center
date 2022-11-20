@@ -43,8 +43,8 @@
                                href="{{route('calendar.index')}}">Taqvim</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link @if(request()->routeIs('dtm')) active @endif"
-                               href="#">DTM</a>
+                            <a class="nav-link @if(request()->routeIs('frontend.dtm')) active @endif"
+                               href="{{route("frontend.dtm")}}">DTM</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('login')}}">Kirish</a>

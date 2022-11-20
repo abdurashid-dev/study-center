@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dtm;
 use App\Models\Group;
 use App\Models\GroupTime;
 use App\Models\Student;
@@ -35,7 +36,8 @@ class FrontendController extends Controller
     public function dtm()
     {
         $this->seoExtracted();
-        return view('frontend.dtm');
+        $dtms = Dtm::with('group')->latest()->paginate(10);
+        return view('frontend.dtm', compact('dtms'));
     }
 
     public function info()
