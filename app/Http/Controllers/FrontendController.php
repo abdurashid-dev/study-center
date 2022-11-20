@@ -86,25 +86,14 @@ class FrontendController extends Controller
 
     public function dtmShow($slug)
     {
+        $this->seoExtracted();
         $student = Student::with(['studentDtms' => fn($q) => $q->with('dtm')->orderByDesc('created_at')])->where('slug', $slug)->first();
         return view('frontend.dtm.show', compact('student'));
     }
 
     public function attendance($student)
     {
-        SEOMeta::setTitle('Hurmatulloh group');
-        SEOMeta::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        SEOMeta::setCanonical(route('welcome'));
-
-        OpenGraph::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        OpenGraph::setTitle('Hurmatulloh group');
-//        OpenGraph::setUrl(route('welcome'));
-        OpenGraph::addProperty('type', 'articles');
-        OpenGraph::addImage(asset('logo.png'));
-
-        JsonLd::setTitle('Hurmatulloh group');
-        JsonLd::setDescription('Hurmatulloh group rasmiy sayti. Hurmatulloh group o`quvchilari haqidagi ma`lumotlarni ota-onalar bilan almashish uchun ishlab chiqilgan tizim. All rights reserved by Abdurashid');
-        JsonLd::addImage(asset('logo.png'));
+        $this->seoExtracted();
         $student = Student::where('slug', $student)
             ->with(['attendances' => function ($query) {
                 $last_three_month = Carbon::now()->startOfMonth()->subMonth(3);
