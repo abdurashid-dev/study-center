@@ -47,14 +47,6 @@
                                 <span class="badge badge-danger rounded-0 mr-1">Guruh topilmadi</span>
                             @endforelse
                         </dd>
-                        <dt class="col-sm-4">Telefon raqam</dt>
-                        <dd class="col-sm-8">
-                            @forelse($student->phones as $phone)
-                                <span class="badge badge-primary rounded-0 mr-1">+998 (**) *** ** **</span>
-                            @empty
-                                <span class="badge badge-danger rounded-0 mr-1">Telefon raqam topilmadi</span>
-                            @endforelse
-                        </dd>
                         <dt class="col-sm-4">Qarzdorlik</dt>
                         <dd class="col-sm-8">
                             @if($student->balance->balance < 0)

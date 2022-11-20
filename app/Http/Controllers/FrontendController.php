@@ -61,7 +61,7 @@ class FrontendController extends Controller
     public function result($student)
     {
         $this->seoExtracted();
-        $student = Student::with(['groups', 'phones', 'balance', 'studentDtms' => function ($q) {
+        $student = Student::with(['groups', 'balance', 'studentDtms' => function ($q) {
             $q->with('dtm')->limit(10)->orderByDesc('created_at')->get();
         }])
             //last 7 attendances
