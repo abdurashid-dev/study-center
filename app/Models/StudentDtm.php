@@ -15,4 +15,9 @@ class StudentDtm extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+    public function dtm()
+    {
+        return $this->belongsTo(Dtm::class);
+    }
 }

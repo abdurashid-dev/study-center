@@ -76,25 +76,26 @@
                                     {{(($students->currentpage()-1)*$students->perpage()+($loop->index+1)) }}
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student->id)}}"
+                                    <a href="{{route('students.show', $student->student->slug)}}"
                                        class="text-gray-900 dark:text-white">
                                         {{$student->student->full_name}}
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student->id)}}"
+                                    <a href="{{route('students.show', $student->student->slug)}}"
                                        class="text-gray-900 dark:text-white">
                                         {{$dtm->getGroupName($dtm->group_id)}}
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student->id)}}"
+                                    <a href="{{route('students.show', $student->student->slug)}}"
                                        class="text-gray-900 dark:text-white">
                                         {{$student->count_answers}}
                                     </a>
                                 </td>
                                 <td class="py-3 px-6">
-                                    <a href="{{route('students.show', $student->id)}}" aria-current="page"
+                                    <a href="{{route('students.show', $student->student->slug)}}"
+                                       aria-current="page"
                                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:focus:bg-blue-700">
                                         <i class="fas fa-eye"></i>
                                         Ko'rish

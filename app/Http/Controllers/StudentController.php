@@ -8,6 +8,7 @@ use App\Http\Services\StudentService;
 use App\Models\Attendance;
 use App\Models\Group;
 use App\Models\Student;
+use App\Models\StudentDtm;
 
 class StudentController extends Controller
 {
@@ -63,7 +64,9 @@ class StudentController extends Controller
      */
     public function show($slug)
     {
-        $student = Student::with('phones', 'groups.group', 'balance')->where('slug', $slug)->first();
+        $student = Student::with(['phones', 'groups.group', 'balance', 'studentDtms' => function($q) {
+            $q->limit(10)->with('dtm')->orderByDesc('created_at')->get();
+        }])->where('slug', $slug)->first();
         $student_payments = $student->payments()->orderByDesc('created_at')->get();
         $attendances = Attendance::where('student_id', $student->id)->orderByDesc('created_at')->paginate(10);
         return view('admin.students.show', compact('student', 'student_payments', 'attendances'));

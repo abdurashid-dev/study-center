@@ -10,11 +10,10 @@ use Illuminate\Support\Str;
 
 class DtmService
 {
-    public function index()
-    {
+//    public function index()
+//    {
 //        dd(Dtm::with('group')->get());
-//        return;
-    }
+//    }
 
     public function show($slug)
     {

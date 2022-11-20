@@ -37,6 +37,11 @@ class Student extends Model
         return $this->hasMany(StudentPayment::class);
     }
 
+    public function studentDtms(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(StudentDtm::class);
+    }
+
     public static function search($search)
     {
         return empty($search)

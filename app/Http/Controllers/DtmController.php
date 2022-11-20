@@ -17,8 +17,8 @@ class DtmController extends Controller
 
     public function index()
     {
-        $dtms = $this->service->index();
-        return view('admin.dtms.index', compact('dtms'));
+//        $dtms = $this->service->index();
+        return view('admin.dtms.index');
     }
 
     public function create()

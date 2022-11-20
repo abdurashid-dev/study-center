@@ -36,6 +36,9 @@
                         <div class="col-md-12 mt-3">
                             @include('admin.students.student-payment')
                         </div>
+                        <div class="col-md-12 mt-3">
+                            @include('admin.students.student-dtms')
+                        </div>
                     </div>
                 </div>
             </div>
