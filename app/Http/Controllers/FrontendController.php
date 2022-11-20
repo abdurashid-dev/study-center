@@ -6,6 +6,7 @@ use App\Models\Dtm;
 use App\Models\Group;
 use App\Models\GroupTime;
 use App\Models\Student;
+use App\Models\StudentDtm;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Artesaos\SEOTools\Facades\OpenGraph;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -38,6 +39,13 @@ class FrontendController extends Controller
         $this->seoExtracted();
         $dtms = Dtm::with('group')->latest()->paginate(10);
         return view('frontend.dtm', compact('dtms'));
+    }
+
+    public function dtmListShow($slug)
+    {
+        $dtm = Dtm::with('group')->where('slug', $slug)->first();
+        $students = StudentDtm::with('student')->where('dtm_id', $dtm->id)->orderByDesc('count_answers')->paginate(15);
+        return view('frontend.dtm.list-show', compact('dtm', 'students'));
     }
 
     public function info()

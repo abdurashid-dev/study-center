@@ -15,13 +15,13 @@
                     </form>
                 </div>
                 <div class="my-3" style="font-size: .9rem;">
-                    <a class="back-to-search-link" href="{{route('welcome')}}"><i
-                            class="fa fa-arrow-left"></i> Bosh sahifa</a>
+                    <a class="back-to-search-link" href="{{route('frontend.dtm')}}"><i
+                            class="fa fa-arrow-left"></i> Orqaga qaytish</a>
                 </div>
 
                 <div class="card bg-dark my-2 p-3 text-left">
                     <dt class="col-sm-12 mt-3">
-                        <h5>Imtihon natijalari ro'yxati
+                        <h5>Imtihon natijalari ro'yxati <br>({{$dtm->name}})
                             <hr>
                         </h5>
                     </dt>
@@ -29,20 +29,22 @@
                         <table class="table table-bordered text-white mt-2">
                             <tr>
                                 <th>#</th>
-                                <th>Imtihon nomi</th>
-                                <th>Testlar soni</th>
+                                <th>O'quvchi</th>
                                 <th>Guruh</th>
+                                <th>Testlar soni</th>
+                                <th>To'gri javoblar soni</th>
                                 <th>Sana</th>
-                                <th>ko'proq</th>
+                                <th>Ko'proq</th>
                             </tr>
-                            @forelse($dtms as $dtm)
+                            @forelse($students as $student)
                                 <tr>
-                                    <td>{{ $loop->index + 1 }}</td>
-                                    <td>{{ $dtm->name }}</td>
-                                    <td>{{ $dtm->count_tests }}</td>
-                                    <td>{{ $dtm->getGroupName($dtm->group_id) }}</td>
-                                    <td>{{ $dtm->created_at->format('d.m.Y')}}</td>
-                                    <td><a href="{{route("frontend.dtm-list-show", $dtm->slug)}}" class="btn btn-primary">Ko'rish</a></td>
+                                    <td>{{(($students->currentpage()-1)*$students->perpage()+($loop->index+1)) }}</td>
+                                    <td style="white-space: nowrap"> {{$student->student->full_name}}</td>
+                                    <td style="white-space: nowrap">{{$dtm->getGroupName($dtm->group_id)}}</td>
+                                    <td>{{$dtm->count_tests}}</td>
+                                    <td>{{$student->count_answers}}</td>
+                                    <td>{!! $dtm->created_at->format('d.m.Y')!!}</td>
+                                    <td><a href="{{route('search.result', $student->student->slug)}}" class="btn btn-primary btn-sm">Ko'proq</a></td>
                                 </tr>
                             @empty
                                 <tr>
@@ -50,9 +52,6 @@
                                 </tr>
                             @endforelse
                         </table>
-                        <div class="float-right">
-                            {{$dtms->links()}}
-                        </div>
                     </dt>
 
                     <div class="px-3 pt-2 pb-1" style="background-color: #353030;">

@@ -111,7 +111,7 @@
                     </table>
                 </div>
                 <div class="my-3">
-                    {{--                    {{$students->links()}}--}}
+                    {{$students->links()}}
                 </div>
             </div>
         </div>
