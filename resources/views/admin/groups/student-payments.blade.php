@@ -7,6 +7,7 @@
     <div class="card-body table-responsive overflow-y-auto" style="max-height: 350px">
         <table class="table table-bordered table-hover">
             <tr>
+                <th>ID</th>
                 <th>F.I.O</th>
                 <th>Sana</th>
                 <th>Summa</th>
@@ -15,6 +16,7 @@
             @foreach($group->students as $student)
                 @foreach($student->student->payments as $payment)
                     <tr>
+                        <td>{{$loop->index + 1}}</td>
                         <td>{{$student->student->full_name}}</td>
                         <td class="whitespace-nowrap">{{\Illuminate\Support\Carbon::parse($payment->date)->format('d-F-Y')}}</td>
                         <td class="whitespace-nowrap">{{number_format($payment->payment, 0, '', ' ')}} uzs</td>
