@@ -59,6 +59,7 @@
                             </tr>
                         @endforelse
                     </table>
+                    {{$students->links()}}
                 </div>
             </div>
         </div>
