@@ -4,9 +4,12 @@ namespace App\Http\Livewire\Student;
 
 use App\Models\Student;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class UnpaidStudentComponent extends Component
 {
+    use WithPagination;
+
     public function render()
     {
         $students = Student::
@@ -18,8 +21,7 @@ class UnpaidStudentComponent extends Component
                     ->where('student_balances.balance', '<', 0);
             })
             ->select('students.*', 'student_phone_numbers.phone_number as phone_number', 'student_balances.balance as balance')
-            ->paginate(20);
-//        dd($students);
+            ->simplePaginate(10);
         return view('livewire.student.unpaid-student-component', compact('students'));
     }
 }
