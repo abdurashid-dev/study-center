@@ -8,13 +8,12 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             @include('partials.dashboard-cards')
-            @livewire('student.unpaid-student-component')
-
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4 mt-5" style="height: 300px">
                 <livewire:livewire-line-chart
                     :line-chart-model="$line"
                 />
             </div>
+            @livewire('student.unpaid-student-component')
         </div>
     </div>
     @section('scripts')
