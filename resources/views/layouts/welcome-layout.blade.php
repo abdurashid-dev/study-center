@@ -19,50 +19,47 @@
     @yield('styles')
 </head>
 <body>
-<div class="snow">
-    <div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="{{route('welcome')}}">{{config('app.name')}}</a>
-                    <button class="navbar-toggler" style="outline: none" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNav"
-                            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fas fa-bars white" style="color: #cecaca"></i>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link @if(request()->routeIs('search*') || request()->routeIs('welcome')) active @endif"
-                                   aria-current="page" href="{{route('welcome')}}">Izlash</a>
-                            </li>
-                            {{--                                                <li class="nav-item">--}}
-                            {{--                                                    <a class="nav-link @if(request()->routeIs('info')) active @endif" href="{{route('info')}}">Info</a>--}}
-                            {{--                                                </li>--}}
-                            <li class="nav-item">
-                                <a class="nav-link @if(request()->routeIs('calendar.index')) active @endif"
-                                   href="{{route('calendar.index')}}">Taqvim</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @if(request()->routeIs('frontend.dtm')) active @endif"
-                                   href="{{route("frontend.dtm")}}">DTM</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{route('login')}}">Kirish</a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+<div class="container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="{{route('welcome')}}">{{config('app.name')}}</a>
+                <button class="navbar-toggler" style="outline: none" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars white" style="color: #cecaca"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link @if(request()->routeIs('search*') || request()->routeIs('welcome')) active @endif"
+                               aria-current="page" href="{{route('welcome')}}">Izlash</a>
+                        </li>
+                        {{--                                                <li class="nav-item">--}}
+                        {{--                                                    <a class="nav-link @if(request()->routeIs('info')) active @endif" href="{{route('info')}}">Info</a>--}}
+                        {{--                                                </li>--}}
+                        <li class="nav-item">
+                            <a class="nav-link @if(request()->routeIs('calendar.index')) active @endif"
+                               href="{{route('calendar.index')}}">Taqvim</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @if(request()->routeIs('frontend.dtm')) active @endif"
+                               href="{{route("frontend.dtm")}}">DTM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{route('login')}}">Kirish</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-
-        @yield('content')
-
-        <footer class="mastfoot mt-auto text-center">
-            <p><small>All rights reserved by <a href="https://t.me/abdurashid_coder">Abdurashid</a></small></p>
-        </footer>
     </div>
 
+    @yield('content')
+
+    <footer class="mastfoot mt-auto text-center">
+        <p><small>All rights reserved by <a href="https://t.me/abdurashid_coder">Abdurashid</a></small></p>
+    </footer>
 </div>
 <!-- Page related js files -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
