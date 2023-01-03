@@ -17,31 +17,6 @@
     <link rel="stylesheet" href="{{asset('css/custom.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/navbar.css')}}">
     @yield('styles')
-    <style>
-        body {
-            width: 100vw;
-            height: 100vh;
-            overflow: hidden;
-            user-select: none;
-        }
-
-        .snow {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        .snowflake {
-            position: absolute;
-        }
-
-        .snowMan {
-            position: absolute;
-            top: 60%;
-            left: 40%;
-            font-size: 20rem;
-        }
-    </style>
 </head>
 <body>
 <div class="snow">
@@ -105,68 +80,6 @@
             }
         });
     });
-
-    function newElement(tagName, className) {
-        const element = document.createElement(tagName);
-        element.className = className;
-
-        return element;
-
-    }
-
-    function Snowflake() {
-        this.HTMLElement = newElement('span', 'snowflake');
-        this.HTMLElement.innerHTML = '❄️';
-        this.getY = () => parseFloat(this.HTMLElement.style.top.split('%')[0]);
-        this.setY = y => this.HTMLElement.style.top = `${y}%`;
-        this.setX = () => {
-            const randomPosition = (100 - 0) * Math.random();
-            this.HTMLElement.style.left = `${randomPosition}%`;
-        }
-        this.setSize = () => {
-            const randomSize = (1 - 0.5) * Math.random() + 0.5;
-            this.HTMLElement.style.fontSize = `${randomSize}rem`;
-        }
-
-        this.setY(-10);
-        this.setX();
-        this.setSize();
-    }
-
-    function Snow() {
-        this.HTMLElement = document.querySelector('.snow');
-        this.snowflakes = [];
-
-        this.addSnowflakes = () => {
-
-            if (this.snowflakes.length <= 1000) {
-                const snowflake = new Snowflake();
-                this.snowflakes.push(snowflake);
-                this.HTMLElement.appendChild(snowflake.HTMLElement);
-            }
-        }
-
-        this.animation = () => {
-            this.snowflakes.forEach(snowflake => {
-                const y = snowflake.getY();
-                const newY = y >= 100 ? -10 : y + 0.5;
-                snowflake.setY(newY);
-            });
-        }
-
-    }
-
-    const body = document.querySelector('body');
-
-    const snow = new Snow();
-    body.appendChild(snow.HTMLElement);
-
-    setInterval(() => {
-        snow.addSnowflakes();
-    }, 1000);
-    setInterval(() => {
-        snow.animation();
-    }, 40);
 </script>
 </body>
 </html>
