@@ -72,4 +72,23 @@ class DtmService
         $data['group_id'] = $group;
         StudentDtm::create($data);
     }
+
+    public function studentDtmEdit($slug, $student_id)
+    {
+        $dtm = $this->getItem($slug);
+        $student = StudentDtm::with('student')->where('student_id', $student_id)->where('dtm_id', $dtm->id)->firstOrFail();
+        return [
+            'dtm' => $dtm,
+            'student' => $student
+        ];
+    }
+
+    public function studentDtmUpdate(array $data, $dtm, $student)
+    {
+        $dtm = $this->getItem($dtm);
+        $student_dtm = StudentDtm::where('dtm_id', $dtm->id)->findOrFail($student);
+        $student_dtm->update([
+            'count_answers' => $data['count_answers']
+        ]);
+    }
 }

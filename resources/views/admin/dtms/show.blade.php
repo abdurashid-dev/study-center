@@ -100,6 +100,12 @@
                                         <i class="fas fa-eye"></i>
                                         Ko'rish
                                     </a>
+                                    <a href="{{route('dtm.student-dtm-edit', ['slug' => $dtm->slug, 'student' => $student->student_id])}}"
+                                       aria-current="page"
+                                       class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 dark:focus:bg-green-700 ml-3">
+                                        <i class="fas fa-eye"></i>
+                                        Tahrirlash
+                                    </a>
                                 </td>
                             </tr>
                         @empty

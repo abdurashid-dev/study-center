@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Dtm\DtmRequest;
 use App\Http\Requests\Dtm\StudentDtmRequest;
 use App\Http\Services\DtmService;
+use Illuminate\Http\Request;
 
 class DtmController extends Controller
 {
@@ -61,5 +62,20 @@ class DtmController extends Controller
     {
         $this->service->studentDtmStore($request->validated(), $dtm, $group);
         return redirect()->route('dtm.show', $dtm)->with('success', 'Created!');
+    }
+
+    public function studentDtmEdit($student_id, $slug)
+    {
+        $response = $this->service->studentDtmEdit($slug, $student_id);
+        return view('admin.dtms.student-dtm-edit', compact('response'));
+    }
+
+    public function studentDtmUpdate(Request $request, $dtm, $student)
+    {
+        $data = $request->validate([
+            'count_answers' => 'required'
+        ]);
+        $this->service->studentDtmUpdate($data, $dtm, $student);
+        return redirect()->route('dtm.show', $dtm)->with('success', 'Updated!');
     }
 }

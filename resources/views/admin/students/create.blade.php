@@ -1,4 +1,4 @@
-<x-app-layout xmlns:livewire="http://www.w3.org/1999/html">
+<x-app-layout>
     @section('styles')
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
     @endsection

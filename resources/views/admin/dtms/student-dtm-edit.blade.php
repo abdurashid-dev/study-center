@@ -6,7 +6,7 @@
     <x-slot name="header">
         <div class="flex justify-between items-center">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                DTM qo'shish
+                DTM natijasini tahrirlash
             </h2>
             <a
                 class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 dark:focus:bg-blue-700"
@@ -17,43 +17,29 @@
     </x-slot>
     <div class="py-12">
         <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg mx-auto">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
-            <form action="{{route('dtm.student-dtm-store', [$dtm->slug, $dtm->group_id])}}" method="POST">
+            <form action="{{route('dtm.student-dtm-update', [$response['dtm']->slug, $response['student']->id])}}"
+                  method="POST">
                 @csrf
-                <div>
-                    <x-jet-label for="student_id" value="O'quvchi ismi"/>
-                    <select
-                        class="group-select block py-3 px-4 w-full"
-                        name="student_id" id="student_id">
-                        <option value="">O'quvchini tanlang</option>
-                        @foreach($students as $student)
-                            <option value="{{ $student->id }}">
-                                {{ $student->full_name }}
-                            </option>
-                        @endforeach
-                    </select>
-                    <x-jet-input-error for="student_id" class="mt-2"/>
+                @method('PUT')
+                <div class="mb-3">
+                    <x-jet-label for="student" value="O'quvchi ismi"/>
+                    <x-jet-input id="student" type="text" name="student"
+                                 :value="$response['student']->student->full_name"
+                                 required
+                                 disabled/>
+                    <x-jet-input-error for="student" class="mt-2"/>
                 </div>
-                <div>
+                <div class="mb-3">
                     <x-jet-label for="count_answers" value="To'g'ri javoblar soni"/>
                     <x-jet-input id="count_answers" type="number" name="count_answers"
-                                 :value="old('count_answers')"
-                                 required
-                                 autofocus/>
+                                 :value="$response['student']->count_answers"
+                                 required/>
                     <x-jet-input-error for="count_answers" class="mt-2"/>
                 </div>
                 <div class="mb-3">
                     <x-jet-label for="groups" value="Guruh"/>
-                    <x-jet-input id="name" type="text" name="name" :value="$dtm->getGroupName($dtm->group_id)" required
+                    <x-jet-input id="name" type="text" name="name"
+                                 :value="$response['dtm']->getGroupName($response['dtm']->group_id)" required
                                  autofocus disabled/>
                     <x-jet-input-error for="group_id" class="mt-2"/>
                 </div>
