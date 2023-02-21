@@ -34,7 +34,7 @@ class Dtm extends Model
         if (is_null($group_id)) {
             return 'Umumiy test';
         } else {
-            $group =  Group::findOrFail($group_id)->select('name')->first();
+            $group = Group::select('name')->findOrFail($group_id);
             return $group->name;
         }
     }

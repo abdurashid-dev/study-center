@@ -35,7 +35,9 @@
                 </table>
             </div>
             <div class="modal-footer">
-                <button type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" data-bs-dismiss="modal">Yopish</button>
+                <button type="button" class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                        data-bs-dismiss="modal">Yopish
+                </button>
             </div>
         </div>
     </div>
