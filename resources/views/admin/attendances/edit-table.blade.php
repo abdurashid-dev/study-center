@@ -2,6 +2,7 @@
     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
+            <th>#</th>
             <th scope="col" class="py-3 px-6 text-center">
                 F.I.O
             </th>
@@ -17,6 +18,7 @@
         @forelse($students as $student)
             {{--            @dd($student->status   )--}}
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <td class="py-4 px-6">{{$loop->index+1}}</td>
                 <td class="py-4 px-6">{{$student->full_name}}</td>
                 <input type="hidden" name="attendance_id[]" value="{{$student->attendance_id}}">
                 <td class="py-4 px-6">
