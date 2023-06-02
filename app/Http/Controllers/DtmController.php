@@ -78,4 +78,10 @@ class DtmController extends Controller
         $this->service->studentDtmUpdate($data, $dtm, $student);
         return redirect()->route('dtm.show', $dtm)->with('success', 'Updated!');
     }
+
+    public function destroy($slug)
+    {
+        $this->service->destroy($slug);
+        return redirect()->route('dtm.index')->with('success', 'Deleted!');
+    }
 }

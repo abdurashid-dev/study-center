@@ -91,4 +91,10 @@ class DtmService
             'count_answers' => $data['count_answers']
         ]);
     }
+
+    public function destroy($slug): void
+    {
+        $dtm = $this->getItem($slug);
+        $dtm->delete();
+    }
 }

@@ -164,6 +164,10 @@ final class DtmTable extends PowerGridComponent
                 ->class('bg-green-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
                 ->target(false)
                 ->route('dtm.edit', ['dtm' => 'slug']),
+            Button::make('edit', "O'chirish")
+                ->class('bg-red-500 cursor-pointer text-white px-3 py-2.5 rounded text-sm')
+                ->target(false)
+                ->route('dtm.destroy', ['dtm' => 'slug']),
         ];
     }
 
